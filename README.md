@@ -6,7 +6,7 @@
     <br />
   </h1>
   <sup>
-     Training and raising up Christian leaders to redeem the devastation of many generations.
+    Raising up Christian leaders to redeem the devastation of many generations.
 </em>
     <br />
   </sup>
