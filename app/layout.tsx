@@ -1,10 +1,14 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Oswald, Source_Serif_4 } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
+import Navigation from "@/components/navigation";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald" });
+const serif = Source_Serif_4({ subsets: ["latin"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
   title: "Coming Soon | 61 Oaks Group",
@@ -19,9 +23,17 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={inter.className}>
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={cn(
+            "flex min-h-screen flex-col bg-background font-serif",
+            inter.variable,
+            oswald.variable,
+            serif.variable,
+          )}
+        >
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+            <Navigation />
             {children}
           </ThemeProvider>
         </body>
