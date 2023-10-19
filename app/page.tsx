@@ -24,9 +24,9 @@ export default function Home() {
             <Button size="lg" className="font-inter uppercase font-semibold">
               Coming Soon
             </Button>
-            <p className="text-center text-muted-foreground">
+            {/* <p className="text-center text-muted-foreground">
               Starting at $3.99/mo
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
