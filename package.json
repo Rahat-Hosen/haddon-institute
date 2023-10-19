@@ -1,6 +1,6 @@
 {
-  "name": "61-oaks-group",
-  "version": "0.1.0",
+  "name": "haddon-institute",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",

@@ -11,7 +11,7 @@ const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald" });
 const serif = Source_Serif_4({ subsets: ["latin"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
-  title: "Coming Soon | 61 Oaks Group",
+  title: "Coming Soon | Haddon Institute",
   description:
     "Raising up Christian leaders to redeem the devastation of many generations.",
 };

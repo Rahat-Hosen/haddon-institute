@@ -9,7 +9,7 @@ export default function Navigation() {
           href="/"
           className="hover:underline underline-offset-8 transition font-semibold"
         >
-          61 Oaks Univeristy
+          Haddon Institute
         </Link>
         <Link
           href="/courses"

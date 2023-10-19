@@ -2,7 +2,7 @@
   <h1>
     📖
     <br />
-    61 Oaks Group
+    Haddon Institute
     <br />
   </h1>
   <sup>
@@ -19,7 +19,7 @@ To get started locally running the project:
 
 ```bash
 # Clone the repository
-git clone https://github.com/zpuckeridge/61-oaks-group
+git clone https://github.com/zpuckeridge/haddon-institute
 
 # Copy the .env.example and add the Square environment variable
 cp .env.example .env.local
