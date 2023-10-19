@@ -7,7 +7,7 @@ export default async function Courses() {
   return (
     <>
       <div className="space-y-2 max-w-md mx-auto">
-        {courses.map((course) => (
+        {courses.map((course: any) => (
           <div
             key={course.id}
             className="border rounded-md p-8 flex flex-col gap-2 items-start max-w-md mx-auto"
