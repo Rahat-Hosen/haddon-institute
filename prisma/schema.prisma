@@ -1,12 +1,36 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
+// Prisma generator
 generator client {
   provider = "prisma-client-js"
 }
 
+// Prisma datasource for MySQL
 datasource db {
-  provider     = "mysql"
+  provider     = "postgresql"
   url          = env("DATABASE_URL")
   relationMode = "prisma"
+}
+
+model Course {
+  id          Int          @id @default(autoincrement())
+  title       String
+  description String
+  price       Int
+  users       User[]       @relation("UserCourse")
+  UserCourse  UserCourse[]
+}
+
+model User {
+  id         Int          @id @default(autoincrement())
+  username   String
+  email      String       @unique
+  courses    Course[]     @relation("UserCourse")
+  UserCourse UserCourse[]
+}
+
+model UserCourse {
+  id       Int    @id @default(autoincrement())
+  userId   Int
+  courseId Int
+  user     User   @relation(fields: [userId], references: [id])
+  course   Course @relation(fields: [courseId], references: [id])
 }

@@ -1,6 +1,4 @@
-import { Button, buttonVariants } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
@@ -24,9 +22,6 @@ export default function Home() {
             <Button size="lg" className="font-inter uppercase font-semibold">
               Coming Soon
             </Button>
-            {/* <p className="text-center text-muted-foreground">
-              Starting at $3.99/mo
-            </p> */}
           </div>
         </div>
       </div>

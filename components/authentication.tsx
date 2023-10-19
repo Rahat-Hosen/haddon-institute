@@ -13,6 +13,12 @@ export function Authentication() {
   return (
     <>
       <SignedIn>
+        <Link
+          href="/dashboard"
+          className="hover:underline underline-offset-8 transition"
+        >
+          My Courses
+        </Link>
         <div className="relative h-8 w-8">
           <ClerkLoading>
             <div className="absolute inset-0 rounded-full animate-pulse bg-secondary"></div>
