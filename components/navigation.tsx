@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
-import { ModeToggle } from "./mode-toggle";
 import { Authentication } from "./authentication";
 
 export default function Navigation() {
