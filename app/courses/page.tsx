@@ -21,3 +21,5 @@ export default async function Courses() {
     </>
   );
 }
+
+// BUILD NICE COURSE LIST PAGE
