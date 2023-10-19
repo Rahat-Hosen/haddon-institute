@@ -11,7 +11,7 @@ export function ModeToggle() {
 
   return (
     <Button
-      variant="outline"
+      variant="ghost"
       className="relative h-14 w-14 p-0 lg:h-10 lg:w-10"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >

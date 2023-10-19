@@ -32,7 +32,7 @@ export default function RootLayout({
             serif.variable,
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <Navigation />
             {children}
           </ThemeProvider>

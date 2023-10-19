@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import { ModeToggle } from "./mode-toggle";
+import { Authentication } from "./authentication";
 
 export default function Navigation() {
   return (
@@ -37,18 +39,7 @@ export default function Navigation() {
         </Link>
       </div>
       <div className="flex gap-8">
-        <Link
-          href="/sign-in"
-          className="hover:underline underline-offset-8 transition"
-        >
-          Sign In
-        </Link>
-        <Link
-          href="/sign-up"
-          className="hover:underline underline-offset-8 transition"
-        >
-          Join
-        </Link>
+        <Authentication />
       </div>
     </div>
   );
