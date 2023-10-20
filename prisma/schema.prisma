@@ -10,27 +10,32 @@ datasource db {
   relationMode = "prisma"
 }
 
+model User {
+  id         String       @id
+  email      String       @unique
+  courses    Course[]
+}
+
 model Course {
-  id          Int          @id @default(autoincrement())
+  id          Int          @id
+  slug        String       @unique
   title       String
   description String
   price       Int
-  users       User[]       @relation("UserCourse")
-  UserCourse  UserCourse[]
+  users       User[]
+  Lesson      Lesson[]
 }
 
-model User {
-  id         Int          @id @default(autoincrement())
-  username   String
-  email      String       @unique
-  courses    Course[]     @relation("UserCourse")
-  UserCourse UserCourse[]
+model Lesson {
+  id          Int    @id
+  slug        String @unique
+  title       String
+  description String
+  video       String
+  content     String
+  course      Course @relation(fields: [courseId], references: [id])
+  courseId    Int
+  
+  @@index([courseId])
 }
 
-model UserCourse {
-  id       Int    @id @default(autoincrement())
-  userId   Int
-  courseId Int
-  user     User   @relation(fields: [userId], references: [id])
-  course   Course @relation(fields: [courseId], references: [id])
-}
