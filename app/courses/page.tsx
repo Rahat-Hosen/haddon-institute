@@ -14,7 +14,7 @@ export default async function Courses() {
           >
             <h2 className="text-xl font-bold">{course.title}</h2>
             <p>{course.description}</p>
-            <Link href={`/course/${course.id}`}>View Course</Link>
+            <Link href={`/course/${course.slug}`}>View Course</Link>
           </div>
         ))}
       </div>

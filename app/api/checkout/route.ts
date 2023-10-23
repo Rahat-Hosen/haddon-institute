@@ -3,9 +3,12 @@ import { NextResponse } from "next/server";
 import Stripe from "stripe";
 
 export interface CheckoutSubscriptionBody {
-  price: number;
-  name: string;
-  description: string;
+  userId: string;
+  userEmail: string;
+  courseId: number;
+  courseName: string;
+  courseDescription: string;
+  coursePrice: number;
 }
 
 export async function POST(req: Request) {
@@ -15,20 +18,28 @@ export async function POST(req: Request) {
   try {
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
+      customer_email: body.userEmail,
+      allow_promotion_codes: true,
+      currency: "aud",
       line_items: [
         {
           price_data: {
             currency: "aud",
-            unit_amount: body.price,
+            unit_amount: body.coursePrice,
             product_data: {
-              name: body.name,
-              description: body.description,
+              name: body.courseName,
+              description: body.courseDescription,
             },
           },
           quantity: 1,
         },
       ],
-      success_url: `${origin}/dashboard`,
+      metadata: {
+        userId: body.userId,
+        courseId: body.courseId,
+        courseName: body.courseName,
+      },
+      success_url: `${origin}/success/{CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/courses`,
     });
 
@@ -40,5 +51,3 @@ export async function POST(req: Request) {
     }
   }
 }
-
-// NEED TO ADD LOGIC FOR SUBMITTING DATA TO DB TO TRACK WHICH USERS HAVE PURCHASED WHICH COURSES

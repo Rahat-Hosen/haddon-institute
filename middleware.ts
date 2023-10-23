@@ -7,7 +7,17 @@ export default authMiddleware({
     }
   },
 
-  publicRoutes: ["/", "/unauthorised", "/sign-in", "/sign-up"],
+  publicRoutes: [
+    "/",
+    "/unauthorised",
+    "/sign-in",
+    "/sign-up",
+    "/courses",
+    "/(course)(.*)",
+    "/resources",
+    "/about-us",
+    "/our-beliefs",
+  ],
 });
 
 export const config = {
