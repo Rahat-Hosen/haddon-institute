@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Authentication } from "./authentication";
+import Image from "next/image";
 
 export default function Navigation() {
   return (
@@ -7,8 +8,15 @@ export default function Navigation() {
       <div className="flex gap-8">
         <Link
           href="/"
-          className="hover:underline underline-offset-8 transition font-semibold"
+          className="hover:underline underline-offset-8 transition font-semibold flex gap-2"
         >
+          {/* <Image
+            src="/haddon-institute-logo.jpeg"
+            width={50}
+            height={50}
+            alt="Haddon Institute Logo"
+            className="aspect-square my-auto"
+          /> */}
           Haddon Institute
         </Link>
         <Link

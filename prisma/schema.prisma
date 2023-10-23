@@ -21,6 +21,9 @@ model Course {
   slug        String       @unique
   title       String
   description String
+  author      String
+  categories  String[]
+  thumbnail   String
   price       Int
   users       User[]
   Lesson      Lesson[]
@@ -35,6 +38,7 @@ model Lesson {
   content     String
   course      Course @relation(fields: [courseId], references: [id])
   courseId    Int
+  // track which lessons have been completed by which users
   
   @@index([courseId])
 }

@@ -1,7 +1,7 @@
 export default function Resources() {
   return (
     <>
-      <div>test</div>
+      <div className="text-center">blog to go here</div>
     </>
   );
 }
