@@ -21,6 +21,7 @@ export default async function Course({ params }: any) {
     where: {
       slug: slug, // Assuming that the slug is a unique identifier for courses
     },
+    include: { Lesson: true },
   });
 
   if (!course) {
@@ -42,6 +43,9 @@ export default async function Course({ params }: any) {
         courseName={course.title}
         courseDescription={course.description}
         coursePrice={course.price}
+        courseCategories={course.categories}
+        courseThumbnail={course.thumbnail}
+        couseLessons={course.Lesson}
       />
     </>
   );

@@ -35,9 +35,8 @@ export default async function Dashboard() {
                   <Image
                     src="https://res.cloudinary.com/denivusi1/image/upload/v1698042263/haddon/sgxmvpawpiodflnt72vg.jpg" // NEED TO REPLACE WITH THUMBNAIL FROM DB
                     alt="Background"
-                    layout="fill"
-                    objectFit="cover"
-                    className="rounded-2xl brightness-75 shadow-2xl"
+                    fill
+                    className="rounded-2xl brightness-75 shadow-2xl object-cover"
                   />
                 </div>
                 <div className="absolute z-10 space-y-2 bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8">

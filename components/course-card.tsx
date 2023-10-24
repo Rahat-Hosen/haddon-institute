@@ -6,6 +6,16 @@ import Stripe from "stripe";
 import { Button, buttonVariants } from "./ui/button";
 import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export default function CourseCard({
   userId,
@@ -14,6 +24,9 @@ export default function CourseCard({
   courseName,
   courseDescription,
   coursePrice,
+  courseCategories,
+  courseThumbnail,
+  couseLessons,
 }: {
   userId: any;
   userEmail: any;
@@ -21,6 +34,9 @@ export default function CourseCard({
   courseName: any;
   courseDescription: any;
   coursePrice: any;
+  courseCategories: any;
+  courseThumbnail: any;
+  couseLessons: any;
 }) {
   const auth = useAuth();
 
@@ -58,16 +74,64 @@ export default function CourseCard({
   const isUserAuthenticated = auth.isSignedIn;
 
   return (
-    <div className="border rounded-md p-8 flex flex-col gap-2 items-start max-w-md mx-auto">
-      <h2 className="text-xl font-bold">{courseName}</h2>
-      <p>{courseDescription}</p>
-      {(isUserAuthenticated && (
-        <Button onClick={() => handleClick()}>Purchase</Button>
-      )) || (
-        <Link href="/sign-in" className={buttonVariants()}>
-          Sign in to purchase
+    <div className="px-24">
+      <div>
+        <Image
+          src={courseThumbnail}
+          alt={courseName}
+          height={1000}
+          width={1000}
+          className="rounded-2xl brightness-75 shadow-2xl w-full h-[500px] object-cover"
+        />
+      </div>
+      <div>
+        <Link
+          href="/courses"
+          className={(cn(buttonVariants()), "flex gap-2 py-4")}
+        >
+          <ArrowLeft /> All Courses
         </Link>
-      )}
+        <div className="flex justify-between w-full">
+          <h1 className="text-4xl font-bold">{courseName}</h1>
+          <div className="my-auto">
+            {(isUserAuthenticated && (
+              <Button onClick={() => handleClick()}>Purchase</Button>
+            )) || (
+              <Link href="/sign-in" className={buttonVariants()}>
+                Sign in to purchase
+              </Link>
+            )}
+          </div>
+        </div>
+        <div className="flex gap-4 py-4">
+          <div className="border px-4 py-1 rounded-2xl">12 Lessons</div>
+          <div className="border px-4 py-1 rounded-2xl">7 Hours</div>
+        </div>
+      </div>
+      <div className="flex gap-8">
+        <div className="w-1/2">
+          <h2 className="font-bold text-xl mt-10">Overview</h2>
+          <p>{courseDescription}</p>
+          <h2 className="font-bold text-xl mt-10">Categories</h2>
+          <div className="flex gap-4 py-4">
+            {courseCategories.map((category: any) => (
+              <div key={category} className="border px-4 py-1 rounded-2xl">
+                {category}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-1/2">
+          <Accordion type="single" collapsible className="w-full">
+            {couseLessons.map((lesson: any) => (
+              <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
+                <AccordionTrigger>{lesson.title}</AccordionTrigger>
+                <AccordionContent>{lesson.description}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </div>
     </div>
   );
 }

@@ -16,13 +16,12 @@ export default async function Courses() {
         {courses.map((course: any) => (
           <div key={course.id} className="relative w-full h-[500px]">
             <Link href={`/course/${course.slug}`}>
-              <div className="absolute inset-0 rounded-[48px] ">
+              <div className="absolute inset-0 rounded-[48px]">
                 <Image
-                  src="https://res.cloudinary.com/denivusi1/image/upload/v1698042263/haddon/sgxmvpawpiodflnt72vg.jpg" // NEED TO REPLACE WITH THUMBNAIL FROM DB
-                  alt="Background"
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-2xl brightness-75 shadow-2xl"
+                  src={course.thumbnail}
+                  alt={course.name}
+                  fill
+                  className="rounded-2xl brightness-75 shadow-2xl w-full object-cover"
                 />
               </div>
               <div className="absolute z-10 space-y-4 bottom-8 md:bottom-12 left-8 md:left-12 right-8 md:right-12">
