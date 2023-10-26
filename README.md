@@ -30,10 +30,3 @@ pnpm install
 # Run the development server
 pnpm run dev
 ```
-
-## 🚩 Features
-
-- 🌙 Dark/Light Theme
-- 📡 Open Graph Support
-- 📈 Vercel Analytics
-- 🎓 Education Platform
