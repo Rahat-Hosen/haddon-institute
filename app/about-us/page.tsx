@@ -1,7 +1,7 @@
 export default function AboutUs() {
   return (
     <>
-      <div>test</div>
+      <div className="text-center">about us</div>
     </>
   );
 }

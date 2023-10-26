@@ -14,7 +14,7 @@ export default async function CourseLessons({ params }: any) {
 
   return (
     <div>
-      <h1>Course Lessons</h1>
+      <h1>Course Overview</h1>
       {lessons.map((lesson: any) => (
         <div
           key={lesson.id}

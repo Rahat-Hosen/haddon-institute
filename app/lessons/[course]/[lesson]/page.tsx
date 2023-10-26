@@ -1,6 +1,11 @@
 import Player from "@/components/player";
+import dynamic from "next/dynamic";
+
+const Uneditable = dynamic(() => import("@/components/uneditable"), {
+  ssr: false,
+});
+
 import prisma from "@/lib/prisma";
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { redirect } from "next/navigation";
 
 export default async function Lessons({
@@ -19,11 +24,9 @@ export default async function Lessons({
   }
 
   return (
-    <div className="w-full">
-      <Player playbackId={lesson.video} />
-      <article className="prose prose-muted dark:prose-invert w-full mx-auto prose-img:shadow-2xl prose-img:rounded-md prose-img:mx-auto dark:prose-p:text-white prose-p:text-black">
-        <MDXRemote source={lesson.content} />
-      </article>
+    <div className="w-full space-y-8">
+      {lesson.video ? <Player playbackId={lesson.video} /> : null}
+      <Uneditable blocks={lesson.blocks} />
     </div>
   );
 }

@@ -77,7 +77,7 @@ export default function CourseCard({
     <div className="px-24">
       <div>
         <Image
-          src={courseThumbnail}
+          src={courseThumbnail || "/haddon-institute-logo.jpeg"}
           alt={courseName}
           height={1000}
           width={1000}
@@ -114,9 +114,9 @@ export default function CourseCard({
           <p>{courseDescription}</p>
           <h2 className="font-bold text-xl mt-10">Categories</h2>
           <div className="flex gap-4 py-4">
-            {courseCategories.map((category: any) => (
-              <div key={category} className="border px-4 py-1 rounded-2xl">
-                {category}
+            {courseCategories.split(",").map((category: any, index: any) => (
+              <div key={index} className="border px-4 py-1 rounded-2xl">
+                {category.trim()}{" "}
               </div>
             ))}
           </div>

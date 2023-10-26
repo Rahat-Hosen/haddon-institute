@@ -12,13 +12,13 @@ export default async function Courses() {
 
       {/* Our top-tier courses, vetted and designed from the ground up */}
       <h2 className="text-4xl text-muted-foreground">Capstone Courses</h2>
-      <div>
+      <div className="space-y-8">
         {courses.map((course: any) => (
           <div key={course.id} className="relative w-full h-[500px]">
             <Link href={`/course/${course.slug}`}>
               <div className="absolute inset-0 rounded-[48px]">
                 <Image
-                  src={course.thumbnail}
+                  src={course.thumbnail || "/haddon-institute-logo.jpeg"}
                   alt={course.name}
                   fill
                   className="rounded-2xl brightness-75 shadow-2xl w-full object-cover"

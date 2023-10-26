@@ -74,3 +74,7 @@ export default async function Success({ params }: any) {
     </div>
   );
 }
+
+// IF PRISMA FAILS, NEED TO LET USER KNOW TO ASK FOR SUPPORT
+
+// IF USER EMAIL ALREADY EXISTS, ADD TO EXISTING LINE - DO NOT ATTEMPT CREATION AGAIN

@@ -72,8 +72,8 @@ module.exports = {
       },
       fontFamily: {
         inter: ["var(--font-inter)"],
-        oswald: ["var(--font-oswald)"],
-        serif: ["var(--font-serif)"],
+        // oswald: ["var(--font-oswald)"],
+        // serif: ["var(--font-serif)"],
       },
     },
   },
