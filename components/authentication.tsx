@@ -15,7 +15,7 @@ export function Authentication() {
       <SignedIn>
         <Link
           href="/dashboard"
-          className="hover:underline underline-offset-8 transition"
+          className="hover:text-muted-foreground transition"
         >
           My Courses
         </Link>
@@ -33,13 +33,13 @@ export function Authentication() {
       <SignedOut>
         <Link
           href="/sign-in"
-          className="hover:underline underline-offset-8 transition"
+          className="hover:text-muted-foreground transition"
         >
           Sign In
         </Link>
         <Link
           href="/sign-up"
-          className="hover:underline underline-offset-8 transition"
+          className="hover:text-muted-foreground transition"
         >
           Join
         </Link>

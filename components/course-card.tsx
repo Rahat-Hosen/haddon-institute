@@ -104,7 +104,10 @@ export default function CourseCard({
           </div>
         </div>
         <div className="flex gap-4 py-4">
-          <div className="border px-4 py-1 rounded-2xl">12 Lessons</div>
+          <div className="border px-4 py-1 rounded-2xl">
+            {couseLessons.filter((lesson: any) => lesson.published).length}{" "}
+            Lessons
+          </div>
           <div className="border px-4 py-1 rounded-2xl">7 Hours</div>
         </div>
       </div>
@@ -123,12 +126,14 @@ export default function CourseCard({
         </div>
         <div className="w-1/2">
           <Accordion type="single" collapsible className="w-full">
-            {couseLessons.map((lesson: any) => (
-              <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
-                <AccordionTrigger>{lesson.title}</AccordionTrigger>
-                <AccordionContent>{lesson.description}</AccordionContent>
-              </AccordionItem>
-            ))}
+            {couseLessons
+              .filter((lesson: any) => lesson.published === true)
+              .map((lesson: any) => (
+                <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
+                  <AccordionTrigger>{lesson.title}</AccordionTrigger>
+                  <AccordionContent>{lesson.description}</AccordionContent>
+                </AccordionItem>
+              ))}
           </Accordion>
         </div>
       </div>

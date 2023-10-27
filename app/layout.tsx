@@ -37,7 +37,9 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <Navigation />
             {children}
-            <Footer />
+            <div className="bg-muted mt-10">
+              <Footer />
+            </div>
             <Toaster />
           </ThemeProvider>
         </body>

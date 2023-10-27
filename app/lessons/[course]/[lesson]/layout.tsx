@@ -1,7 +1,7 @@
 import { SidebarNav } from "@/components/dashboard/sidebar-nav";
 import { Button, buttonVariants } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, MoveLeft } from "lucide-react";
 import Link from "next/link";
 
 export default async function LessonLayout({
@@ -37,7 +37,8 @@ export default async function LessonLayout({
           href={`/lessons/${course}`}
           className={`flex gap-2 w-full ${buttonVariants()}`}
         >
-          <ArrowLeft /> Course Overview
+          <MoveLeft className="w-4 h-4" />
+          Course Overview
         </Link>
         <SidebarNav items={sidebarNavItems} />
       </aside>

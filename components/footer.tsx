@@ -1,4 +1,4 @@
-import { Copyright, Facebook, Instagram, Twitter } from "lucide-react";
+import { Copyright, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -31,7 +31,7 @@ export default function Footer() {
             Our Beliefs
           </Link>
         </div>
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-8">
           <a
             href="https://facebook.com"
             className="hover:text-muted-foreground transition"
@@ -50,10 +50,31 @@ export default function Footer() {
           >
             <Twitter />
           </a>
+          <a
+            href="https://youtube.com"
+            className="hover:text-muted-foreground transition"
+          >
+            <Youtube />
+          </a>
         </div>
         <div className="flex justify-center gap-2 text-muted-foreground text-sm">
           <Copyright className="w-4 h-4 my-auto" />
           2023 Haddon Institute. All rights reserved.
+        </div>
+        <div className="flex justify-center gap-4">
+          <Link
+            href="/terms-of-service"
+            className="hover:text-muted-foreground transition text-xs"
+          >
+            Terms of Service
+          </Link>
+
+          <Link
+            href="/privacy-policy"
+            className="hover:text-muted-foreground transition text-xs"
+          >
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </div>
