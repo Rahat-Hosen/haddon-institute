@@ -18,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { toast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { Checkbox } from "../ui/checkbox";
 
 const formSchema = z.object({
   title: z.string(),
@@ -26,6 +27,7 @@ const formSchema = z.object({
   author: z.string(),
   categories: z.string(),
   price: z.string(),
+  capstone: z.boolean(),
 });
 
 export default function NewCourseForm() {
@@ -204,6 +206,28 @@ export default function NewCourseForm() {
                 />
               </FormControl>
               <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="capstone"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4 shadow">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>Is this a capstone course?</FormLabel>
+                <FormDescription>
+                  A capstone course typically includes an exam or paper to be
+                  completed as a requirement for graduation.
+                </FormDescription>
+              </div>
             </FormItem>
           )}
         />

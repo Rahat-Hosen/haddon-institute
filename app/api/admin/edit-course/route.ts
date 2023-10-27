@@ -4,7 +4,16 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const json = await req.json();
-    const { id, slug, title, description, author, categories, price } = json;
+    const {
+      id,
+      slug,
+      title,
+      description,
+      author,
+      categories,
+      price,
+      capstone,
+    } = json;
 
     await prisma.course.update({
       where: {
@@ -17,6 +26,7 @@ export async function POST(req: Request) {
         author: author,
         categories: categories,
         price: price,
+        capstone: capstone,
       },
     });
 

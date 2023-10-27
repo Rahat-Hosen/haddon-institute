@@ -47,6 +47,7 @@ export default async function EditCourse({ params }: any) {
         courseAuthor={data.author}
         courseCategories={data.categories}
         coursePrice={data.price}
+        courseCaptsone={data.capstone}
       />
     </div>
   );

@@ -18,6 +18,7 @@ model User {
 
 model Course {
   id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
   slug        String   @unique
   title       String
   description String
@@ -28,20 +29,22 @@ model Course {
   users       User[]
   Lesson      Lesson[]
   published   Boolean  @default(false)
+  capstone    Boolean  @default(false)
 }
 
 model Lesson {
-  id          Int     @id @default(autoincrement())
-  slug        String  @unique
+  id          Int      @id @default(autoincrement())
+  createdAt   DateTime @default(now())
+  slug        String   @unique
   title       String
   description String
   video       String?
   blocks      Json[]
   markdown    String?
   length      String? // number of estimated hours/minutes for lesson
-  course      Course  @relation(fields: [courseId], references: [id])
+  course      Course   @relation(fields: [courseId], references: [id])
   courseId    Int
-  published   Boolean @default(false)
+  published   Boolean  @default(false)
 
   @@index([courseId])
 }
