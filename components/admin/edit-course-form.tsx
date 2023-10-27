@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -19,6 +19,8 @@ import { toast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Checkbox } from "../ui/checkbox";
+import { MoveLeft, Save } from "lucide-react";
+import Link from "next/link";
 
 const formSchema = z.object({
   title: z.string(),
@@ -252,7 +254,18 @@ export default function EditCourseForm({
           )}
         />
 
-        <Button type="submit">Submit</Button>
+        <div className="flex justify-between">
+          <Link
+            href={`/admin/${courseSlug}`}
+            className={`flex gap-2 ${buttonVariants()}`}
+          >
+            <MoveLeft className="w-4 h-4" /> Back to Course
+          </Link>
+
+          <Button type="submit" className="flex gap-2">
+            <Save className="w-4 h-4" /> Submit
+          </Button>
+        </div>
       </form>
     </Form>
   );

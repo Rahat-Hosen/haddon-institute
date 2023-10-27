@@ -33,8 +33,8 @@ export default async function Dashboard() {
               <Link href={`/lessons/${course.slug}`}>
                 <div className="absolute inset-0 rounded-[48px] ">
                   <Image
-                    src="https://res.cloudinary.com/denivusi1/image/upload/v1698042263/haddon/sgxmvpawpiodflnt72vg.jpg" // NEED TO REPLACE WITH THUMBNAIL FROM DB
-                    alt="Background"
+                    src={course.thumbnail || "/haddon-institute-logo.jpeg"}
+                    alt={course.title}
                     fill
                     className="rounded-2xl brightness-75 shadow-2xl object-cover"
                   />

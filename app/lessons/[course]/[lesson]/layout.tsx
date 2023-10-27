@@ -21,12 +21,14 @@ export default async function LessonLayout({
     },
   });
 
-  const sidebarNavItems = lessons.map((lesson) => {
-    return {
-      title: lesson.title,
-      href: `/lessons/${course}/${lesson.slug}`,
-    };
-  });
+  const sidebarNavItems = lessons
+    .filter((lesson) => lesson.published === true)
+    .map((lesson) => {
+      return {
+        title: lesson.title,
+        href: `/lessons/${course}/${lesson.slug}`,
+      };
+    });
 
   return (
     <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0 px-24">

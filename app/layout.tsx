@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import Navigation from "@/components/navigation";
 import { Toaster } from "@/components/ui/toaster";
+import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 // const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald" });
@@ -36,6 +37,7 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <Navigation />
             {children}
+            <Footer />
             <Toaster />
           </ThemeProvider>
         </body>

@@ -9,6 +9,7 @@ export default async function CourseLessons({ params }: any) {
       course: {
         slug: slug,
       },
+      published: true,
     },
   });
 

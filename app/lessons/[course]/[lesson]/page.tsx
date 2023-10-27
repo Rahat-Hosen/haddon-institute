@@ -16,7 +16,10 @@ export default async function Lessons({
   const slug = params.lesson;
 
   const lesson = await prisma.lesson.findUnique({
-    where: { slug },
+    where: {
+      slug: slug,
+      published: true,
+    },
   });
 
   if (!lesson) {

@@ -23,6 +23,7 @@ export default async function Admin() {
       slug: course.slug,
       title: course.title,
       published: course.published,
+      capstone: course.capstone,
     };
   });
 

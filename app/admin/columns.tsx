@@ -9,6 +9,7 @@ export type Data = {
   slug: string;
   title: string;
   published: boolean;
+  capstone: boolean;
 };
 
 export const columns: ColumnDef<Data>[] = [
@@ -24,6 +25,20 @@ export const columns: ColumnDef<Data>[] = [
       const published = row.original.published;
 
       if (published) {
+        return <Check className="w-4 h-4" />;
+      } else {
+        return <X className="w-4 h-4" />;
+      }
+    },
+  },
+
+  {
+    accessorKey: "capstone",
+    header: "Capstone",
+    cell: ({ row }) => {
+      const capstone = row.original.capstone;
+
+      if (capstone) {
         return <Check className="w-4 h-4" />;
       } else {
         return <X className="w-4 h-4" />;
