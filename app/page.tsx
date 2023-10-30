@@ -3,14 +3,14 @@ import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center container">
+    <main className="flex min-h-screen flex-col items-center px-4 my-10 xl:px-24 xl:my-20">
       <div className="space-y-12 mx-auto">
         <div>
           <AnimatedText
             text="Haddon Institute"
-            className="text-6xl flex justify-center tracking-tighter font-bold"
+            className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
           />
-          <p className="text-center font-semibold text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF] to-[#DFDFDF]">
+          <p className="text-center font-semibold text-xl tracking-tight">
             It&apos;s time to take higher Christian education seriously.
           </p>
         </div>

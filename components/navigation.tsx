@@ -18,8 +18,8 @@ export default function Navigation() {
 
   return (
     <>
-      <div className="xl:hidden flex px-4">
-        <div className="flex-1 my-auto">
+      <div className="xl:hidden flex justify-between px-4">
+        <div className="my-auto">
           <button onClick={toggleMobileMenu}>
             {mobileMenuOpen ? (
               <X className="w-8 h-8 my-auto" />
@@ -28,22 +28,14 @@ export default function Navigation() {
             )}
           </button>
         </div>
-        <div className="shrink-0">
-          <Link href="/">
-            <Image
-              src="/logos/3.png"
-              height={50}
-              width={50}
-              alt="Haddon Institute Logo"
-            />
-          </Link>
-        </div>
-        <div className="flex-1 my-auto">
-          <div className="flex gap-4 justify-end">
-            <ModeToggle />
-            <Authentication />
-          </div>
-        </div>
+        <Link href="/">
+          <Image
+            src="/logos/3.png"
+            height={50}
+            width={50}
+            alt="Haddon Institute Logo"
+          />
+        </Link>
       </div>
 
       <div className="hidden xl:flex px-24 py-6 w-full">
@@ -139,6 +131,10 @@ export default function Navigation() {
                 Our Beliefs <ArrowRight />
               </div>
             </Link>
+            <div className="flex justify-between px-6 py-4">
+              <ModeToggle />
+              <Authentication />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

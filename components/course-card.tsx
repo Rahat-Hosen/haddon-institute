@@ -6,7 +6,7 @@ import Stripe from "stripe";
 import { Button, buttonVariants } from "./ui/button";
 import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
-import { ArrowLeft, CreditCard } from "lucide-react";
+import { ArrowLeft, CreditCard, MoveLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -74,38 +74,41 @@ export default function CourseCard({
   const isUserAuthenticated = auth.isSignedIn;
 
   return (
-    <div className="px-24">
+    <div className="px-4 my-10 xl:px-24 xl:my-20">
       <div>
         <Image
           src={courseThumbnail || "/logos/haddon-institute-logo.jpeg"}
           alt={courseName}
           height={1000}
           width={1000}
-          className="rounded-2xl brightness-75 shadow-2xl w-full h-[500px] object-cover"
+          className="rounded-2xl brightness-75 shadow-2xl w-full h-[200px] xl:h-[500px] object-cover"
         />
       </div>
       <div>
-        <Link
-          href="/courses"
-          className={(cn(buttonVariants()), "flex gap-2 py-4")}
-        >
-          <ArrowLeft /> All Courses
+        <Link href="/courses" className={`flex gap-2 my-4 ${buttonVariants()}`}>
+          <MoveLeft /> All Courses
         </Link>
-        <div className="flex justify-between w-full">
-          <h1 className="text-4xl font-bold">{courseName}</h1>
-          <div className="my-auto">
+        <div className="xl:flex justify-between w-full">
+          <h1 className="text-2xl xl:text-4xl font-bold">{courseName}</h1>
+          <div className="my-auto xl:mt-0 mt-4">
             {(isUserAuthenticated && (
-              <Button onClick={() => handleClick()} className="flex gap-2">
+              <Button
+                onClick={() => handleClick()}
+                className="flex gap-2 w-full xl:w-auto"
+              >
                 <CreditCard /> Purchase
               </Button>
             )) || (
-              <Link href="/sign-in" className={buttonVariants()}>
+              <Link
+                href="/sign-in"
+                className={`flex gap-2 w-full xl:w-auto ${buttonVariants()}`}
+              >
                 Sign in to purchase
               </Link>
             )}
           </div>
         </div>
-        <div className="flex gap-4 py-4">
+        <div className="xl:flex gap-4 py-4 space-y-2 xl:space-y-0">
           <div className="border px-4 py-1 rounded-2xl">
             {couseLessons.filter((lesson: any) => lesson.published).length}{" "}
             Lessons
@@ -113,8 +116,8 @@ export default function CourseCard({
           <div className="border px-4 py-1 rounded-2xl">7 Hours</div>
         </div>
       </div>
-      <div className="flex gap-8">
-        <div className="w-1/2">
+      <div className="xl:flex gap-8">
+        <div className="w-full xl:w-1/2">
           <h2 className="font-bold text-xl mt-10">Overview</h2>
           <p>{courseDescription}</p>
           <h2 className="font-bold text-xl mt-10">Categories</h2>
@@ -126,7 +129,7 @@ export default function CourseCard({
             ))}
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="w-full xl:w-1/2">
           <Accordion type="single" collapsible className="w-full">
             {couseLessons
               .filter((lesson: any) => lesson.published === true)

@@ -20,10 +20,10 @@ export default async function Courses() {
   });
 
   return (
-    <div className="space-y-8 my-20 px-24">
+    <div className="space-y-8 px-4 my-10 xl:px-24 xl:my-20">
       <AnimatedText
         text="Our Courses"
-        className="text-6xl flex justify-center tracking-tighter font-bold"
+        className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
 
       <div className="space-y-4">
