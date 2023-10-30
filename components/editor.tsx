@@ -59,6 +59,22 @@ export default function Editor({
   const editor: BlockNoteEditor | null = useBlockNote({
     editable: true,
     initialContent: blocks,
+    uploadFile: async (file) => {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "haddon");
+
+      const response = await fetch(
+        "https://api.cloudinary.com/v1_1/denivusi1/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
+
+      const data = await response.json();
+      return data.url;
+    },
     onEditorContentChange: (editor) => {
       const saveBlocksAsMarkdown = async () => {
         const newMarkdown: string = await editor.blocksToMarkdown(

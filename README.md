@@ -30,3 +30,19 @@ pnpm install
 # Run the development server
 pnpm run dev
 ```
+
+## Todo
+
+- [ ] Add a favicon
+- [ ] Add a logo to navigation
+- [ ] Update meta tagging
+- [ ] Build About Us page
+- [ ] Build Our Beliefs page
+- [ ] Build Resources page
+- [ ] Add missing data state for My Courses page with link to /courses
+- [ ] Improve Lesson Overview page
+- [ ] Allow video upload
+- [x] Allow image upload
+- [ ] Add logo to footer
+- [ ] Protect API routes for admin users only
+- [ ] Setup delete API routes
