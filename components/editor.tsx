@@ -10,17 +10,11 @@ import { Loader, SaveIcon } from "lucide-react";
 
 interface EditorProps {
   defaultBlocks: any;
-  defaultMarkdown: string;
   slug: string;
 }
 
-export default function Editor({
-  defaultBlocks,
-  defaultMarkdown,
-  slug,
-}: EditorProps) {
+export default function Editor({ defaultBlocks, slug }: EditorProps) {
   const [blocks, setBlocks] = useState(defaultBlocks);
-  const [markdown, setMarkdown] = useState<string>(defaultMarkdown);
   const [isSaving, setIsSaving] = useState(false); // State for tracking save operation
 
   const handleSave = async () => {
@@ -35,7 +29,6 @@ export default function Editor({
         body: JSON.stringify({
           slug,
           blocks,
-          markdown,
         }),
       });
 
@@ -76,18 +69,10 @@ export default function Editor({
       return data.url;
     },
     onEditorContentChange: (editor) => {
-      const saveBlocksAsMarkdown = async () => {
-        const newMarkdown: string = await editor.blocksToMarkdown(
-          editor.topLevelBlocks,
-        );
-        setMarkdown(newMarkdown);
-      };
-
       const saveBlocksAsJSON = async () => {
         setBlocks(editor.topLevelBlocks);
       };
 
-      saveBlocksAsMarkdown();
       saveBlocksAsJSON();
     },
   });

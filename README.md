@@ -43,6 +43,7 @@ pnpm run dev
 - [ ] Improve Lesson Overview page
 - [ ] Allow video upload
 - [x] Allow image upload
+- [ ] Secure image upload
 - [ ] Add logo to footer
 - [ ] Protect API routes for admin users only
 - [ ] Setup delete API routes

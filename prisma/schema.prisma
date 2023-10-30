@@ -40,7 +40,6 @@ model Lesson {
   description String
   video       String?
   blocks      Json[]
-  markdown    String?
   length      String? // number of estimated hours/minutes for lesson
   course      Course   @relation(fields: [courseId], references: [id])
   courseId    Int
