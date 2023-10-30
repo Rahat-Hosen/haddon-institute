@@ -1,3 +1,4 @@
+import AnimatedText from "@/components/animated-text";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -5,9 +6,10 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center container">
       <div className="space-y-12 mx-auto">
         <div>
-          <h1 className="font-bold text-[6rem] font-oswald text-center bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF] to-[#DFDFDF]">
-            Haddon Institute
-          </h1>
+          <AnimatedText
+            text="Haddon Institute"
+            className="text-6xl flex justify-center tracking-tighter font-bold"
+          />
           <p className="text-center font-semibold text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#FFFFFF] to-[#DFDFDF]">
             It&apos;s time to take higher Christian education seriously.
           </p>

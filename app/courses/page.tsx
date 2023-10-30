@@ -1,7 +1,16 @@
+import AnimatedText from "@/components/animated-text";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import prisma from "@/lib/prisma";
-import { BadgePlus, GraduationCap, Heart, Zap } from "lucide-react";
+import { BadgePlus, EyeIcon, GraduationCap, Heart, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Courses | Haddon Institute",
+  description: "View our catalogue of courses.",
+};
 
 export default async function Courses() {
   const courses = await prisma.course.findMany({
@@ -11,19 +20,78 @@ export default async function Courses() {
   });
 
   return (
-    <div className="space-y-8 px-24">
-      <h1 className="text-6xl text-center">Our Courses</h1>
+    <div className="space-y-8 my-20 px-24">
+      <AnimatedText
+        text="Our Courses"
+        className="text-6xl flex justify-center tracking-tighter font-bold"
+      />
 
-      {/* Our top-tier courses, vetted and designed from the ground up */}
-      <h2 className="text-4xl text-muted-foreground flex gap-2">
-        Capstone Courses <GraduationCap className="w-8 h-8 my-auto" />
-      </h2>
-      <div className="space-y-8">
-        {/* only display capstone course */}
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <h2 className="text-2xl flex gap-4 font-semibold">
+            Capstone Courses <GraduationCap className="w-8 h-8 my-auto" />
+          </h2>
+          <p className="text-muted-foreground">
+            Our top-tier courses designed from the ground up.
+          </p>
+        </div>
+
+        <Separator />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {courses
           .filter((course) => course.capstone)
           .map((course) => (
-            <div key={course.id} className="relative w-full h-[500px]">
+            <div
+              key={course.id}
+              className="relative w-full h-[300px] transform scale-100 hover:scale-95 transition-transform duration-300 ease-in-out"
+            >
+              <Link href={`/course/${course.slug}`}>
+                <div className="absolute inset-0 rounded-[48px]">
+                  <Image
+                    src={course.thumbnail || "/haddon-institute-logo.jpeg"}
+                    alt={course.title}
+                    fill
+                    className="rounded-2xl brightness-50 shadow-2xl w-full object-cover"
+                  />
+                </div>
+                <div className="absolute z-10 space-y-4 bottom-8 left-8 right-8">
+                  <h1 className="text-2xl tracking-tighter font-semibold leading-none">
+                    {course.title}
+                  </h1>
+                  <p className="text-gray-200">{course.description}</p>
+                  <Button className="flex gap-2">
+                    <EyeIcon className="w-4 h-4" /> View Course
+                  </Button>
+                </div>
+              </Link>
+            </div>
+          ))}
+      </div>
+
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <h2 className="text-2xl flex gap-4 font-semibold">
+            Trending Courses <Zap className="w-7 h-7 my-auto" />
+          </h2>
+          <p className="text-muted-foreground">
+            Our 10 most purchased courses.
+          </p>
+        </div>
+
+        <Separator />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 overflow-auto no-scrollbar">
+        {courses
+          .sort((a, b) => b.users.length - a.users.length)
+          .slice(0, 10)
+          .map((course) => (
+            <div
+              key={course.id}
+              className="relative w-full h-[400px] transform scale-100 hover:scale-95 transition-transform duration-300 ease-in-out"
+            >
               <Link href={`/course/${course.slug}`}>
                 <div className="absolute inset-0 rounded-[48px]">
                   <Image
@@ -33,75 +101,60 @@ export default async function Courses() {
                     className="rounded-2xl brightness-75 shadow-2xl w-full object-cover"
                   />
                 </div>
-                <div className="absolute z-10 space-y-4 bottom-8 md:bottom-12 left-8 md:left-12 right-8 md:right-12">
-                  <Heart className="w-10 h-10" />
-                  <h1 className="text-2xl md:text-4xl lg:text-[3rem] tracking-tighter font-semibold leading-none">
+                <div className="absolute z-10 space-y-1 bottom-4 left-4 right-4">
+                  <h1 className="text-lg tracking-tighter font-semibold leading-none">
                     {course.title}
                   </h1>
-                  <p className="text-sm md:text-base">{course.description}</p>
+                  <p className="text-sm text-gray-200">by {course.author}</p>
                 </div>
               </Link>
             </div>
           ))}
       </div>
 
-      {/* Top 10 most purchased */}
-      <h2 className="text-4xl text-muted-foreground flex gap-2">
-        Trending <Zap className="w-8 h-8 my-auto" />
-      </h2>
-      {courses
-        .sort((a, b) => b.users.length - a.users.length)
-        .slice(0, 10)
-        .map((course) => (
-          <div key={course.id} className="relative w-full h-[500px]">
-            <Link href={`/course/${course.slug}`}>
-              <div className="absolute inset-0 rounded-[48px]">
-                <Image
-                  src={course.thumbnail || "/haddon-institute-logo.jpeg"}
-                  alt={course.title}
-                  fill
-                  className="rounded-2xl brightness-75 shadow-2xl w-full object-cover"
-                />
-              </div>
-              <div className="absolute z-10 space-y-4 bottom-8 md:bottom-12 left-8 md:left-12 right-8 md:right-12">
-                <Heart className="w-10 h-10" />
-                <h1 className="text-2xl md:text-4xl lg:text-[3rem] tracking-tighter font-semibold leading-none">
-                  {course.title}
-                </h1>
-                <p className="text-sm md:text-base">{course.description}</p>
-              </div>
-            </Link>
-          </div>
-        ))}
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <h2 className="text-2xl flex gap-4 font-semibold">
+            Latest Additions <BadgePlus className="w-7 h-7 my-auto" />
+          </h2>
+          <p className="text-muted-foreground">
+            Our most recently added courses.
+          </p>
+        </div>
 
-      {/* 10 Latest Courses */}
-      <h2 className="text-4xl text-muted-foreground flex gap-2">
-        New Additions <BadgePlus className="w-8 h-8 my-auto" />
-      </h2>
-      {courses
-        .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
-        .slice(0, 10)
-        .map((course) => (
-          <div key={course.id} className="relative w-full h-[500px]">
-            <Link href={`/course/${course.slug}`}>
-              <div className="absolute inset-0 rounded-[48px]">
-                <Image
-                  src={course.thumbnail || "/haddon-institute-logo.jpeg"}
-                  alt={course.title}
-                  fill
-                  className="rounded-2xl brightness-75 shadow-2xl w-full object-cover"
-                />
-              </div>
-              <div className="absolute z-10 space-y-4 bottom-8 md:bottom-12 left-8 md:left-12 right-8 md:right-12">
-                <Heart className="w-10 h-10" />
-                <h1 className="text-2xl md:text-4xl lg:text-[3rem] tracking-tighter font-semibold leading-none">
-                  {course.title}
-                </h1>
-                <p className="text-sm md:text-base">{course.description}</p>
-              </div>
-            </Link>
-          </div>
-        ))}
+        <Separator />
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        {courses
+          .sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime())
+          .slice(0, 10)
+          .map((course) => (
+            <div
+              key={course.id}
+              className="relative w-full h-[150px] transform scale-100 hover:scale-95 transition-transform duration-300 ease-in-out"
+            >
+              <Link href={`/course/${course.slug}`}>
+                <div className="absolute inset-0 rounded-[48px]">
+                  <Image
+                    src={course.thumbnail || "/haddon-institute-logo.jpeg"}
+                    alt={course.title}
+                    fill
+                    className="rounded-md brightness-50 shadow-2xl w-full object-cover"
+                  />
+                </div>
+                <div className="absolute z-10 space-y-1 bottom-4 left-4 right-4">
+                  <h1 className="text-lg tracking-tighter font-semibold leading-none">
+                    {course.title}
+                  </h1>
+                  <p className="text-sm text-gray-200">by {course.author}</p>
+                </div>
+              </Link>
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
+
+// EACH CATEGORY SHOULD BE DISPLAYED BELOW THE ABOVE WITH RELEVANT COURSES

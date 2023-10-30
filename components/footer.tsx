@@ -1,10 +1,30 @@
-import { Copyright, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import {
+  ArrowUpRight,
+  Copyright,
+  Facebook,
+  Instagram,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 import Link from "next/link";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import Image from "next/image";
 
 export default function Footer() {
   return (
-    <div className="my-20 flex justify-center">
+    <div className="my-10 flex justify-center">
       <div className="space-y-8">
+        <Image
+          src="/logos/3.png"
+          height={100}
+          width={100}
+          alt="Haddon Institute Logo"
+          className="mx-auto"
+        />
         <div className="flex justify-center gap-4 font-semibold">
           <Link
             href="/courses"
@@ -57,9 +77,39 @@ export default function Footer() {
             <Youtube />
           </a>
         </div>
-        <div className="flex justify-center gap-2 text-muted-foreground text-sm">
-          <Copyright className="w-4 h-4 my-auto" />
-          2023 Haddon Institute. All rights reserved.
+        <div className="text-muted-foreground text-sm text-center">
+          <div className="flex justify-center gap-2">
+            <Copyright className="w-3 h-3 my-auto" />
+            2023 Haddon Institute. All rights reserved.
+          </div>
+          <p>
+            Part of the{" "}
+            <HoverCard>
+              <HoverCardTrigger className="font-medium hover:underline underline-offset-4 cursor-pointer">
+                61 Oaks Group
+              </HoverCardTrigger>
+              <HoverCardContent className="text-left">
+                <div className="space-y-1">
+                  <p className="text-sm">
+                    A collection of initiatives, projects and business that are
+                    aimed at reforming their sectors to build up ruins, raise up
+                    former devastations, repair ruined cities and provide
+                    discipleship for the future generation of leaders.
+                  </p>
+                  <div className="flex items-center pt-2">
+                    <a
+                      href="https://61oaksgroup.com.au/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-xs text-muted-foreground hover:text-accent-foreground flex"
+                    >
+                      Website <ArrowUpRight className="w-3 h-3" />
+                    </a>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
+          </p>
         </div>
         <div className="flex justify-center gap-4">
           <Link

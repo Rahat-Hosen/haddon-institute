@@ -15,7 +15,7 @@ export function Authentication() {
       <SignedIn>
         <Link
           href="/my-courses"
-          className="hover:text-muted-foreground transition"
+          className="hover:text-muted-foreground transition my-auto"
         >
           My Courses
         </Link>

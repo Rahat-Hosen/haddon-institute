@@ -5,6 +5,12 @@ import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dashboard | Haddon Institute",
+  description: "Administrator Dashboard for Haddon Institute.",
+};
 
 export default async function Admin() {
   const { userId } = auth();

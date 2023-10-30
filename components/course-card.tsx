@@ -6,7 +6,7 @@ import Stripe from "stripe";
 import { Button, buttonVariants } from "./ui/button";
 import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, CreditCard } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
@@ -95,7 +95,9 @@ export default function CourseCard({
           <h1 className="text-4xl font-bold">{courseName}</h1>
           <div className="my-auto">
             {(isUserAuthenticated && (
-              <Button onClick={() => handleClick()}>Purchase</Button>
+              <Button onClick={() => handleClick()} className="flex gap-2">
+                <CreditCard /> Purchase
+              </Button>
             )) || (
               <Link href="/sign-in" className={buttonVariants()}>
                 Sign in to purchase

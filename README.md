@@ -48,3 +48,4 @@ pnpm run dev
 - [ ] Protect API routes for admin users only
 - [ ] Setup delete API routes
 - [ ] Ensure mobile ready
+- [ ] Add loading state on buttons

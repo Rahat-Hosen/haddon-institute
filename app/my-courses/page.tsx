@@ -4,6 +4,12 @@ import prisma from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "My Courses | Haddon Institute",
+  description: "Access your purchased courses.",
+};
 
 export default async function MyCourses() {
   const user = await currentUser();
