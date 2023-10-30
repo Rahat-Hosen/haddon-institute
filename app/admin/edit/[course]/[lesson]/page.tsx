@@ -50,12 +50,7 @@ export default async function EditLesson({ params }: any) {
         <MoveLeft className="w-4 h-4" />
         Course Overview
       </Link>
-      <EditLessonForm
-        blocks={data.blocks}
-        markdown={data.markdown}
-        slug={lesson}
-        title={data.title}
-      />
+      <EditLessonForm blocks={data.blocks} slug={lesson} title={data.title} />
     </div>
   );
 }

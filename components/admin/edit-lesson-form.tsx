@@ -5,12 +5,10 @@ const Editor = dynamic(() => import("@/components/editor"), { ssr: false });
 
 export default function EditLessonForm({
   blocks,
-  markdown,
   slug,
   title,
 }: {
   blocks: any;
-  markdown: any;
   slug: any;
   title: any;
 }) {
@@ -33,7 +31,7 @@ export default function EditLessonForm({
         </div>
       </div>
 
-      <Editor defaultBlocks={blocks} defaultMarkdown={markdown} slug={slug} />
+      <Editor defaultBlocks={blocks} slug={slug} />
     </div>
   );
 }
