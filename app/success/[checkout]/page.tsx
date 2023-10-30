@@ -64,10 +64,10 @@ export default async function Success({ params }: any) {
       <p className="italics">Soli Deo Gloria</p>
       <p>
         You can access this course from your{" "}
-        <Link href="/dashboard" className="underline hover:no-underline">
-          dashboard
-        </Link>
-        .
+        <Link href="/my-courses" className="underline hover:no-underline">
+          My Courses
+        </Link>{" "}
+        page.
       </p>
     </div>
   );

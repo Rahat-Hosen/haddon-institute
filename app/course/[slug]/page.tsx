@@ -38,12 +38,12 @@ export default async function Course({ params }: any) {
         <p className="text-muted-foreground">
           View the course on your{" "}
           <Link
-            href="/dashboard"
+            href="/my-courses"
             className="underline hover:no-underline text-white hover:text-muted-foreground"
           >
-            dashboard
-          </Link>
-          .
+            My Courses
+          </Link>{" "}
+          page.
         </p>
       </div>
     );

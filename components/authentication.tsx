@@ -14,7 +14,7 @@ export function Authentication() {
     <>
       <SignedIn>
         <Link
-          href="/dashboard"
+          href="/my-courses"
           className="hover:text-muted-foreground transition"
         >
           My Courses

@@ -27,15 +27,15 @@ export async function GET() {
     });
 
     console.log(
-      `User ${userId} added to database. Redirecting to user dashboard.`,
+      `User ${userId} added to database. Redirecting to user /my-courses.`,
     );
 
-    redirect("/dashboard");
+    redirect("/my-courses");
   } else {
     console.log(
-      `User ${userId} already exists in database. Redirecting to user dashboard.`,
+      `User ${userId} already exists in database. Redirecting to /my-courses.`,
     );
 
-    redirect("/dashboard");
+    redirect("/my-courses");
   }
 }

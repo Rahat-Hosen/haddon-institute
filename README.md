@@ -47,3 +47,4 @@ pnpm run dev
 - [ ] Add logo to footer
 - [ ] Protect API routes for admin users only
 - [ ] Setup delete API routes
+- [ ] Ensure mobile ready

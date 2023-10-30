@@ -5,7 +5,7 @@ import { currentUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function Dashboard() {
+export default async function MyCourses() {
   const user = await currentUser();
 
   const data = await prisma.user.findUnique({
@@ -30,7 +30,7 @@ export default async function Dashboard() {
         <div className="mx-auto grid grid-cols-2 gap-4">
           {data?.courses.map((course) => (
             <div key={course.id} className="relative h-[200px]">
-              <Link href={`/lessons/${course.slug}`}>
+              <Link href={`/my-courses/${course.slug}`}>
                 <div className="absolute inset-0 rounded-[48px] ">
                   <Image
                     src={course.thumbnail || "/haddon-institute-logo.jpeg"}

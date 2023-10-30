@@ -23,7 +23,7 @@ export default async function CourseLessons({ params }: any) {
         >
           <h2 className="text-xl font-bold">{lesson.title}</h2>
           <p>{lesson.description}</p>
-          <Link href={`/lessons/${slug}/${lesson.slug}`}>View Lesson</Link>
+          <Link href={`/my-courses/${slug}/${lesson.slug}`}>View Lesson</Link>
         </div>
       ))}
     </div>
