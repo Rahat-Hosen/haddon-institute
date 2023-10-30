@@ -59,7 +59,7 @@ export default async function Courses() {
                   />
                 </div>
                 <div className="absolute z-10 space-y-4 bottom-8 left-8 right-8">
-                  <h1 className="text-2xl tracking-tighter font-semibold leading-none">
+                  <h1 className="text-2xl tracking-tighter font-semibold leading-none text-white">
                     {course.title}
                   </h1>
                   <p className="text-gray-200">{course.description}</p>
@@ -85,7 +85,7 @@ export default async function Courses() {
         <Separator />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-8 overflow-auto no-scrollbar">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
         {courses
           .sort((a, b) => b.users.length - a.users.length)
           .slice(0, 10)
@@ -106,7 +106,7 @@ export default async function Courses() {
                   />
                 </div>
                 <div className="absolute z-10 space-y-1 bottom-4 left-4 right-4">
-                  <h1 className="text-lg tracking-tighter font-semibold leading-none">
+                  <h1 className="text-lg tracking-tighter font-semibold leading-none text-white">
                     {course.title}
                   </h1>
                   <p className="text-sm text-gray-200">by {course.author}</p>
@@ -150,7 +150,7 @@ export default async function Courses() {
                   />
                 </div>
                 <div className="absolute z-10 space-y-1 bottom-4 left-4 right-4">
-                  <h1 className="text-lg tracking-tighter font-semibold leading-none">
+                  <h1 className="text-lg tracking-tighter font-semibold leading-none text-white">
                     {course.title}
                   </h1>
                   <p className="text-sm text-gray-200">by {course.author}</p>

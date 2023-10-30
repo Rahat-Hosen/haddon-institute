@@ -34,7 +34,7 @@ export default function RootLayout({
             // serif.variable,
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <Navigation />
             {children}
             <div className="bg-muted mt-10">

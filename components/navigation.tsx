@@ -7,6 +7,7 @@ import { useState } from "react"; // Import useState from React
 import { ArrowRight, X, Menu } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
+import { ModeToggle } from "./mode-toggle";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -38,7 +39,8 @@ export default function Navigation() {
           </Link>
         </div>
         <div className="flex-1 my-auto">
-          <div className="flex gap-8 justify-end">
+          <div className="flex gap-4 justify-end">
+            <ModeToggle />
             <Authentication />
           </div>
         </div>
@@ -85,7 +87,8 @@ export default function Navigation() {
         </div>
         <div className="flex-1 my-auto">
           <div className="flex justify-end">
-            <div className="flex gap-8">
+            <div className="flex gap-4">
+              <ModeToggle />
               <Authentication />
             </div>
           </div>
