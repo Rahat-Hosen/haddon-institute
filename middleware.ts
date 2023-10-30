@@ -17,6 +17,8 @@ export default authMiddleware({
     "/resources",
     "/about-us",
     "/our-beliefs",
+    "/terms-of-service",
+    "/privacy-policy",
   ],
 });
 
