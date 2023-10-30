@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const json = await req.json();
-    const { slug, blocks, markdown } = json;
+    const { slug, blocks } = json;
 
     await prisma.lesson.update({
       where: {
@@ -12,7 +12,6 @@ export async function POST(req: Request) {
       },
       data: {
         blocks: blocks,
-        markdown: markdown,
       },
     });
 
