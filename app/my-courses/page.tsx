@@ -39,7 +39,9 @@ export default async function MyCourses() {
               <Link href={`/my-courses/${course.slug}`}>
                 <div className="absolute inset-0 rounded-[48px] ">
                   <Image
-                    src={course.thumbnail || "/haddon-institute-logo.jpeg"}
+                    src={
+                      course.thumbnail || "/logos/haddon-institute-logo.jpeg"
+                    }
                     alt={course.title}
                     fill
                     className="rounded-2xl brightness-75 shadow-2xl object-cover"

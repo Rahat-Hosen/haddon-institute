@@ -77,7 +77,7 @@ export default function CourseCard({
     <div className="px-24">
       <div>
         <Image
-          src={courseThumbnail || "/haddon-institute-logo.jpeg"}
+          src={courseThumbnail || "/logos/haddon-institute-logo.jpeg"}
           alt={courseName}
           height={1000}
           width={1000}

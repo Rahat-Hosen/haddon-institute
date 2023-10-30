@@ -118,7 +118,7 @@ export default function CoverImage({
         />
       ) : (
         <Image
-          src={thumbnail || "/haddon-institute-logo.jpeg"}
+          src={thumbnail || "/logos/haddon-institute-logo.jpeg"}
           height={350}
           width={350}
           alt={title}

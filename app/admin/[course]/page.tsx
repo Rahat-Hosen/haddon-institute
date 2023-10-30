@@ -105,7 +105,7 @@ export default async function AdminCoursePage({ params }: any) {
       <CoverImage
         course={course}
         title={data.title}
-        thumbnail={data.thumbnail || "/haddon-institute-logo.jpeg"}
+        thumbnail={data.thumbnail || "/logos/haddon-institute-logo.jpeg"}
       />
 
       <div className="space-y-4">

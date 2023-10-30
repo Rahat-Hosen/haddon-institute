@@ -50,7 +50,9 @@ export default async function Courses() {
               <Link href={`/course/${course.slug}`}>
                 <div className="absolute inset-0 rounded-[48px]">
                   <Image
-                    src={course.thumbnail || "/haddon-institute-logo.jpeg"}
+                    src={
+                      course.thumbnail || "/logos/haddon-institute-logo.jpeg"
+                    }
                     alt={course.title}
                     fill
                     className="rounded-2xl brightness-50 shadow-2xl w-full object-cover"
@@ -95,7 +97,9 @@ export default async function Courses() {
               <Link href={`/course/${course.slug}`}>
                 <div className="absolute inset-0 rounded-[48px]">
                   <Image
-                    src={course.thumbnail || "/haddon-institute-logo.jpeg"}
+                    src={
+                      course.thumbnail || "/logos/haddon-institute-logo.jpeg"
+                    }
                     alt={course.title}
                     fill
                     className="rounded-2xl brightness-75 shadow-2xl w-full object-cover"
@@ -137,7 +141,9 @@ export default async function Courses() {
               <Link href={`/course/${course.slug}`}>
                 <div className="absolute inset-0 rounded-[48px]">
                   <Image
-                    src={course.thumbnail || "/haddon-institute-logo.jpeg"}
+                    src={
+                      course.thumbnail || "/logos/haddon-institute-logo.jpeg"
+                    }
                     alt={course.title}
                     fill
                     className="rounded-md brightness-50 shadow-2xl w-full object-cover"

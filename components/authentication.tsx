@@ -8,6 +8,8 @@ import {
   ClerkLoaded,
 } from "@clerk/nextjs";
 import Link from "next/link";
+import { buttonVariants } from "./ui/button";
+import { AtSign, KeyRound } from "lucide-react";
 
 export function Authentication() {
   return (
@@ -31,17 +33,15 @@ export function Authentication() {
         </div>
       </SignedIn>
       <SignedOut>
-        <Link
-          href="/sign-in"
-          className="hover:text-muted-foreground transition"
-        >
-          Sign In
+        <Link href="/sign-in" className={`flex gap-2 ${buttonVariants()}`}>
+          <KeyRound className="w-4 h-4" /> Sign In
         </Link>
+
         <Link
           href="/sign-up"
-          className="hover:text-muted-foreground transition"
+          className={`gap-2 hidden xl:flex ${buttonVariants()}`}
         >
-          Join
+          <AtSign className="w-4 h-4" /> Join
         </Link>
       </SignedOut>
     </>
