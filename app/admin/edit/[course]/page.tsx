@@ -4,11 +4,12 @@ import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 export default async function EditCourse({ params }: any) {
-  const ADMIN_IDS = process.env.ADMIN_IDS?.split(",");
-
   const { userId } = auth();
 
-  if (userId && !ADMIN_IDS?.includes(userId)) {
+  const isAdmin =
+    userId && (await prisma.user.findUnique({ where: { id: userId } }))?.admin;
+
+  if (!isAdmin) {
     redirect("/unauthorised");
   }
 

@@ -1,13 +1,15 @@
 import NewCourseForm from "@/components/admin/new-course-form";
+import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-export default function NewCourse() {
-  const ADMIN_IDS = process.env.ADMIN_IDS?.split(",");
-
+export default async function NewCourse() {
   const { userId } = auth();
 
-  if (userId && !ADMIN_IDS?.includes(userId)) {
+  const isAdmin =
+    userId && (await prisma.user.findUnique({ where: { id: userId } }))?.admin;
+
+  if (!isAdmin) {
     redirect("/unauthorised");
   }
 

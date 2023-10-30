@@ -6,11 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function Dashboard() {
-  const username = await currentUser();
+  const user = await currentUser();
 
-  const user = await prisma.user.findUnique({
+  const data = await prisma.user.findUnique({
     where: {
-      email: username?.emailAddresses[0].emailAddress,
+      id: user?.id,
     },
     include: {
       courses: true,
@@ -28,7 +28,7 @@ export default async function Dashboard() {
       <Separator />
       <div>
         <div className="mx-auto grid grid-cols-2 gap-4">
-          {user?.courses.map((course) => (
+          {data?.courses.map((course) => (
             <div key={course.id} className="relative h-[200px]">
               <Link href={`/lessons/${course.slug}`}>
                 <div className="absolute inset-0 rounded-[48px] ">

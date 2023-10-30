@@ -10,7 +10,6 @@ export default async function Success({ params }: any) {
   const userId = session?.metadata?.userId;
   const courseId = session?.metadata?.courseId;
   const courseName = session?.metadata?.courseName;
-  const userEmail = session?.customer_email;
 
   // The database will only update if the payment was successful
   if (session.payment_status === "paid") {
@@ -42,7 +41,6 @@ export default async function Success({ params }: any) {
         await prisma.user.create({
           data: {
             id: userId as string,
-            email: userEmail as string,
             courses: {
               connect: {
                 id: Number(courseId),

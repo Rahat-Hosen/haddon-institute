@@ -1,13 +1,12 @@
 import CourseCard from "@/components/course-card";
 import prisma from "@/lib/prisma";
 import { currentUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 export default async function Course({ params }: any) {
   const { slug } = params;
 
   if (!slug) {
-    // Handle the case where `slug` is undefined or empty, possibly by returning an error or a default page.
-    // You can return an error page, a 404, or handle it according to your application's logic.
     return (
       <>
         <p>Course not found</p>
@@ -21,16 +20,32 @@ export default async function Course({ params }: any) {
     where: {
       slug: slug, // Assuming that the slug is a unique identifier for courses
     },
-    include: { Lesson: true },
+    include: { Lesson: true, users: true },
   });
 
   if (!course) {
-    // Handle the case where no course with the specified slug is found, possibly by returning an error or a default page.
-    // You can return an error page, a 404, or handle it according to your application's logic.
     return (
       <>
         <p>Course not found</p>
       </>
+    );
+  }
+
+  if (user && course.users.find((u) => u.id === user.id)) {
+    return (
+      <div className="my-10 text-center">
+        <h1 className="font-semibold text-xl">You already own this course.</h1>
+        <p className="text-muted-foreground">
+          View the course on your{" "}
+          <Link
+            href="/dashboard"
+            className="underline hover:no-underline text-white hover:text-muted-foreground"
+          >
+            dashboard
+          </Link>
+          .
+        </p>
+      </div>
     );
   }
 
