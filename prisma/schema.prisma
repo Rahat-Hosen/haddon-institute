@@ -20,12 +20,25 @@ model Course {
   id          Int      @id @default(autoincrement())
   createdAt   DateTime @default(now())
   slug        String   @unique
+  code        String? // Course code name
   title       String
-  description String
-  author      String
+  overview    String // Long description
+  description String // Short description
+  format      String // How will the content be delivered?
+  objectives  String // What will the student learn?
+  texts       String? // What texts will be used?
+  workload    String? // How much time will the student need to spend on the course per week
+  assessment  String? // How will the student be assessed?
+  passingReq  String? // What are the mandatary requirements for the course?
+  lecturer    String?
+  season      String?
+  startDate   DateTime
+  endDate     DateTime
   categories  String
   thumbnail   String?
   price       String
+  courseAdmin String?
+  courseCoord String?
   users       User[]
   Lesson      Lesson[]
   published   Boolean  @default(false)

@@ -65,10 +65,48 @@ export default async function AdminCoursePage({ params }: any) {
         <div className="space-y-4">
           <h1 className="font-bold text-2xl">{data.title}</h1>
           <div>
-            <h2 className="font-semibold">Overview</h2>
+            <h2 className="font-bold text-xl">Description</h2>
             <p>{data.description}</p>
           </div>
-          <p>Instructed by {data.author}</p>
+          <div>
+            <h2 className="font-bold text-xl">Overview</h2>
+            <p className="whitespace-pre-line">{data.overview}</p>
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Format</h2>
+            <p className="whitespace-pre-line">{data.format}</p>
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Objectives</h2>
+            <p className="whitespace-pre-line">{data.objectives}</p>
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Texts</h2>
+            <p className="whitespace-pre-line">{data.texts}</p>
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Workload</h2>
+            <p className="whitespace-pre-line">{data.workload}</p>
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Assessment</h2>
+            <p className="whitespace-pre-line">{data.assessment}</p>
+          </div>
+          <h2 className="font-bold text-xl mt-10">People</h2>
+          <div className="flex gap-8">
+            <div>
+              <h3 className="font-semibold">Course Coordinator</h3>
+              <p>{data.courseCoord}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Course Administrator</h3>
+              <p>{data.courseAdmin}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Course Lecturer</h3>
+              <p>{data.lecturer}</p>
+            </div>
+          </div>
           <div className="flex gap-4">
             <p>
               {new Intl.NumberFormat("en-US", {

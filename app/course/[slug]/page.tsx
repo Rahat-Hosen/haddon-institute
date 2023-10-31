@@ -54,13 +54,7 @@ export default async function Course({ params }: any) {
       <CourseCard
         userId={user?.id}
         userEmail={user?.emailAddresses[0].emailAddress}
-        courseId={course.id}
-        courseName={course.title}
-        courseDescription={course.description}
-        coursePrice={course.price}
-        courseCategories={course.categories}
-        courseThumbnail={course.thumbnail}
-        couseLessons={course.Lesson}
+        course={course}
       />
     </>
   );

@@ -40,16 +40,7 @@ export default async function EditCourse({ params }: any) {
 
   return (
     <div className="max-w-2xl mx-auto w-full">
-      <EditCourseForm
-        courseId={data.id}
-        courseTitle={data.title}
-        courseSlug={data.slug}
-        courseDescription={data.description}
-        courseAuthor={data.author}
-        courseCategories={data.categories}
-        coursePrice={data.price}
-        courseCaptsone={data.capstone}
-      />
+      <EditCourseForm course={data} />
     </div>
   );
 }

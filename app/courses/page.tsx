@@ -109,7 +109,7 @@ export default async function Courses() {
                   <h1 className="text-lg tracking-tighter font-semibold leading-none text-white">
                     {course.title}
                   </h1>
-                  <p className="text-sm text-gray-200">by {course.author}</p>
+                  <p className="text-sm text-gray-200">by {course.lecturer}</p>
                 </div>
               </Link>
             </div>
@@ -153,7 +153,7 @@ export default async function Courses() {
                   <h1 className="text-lg tracking-tighter font-semibold leading-none text-white">
                     {course.title}
                   </h1>
-                  <p className="text-sm text-gray-200">by {course.author}</p>
+                  <p className="text-sm text-gray-200">by {course.lecturer}</p>
                 </div>
               </Link>
             </div>

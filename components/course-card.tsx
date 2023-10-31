@@ -6,9 +6,10 @@ import Stripe from "stripe";
 import { Button, buttonVariants } from "./ui/button";
 import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
-import { ArrowLeft, CreditCard, MoveLeft } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { CreditCard, MoveLeft, MoveRight } from "lucide-react";
 import Image from "next/image";
+import { utcToZonedTime } from "date-fns-tz";
+import { format } from "date-fns";
 
 import {
   Accordion,
@@ -20,23 +21,11 @@ import {
 export default function CourseCard({
   userId,
   userEmail,
-  courseId,
-  courseName,
-  courseDescription,
-  coursePrice,
-  courseCategories,
-  courseThumbnail,
-  couseLessons,
+  course,
 }: {
   userId: any;
   userEmail: any;
-  courseId: any;
-  courseName: any;
-  courseDescription: any;
-  coursePrice: any;
-  courseCategories: any;
-  courseThumbnail: any;
-  couseLessons: any;
+  course: any;
 }) {
   const auth = useAuth();
 
@@ -49,10 +38,10 @@ export default function CourseCard({
     const body: CheckoutSubscriptionBody = {
       userId: userId,
       userEmail: userEmail,
-      courseId: courseId,
-      courseName: courseName,
-      courseDescription: courseDescription,
-      coursePrice: coursePrice,
+      courseId: course.id,
+      courseName: course.title,
+      courseDescription: course.description,
+      coursePrice: course.price,
     };
 
     // step 3: make a post fetch API call to /api/checkout handler
@@ -73,12 +62,23 @@ export default function CourseCard({
   // Check if the user is authenticated before rendering the button
   const isUserAuthenticated = auth.isSignedIn;
 
+  const timezone = "Australia/Brisbane";
+
+  const courseStart = format(
+    utcToZonedTime(new Date(course.startDate), timezone),
+    "MMMM d, yyyy",
+  );
+  const courseEnd = format(
+    utcToZonedTime(new Date(course.endDate), timezone),
+    "MMMM d, yyyy",
+  );
+
   return (
     <div className="px-4 my-10 xl:px-24 xl:my-20">
       <div>
         <Image
-          src={courseThumbnail || "/logos/haddon-institute-logo.jpeg"}
-          alt={courseName}
+          src={course.thumbnail || "/logos/haddon-institute-logo.jpeg"}
+          alt={course.title}
           height={1000}
           width={1000}
           className="rounded-2xl brightness-75 shadow-2xl w-full h-[200px] xl:h-[500px] object-cover"
@@ -89,56 +89,122 @@ export default function CourseCard({
           <MoveLeft /> All Courses
         </Link>
         <div className="xl:flex justify-between w-full">
-          <h1 className="text-2xl xl:text-4xl font-bold">{courseName}</h1>
+          <h1 className="text-2xl xl:text-4xl font-bold">{course.title}</h1>
           <div className="my-auto xl:mt-0 mt-4">
             {(isUserAuthenticated && (
-              <Button
-                onClick={() => handleClick()}
-                className="flex gap-2 w-full xl:w-auto"
-              >
-                <CreditCard /> Purchase
-              </Button>
+              <div className="flex gap-4">
+                <p className="my-auto">
+                  {new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "AUD",
+                    minimumFractionDigits: 2,
+                  }).format(parseFloat(course.price) / 100)}
+                </p>
+                <Button
+                  onClick={() => handleClick()}
+                  className="flex gap-2 w-full xl:w-auto"
+                >
+                  <CreditCard /> Purchase
+                </Button>
+              </div>
             )) || (
-              <Link
-                href="/sign-in"
-                className={`flex gap-2 w-full xl:w-auto ${buttonVariants()}`}
-              >
-                Sign in to purchase
-              </Link>
+              <div className="flex gap-4">
+                <p className="my-auto">
+                  {new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "AUD",
+                    minimumFractionDigits: 2,
+                  }).format(parseFloat(course.price) / 100)}
+                </p>
+                <Link
+                  href="/sign-in"
+                  className={`flex gap-2 w-full xl:w-auto ${buttonVariants()}`}
+                >
+                  Sign in to purchase
+                </Link>
+              </div>
             )}
           </div>
         </div>
         <div className="xl:flex gap-4 py-4 space-y-2 xl:space-y-0">
-          <div className="border px-4 py-1 rounded-2xl">
-            {couseLessons.filter((lesson: any) => lesson.published).length}{" "}
-            Lessons
+          <div className="border px-4 py-1 rounded-2xl">{course.code}</div>
+          <div className="border px-4 py-1 rounded-2xl flex gap-2">
+            {courseStart}
+            <MoveRight />
+            {courseEnd}
           </div>
-          <div className="border px-4 py-1 rounded-2xl">7 Hours</div>
+          <div className="border px-4 py-1 rounded-2xl">
+            {course.Lesson.length} Lessons
+          </div>
+          <div className="border px-4 py-1 rounded-2xl">6 hours per week</div>
         </div>
       </div>
       <div className="xl:flex gap-8">
         <div className="w-full xl:w-1/2">
-          <h2 className="font-bold text-xl mt-10">Overview</h2>
-          <p>{courseDescription}</p>
+          <div className="space-y-4">
+            <div>
+              <h2 className="font-bold text-xl">Description</h2>
+              <p className="whitespace-pre-line">{course.description}</p>
+            </div>
+            <div>
+              <h2 className="font-bold text-xl">Overview</h2>
+              <p className="whitespace-pre-line">{course.overview}</p>
+            </div>
+            <div>
+              <h2 className="font-bold text-xl">Format</h2>
+              <p className="whitespace-pre-line">{course.format}</p>
+            </div>
+            <div>
+              <h2 className="font-bold text-xl">Objectives</h2>
+              <p className="whitespace-pre-line">{course.objectives}</p>
+            </div>
+            <div>
+              <h2 className="font-bold text-xl">Texts</h2>
+              <p className="whitespace-pre-line">{course.texts}</p>
+            </div>
+            <div>
+              <h2 className="font-bold text-xl">Workload</h2>
+              <p className="whitespace-pre-line">{course.workload}</p>
+            </div>
+            <div>
+              <h2 className="font-bold text-xl">Assessment</h2>
+              <p className="whitespace-pre-line">{course.assessment}</p>
+            </div>
+          </div>
           <h2 className="font-bold text-xl mt-10">Categories</h2>
           <div className="flex gap-4 py-4">
-            {courseCategories.split(",").map((category: any, index: any) => (
+            {course.categories.split(",").map((category: any, index: any) => (
               <div key={index} className="border px-4 py-1 rounded-2xl">
                 {category.trim()}{" "}
               </div>
             ))}
           </div>
+          <h2 className="font-bold text-xl mt-10">People</h2>
+          <div className="flex gap-4">
+            <div>
+              <h3 className="font-semibold">Course Coordinator</h3>
+              <p>{course.courseCoord}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Course Administrator</h3>
+              <p>{course.courseAdmin}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Course Lecturer</h3>
+              <p>{course.lecturer}</p>
+            </div>
+          </div>
         </div>
         <div className="w-full xl:w-1/2">
           <Accordion type="single" collapsible className="w-full">
-            {couseLessons
-              .filter((lesson: any) => lesson.published === true)
-              .map((lesson: any) => (
-                <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
-                  <AccordionTrigger>{lesson.title}</AccordionTrigger>
-                  <AccordionContent>{lesson.description}</AccordionContent>
-                </AccordionItem>
-              ))}
+            {course.Lesson.map((lesson: any) => (
+              <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
+                <AccordionTrigger>{lesson.title}</AccordionTrigger>
+                <AccordionContent className="whitespace-pre-line">
+                  {lesson.description.replace(/-/g, "•")}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
           </Accordion>
         </div>
       </div>

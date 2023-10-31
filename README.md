@@ -49,3 +49,7 @@ pnpm run dev
 - [ ] Setup delete API routes
 - [ ] Ensure mobile ready
 - [ ] Add loading state on buttons
+- [ ] Add publish button to lessons
+- [ ] Allow lesson description to be edited
+- [ ] Store Textarea data as markdown and return it as such (this is to retain formatting)
+- [ ] Need to add course start date and course end date, add ability to notify course purchaser that it's ended

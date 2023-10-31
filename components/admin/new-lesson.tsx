@@ -25,6 +25,7 @@ import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { PlusSquare } from "lucide-react";
 import { toast } from "../ui/use-toast";
+import { Textarea } from "../ui/textarea";
 
 const formSchema = z.object({
   title: z.string(),
@@ -54,7 +55,7 @@ export default function NewLesson({
   });
 
   const generateSlug = (title: any) => {
-    return title.toLowerCase().replace(/ /g, "-");
+    return title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, "-");
   };
 
   const handleTitleChange = (e: any) => {
@@ -159,7 +160,7 @@ export default function NewLesson({
                   <FormItem>
                     <FormLabel>Description</FormLabel>
                     <FormControl>
-                      <Input placeholder="Lesson Description" {...field} />
+                      <Textarea placeholder="Lesson Description" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
