@@ -34,22 +34,23 @@ pnpm run dev
 ## Todo
 
 - [ ] Add a favicon
-- [ ] Add a logo to navigation
+- [x] Add a logo to navigation
 - [ ] Update meta tagging
 - [ ] Build About Us page
 - [ ] Build Our Beliefs page
 - [ ] Build Resources page
-- [ ] Add missing data state for My Courses page with link to /courses
+- [x] Add missing data state for My Courses page with link to /courses
 - [ ] Improve Lesson Overview page
 - [ ] Allow video upload
 - [x] Allow image upload
 - [ ] Secure image upload
-- [ ] Add logo to footer
+- [x] Add logo to footer
+- [x] Make logo in footer link to home page
 - [ ] Protect API routes for admin users only
 - [ ] Setup delete API routes
 - [ ] Ensure mobile ready
 - [ ] Add loading state on buttons
 - [ ] Add publish button to lessons
 - [ ] Allow lesson description to be edited
-- [ ] Store Textarea data as markdown and return it as such (this is to retain formatting)
-- [ ] Need to add course start date and course end date, add ability to notify course purchaser that it's ended
+- [x] Store Textarea data as markdown and return it as such (this is to retain formatting)
+- [x] Need to add course start date and course end date, add ability to notify course purchaser that it's ended

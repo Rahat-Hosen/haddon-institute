@@ -18,13 +18,15 @@ export default function Footer() {
   return (
     <div className="my-10 flex justify-center">
       <div className="space-y-8">
-        <Image
-          src="/logos/3.png"
-          height={100}
-          width={100}
-          alt="Haddon Institute Logo"
-          className="mx-auto"
-        />
+        <Link href="/">
+          <Image
+            src="/logos/3.png"
+            height={100}
+            width={100}
+            alt="Haddon Institute Logo"
+            className="mx-auto"
+          />
+        </Link>
         <div className="flex justify-center gap-4 font-semibold">
           <Link
             href="/courses"

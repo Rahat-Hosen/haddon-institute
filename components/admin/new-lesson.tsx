@@ -106,7 +106,7 @@ export default function NewLesson({
           <DialogHeader>
             <DialogTitle>New Lesson</DialogTitle>
             <DialogDescription>
-              Give your lesson a title, slug and description.
+              Give your lesson a title, slug and outline.
             </DialogDescription>
           </DialogHeader>
           <Form {...form}>
@@ -158,9 +158,15 @@ export default function NewLesson({
                 name="description"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>Outline</FormLabel>
+                    <FormDescription>
+                      This will appear on the public facing course preview page.
+                    </FormDescription>
                     <FormControl>
-                      <Textarea placeholder="Lesson Description" {...field} />
+                      <Textarea
+                        placeholder="An outline of what content to expect..."
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
