@@ -34,7 +34,7 @@ export function Authentication() {
       </SignedIn>
       <SignedOut>
         <Link href="/sign-in" className={`flex gap-2 ${buttonVariants()}`}>
-          <KeyRound className="w-4 h-4" /> Sign In
+          <KeyRound className="w-4 h-4" /> Sign in
         </Link>
 
         <Link
