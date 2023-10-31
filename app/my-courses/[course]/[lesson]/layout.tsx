@@ -31,13 +31,13 @@ export default async function LessonLayout({
     });
 
   return (
-    <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0 px-24">
-      <aside className="-mx-4 lg:w-1/5 space-y-4">
+    <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0 px-4 my-10 lg:px-24 lg:my-20">
+      <aside className="-mx-4 lg:w-1/5 space-y-4 px-4 lg:px-0">
         <Link
           href={`/my-courses/${course}`}
           className={`flex gap-2 w-full ${buttonVariants()}`}
         >
-          <MoveLeft className="w-4 h-4" />
+          <MoveLeft />
           Course Overview
         </Link>
         <SidebarNav items={sidebarNavItems} />

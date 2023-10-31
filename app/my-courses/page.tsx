@@ -24,9 +24,9 @@ export default async function MyCourses() {
   });
 
   return (
-    <div className="space-y-6 w-full">
+    <div className="space-y-8 px-4 my-10 xl:px-24 xl:my-20">
       <div>
-        <h3 className="text-2xl font-medium">My Courses</h3>
+        <h3 className="text-2xl font-bold">My Courses</h3>
         <p className="text-sm text-muted-foreground">
           View your purchased courses and their progress.
         </p>
@@ -48,8 +48,10 @@ export default async function MyCourses() {
                   />
                 </div>
                 <div className="absolute z-10 space-y-2 bottom-4 md:bottom-8 left-4 md:left-8 right-4 md:right-8">
-                  <h2 className="text-2xl font-bold">{course.title}</h2>
-                  <p>{course.description}</p>
+                  <h2 className="text-2xl tracking-tighter font-semibold leading-none text-white">
+                    {course.title}
+                  </h2>
+                  <p className="text-gray-200">{course.description}</p>
                 </div>
               </Link>
             </div>

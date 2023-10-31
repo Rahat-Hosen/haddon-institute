@@ -27,7 +27,7 @@ export default async function Lessons({
   }
 
   return (
-    <div className="w-full space-y-8">
+    <div className="space-y-8">
       {lesson.video ? <Player playbackId={lesson.video} /> : null}
       <Uneditable blocks={lesson.blocks} />
     </div>
