@@ -42,7 +42,7 @@ export default async function LessonLayout({
         </Link>
         <SidebarNav items={sidebarNavItems} />
       </aside>
-      {children}
+      <div className="lg:w-4/5">{children}</div>
     </div>
   );
 }

@@ -27,9 +27,20 @@ export default async function Lessons({
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 w-full">
       {lesson.video ? <Player playbackId={lesson.video} /> : null}
-      {lesson.blocks ? <Uneditable blocks={lesson.blocks} /> : null}
+      {lesson.blocks && lesson.blocks.length > 0 ? (
+        <Uneditable blocks={lesson.blocks} />
+      ) : (
+        <div>
+          <h1 className="font-semibold text-xl text-center">
+            No Content Available
+          </h1>
+          <p className="text-center text-muted-foreground">
+            No content here yet! Check back soon!
+          </p>
+        </div>
+      )}
     </div>
   );
 }
