@@ -1,14 +1,12 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { GeistSans, GeistMono } from "geist/font";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import Navigation from "@/components/navigation";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
-
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
   title: "Haddon Institute",
@@ -26,10 +24,8 @@ export default function RootLayout({
       <html lang="en" suppressHydrationWarning>
         <body
           className={cn(
-            "flex min-h-screen flex-col bg-background font-inter",
-            inter.variable,
-            // oswald.variable,
-            // serif.variable,
+            "flex min-h-screen flex-col bg-background",
+            GeistSans.className,
           )}
         >
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
