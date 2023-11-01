@@ -127,6 +127,7 @@ export default function Navigation() {
             <Link
               href="/courses"
               className="block py-4 hover:bg-accent transition rounded-t-2xl"
+              onClick={toggleMobileMenu}
             >
               <div className="flex justify-between px-6">
                 Courses <ArrowRight />
@@ -136,6 +137,7 @@ export default function Navigation() {
             <Link
               href="/resources"
               className="block hover-bg-accent transition py-4"
+              onClick={toggleMobileMenu}
             >
               <div className="flex justify-between px-6">
                 Resources <ArrowRight />
@@ -145,6 +147,7 @@ export default function Navigation() {
             <Link
               href="/about-us"
               className="block hover-bg-accent transition py-4"
+              onClick={toggleMobileMenu}
             >
               <div className="flex justify-between px-6">
                 About Us <ArrowRight />
@@ -154,6 +157,7 @@ export default function Navigation() {
             <Link
               href="/our-beliefs"
               className="block py-4 hover-bg-accent transition rounded-b-2xl"
+              onClick={toggleMobileMenu}
             >
               <div className="flex justify-between px-6">
                 Our Beliefs <ArrowRight />
