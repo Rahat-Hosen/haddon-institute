@@ -29,7 +29,7 @@ export default async function Lessons({
   return (
     <div className="space-y-8">
       {lesson.video ? <Player playbackId={lesson.video} /> : null}
-      <Uneditable blocks={lesson.blocks} />
+      {lesson.blocks ? <Uneditable blocks={lesson.blocks} /> : null}
     </div>
   );
 }

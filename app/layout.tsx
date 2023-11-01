@@ -1,6 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter, Oswald, Source_Serif_4 } from "next/font/google";
+import { Inter } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
@@ -9,8 +9,6 @@ import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-// const oswald = Oswald({ subsets: ["latin"], variable: "--font-oswald" });
-// const serif = Source_Serif_4({ subsets: ["latin"], variable: "--font-serif" });
 
 export const metadata: Metadata = {
   title: "Haddon Institute",
