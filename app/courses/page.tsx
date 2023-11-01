@@ -63,6 +63,7 @@ export default async function Courses() {
                     {course.title}
                   </h1>
                   <p className="text-gray-200">{course.description}</p>
+                  <p className="text-sm text-gray-200">by {course.lecturer}</p>
                   <Button className="flex gap-2">
                     <EyeIcon className="w-4 h-4" /> View Course
                   </Button>
@@ -102,7 +103,7 @@ export default async function Courses() {
                     }
                     alt={course.title}
                     fill
-                    className="rounded-2xl brightness-75 shadow-2xl w-full object-cover"
+                    className="rounded-2xl brightness-50 shadow-2xl w-full object-cover"
                   />
                 </div>
                 <div className="absolute z-10 space-y-1 bottom-4 left-4 right-4">

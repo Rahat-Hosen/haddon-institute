@@ -33,13 +33,18 @@ export function Authentication() {
         </div>
       </SignedIn>
       <SignedOut>
-        <Link href="/sign-in" className={`flex gap-2 ${buttonVariants()}`}>
+        <Link
+          href="/sign-in"
+          className={`flex gap-2 ${buttonVariants({ variant: "secondary" })}`}
+        >
           <KeyRound className="w-4 h-4" /> Sign in
         </Link>
 
         <Link
           href="/sign-up"
-          className={`gap-2 hidden xl:flex ${buttonVariants()}`}
+          className={`gap-2 hidden xl:flex ${buttonVariants({
+            variant: "secondary",
+          })}`}
         >
           <AtSign className="w-4 h-4" /> Join
         </Link>

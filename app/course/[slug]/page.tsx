@@ -39,7 +39,7 @@ export default async function Course({ params }: any) {
           View the course on your{" "}
           <Link
             href="/my-courses"
-            className="underline hover:no-underline text-white hover:text-muted-foreground"
+            className="underline hover:no-underline text-black dark:text-white hover:text-muted-foreground"
           >
             My Courses
           </Link>{" "}

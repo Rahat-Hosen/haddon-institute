@@ -1,9 +1,9 @@
 "use client";
 
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Authentication } from "./authentication";
 import Image from "next/image";
-import { useState } from "react"; // Import useState from React
 import { ArrowRight, X, Menu } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,14 +11,36 @@ import { ModeToggle } from "./mode-toggle";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [hasShadow, setHasShadow] = useState(false);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setHasShadow(true);
+    } else {
+      setHasShadow(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className="xl:hidden flex justify-between px-4">
+      <div
+        className={`xl:hidden flex justify-between px-4 ${
+          hasShadow
+            ? "shadow-2xl bg-muted transition-all duration-300"
+            : "shadow-none bg-none transition-all duration-300"
+        } sticky top-0 z-10`}
+      >
         <div className="my-auto">
           <button onClick={toggleMobileMenu}>
             {mobileMenuOpen ? (
@@ -38,7 +60,13 @@ export default function Navigation() {
         </Link>
       </div>
 
-      <div className="hidden xl:flex px-24 py-6 w-full">
+      <div
+        className={`hidden xl:flex px-24 py-6 w-full sticky top-0 z-10  ${
+          hasShadow
+            ? "shadow-2xl bg-muted transition-all duration-300"
+            : "shadow-none bg-none transition-all duration-300"
+        }`}
+      >
         <div className="flex-1 my-auto">
           <div className="flex justify-start gap-8">
             <Link
@@ -94,7 +122,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="xl:hidden bg-muted rounded-2xl"
+            className="xl:hidden sticky top-16 z-10 bg-muted rounded-2xl"
           >
             <Link
               href="/courses"
@@ -107,7 +135,7 @@ export default function Navigation() {
             <Separator />
             <Link
               href="/resources"
-              className="block hover:bg-accent transition py-4"
+              className="block hover-bg-accent transition py-4"
             >
               <div className="flex justify-between px-6">
                 Resources <ArrowRight />
@@ -116,7 +144,7 @@ export default function Navigation() {
             <Separator />
             <Link
               href="/about-us"
-              className="block hover:bg-accent transition py-4"
+              className="block hover-bg-accent transition py-4"
             >
               <div className="flex justify-between px-6">
                 About Us <ArrowRight />
@@ -125,7 +153,7 @@ export default function Navigation() {
             <Separator />
             <Link
               href="/our-beliefs"
-              className="block py-4 hover:bg-accent transition rounded-b-2xl"
+              className="block py-4 hover-bg-accent transition rounded-b-2xl"
             >
               <div className="flex justify-between px-6">
                 Our Beliefs <ArrowRight />

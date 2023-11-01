@@ -41,7 +41,7 @@ pnpm run dev
 - [ ] Build Resources page
 - [x] Add missing data state for My Courses page with link to /courses
 - [ ] Improve Lesson Overview page
-- [ ] Allow video upload
+- [x] Allow video upload
 - [x] Allow image upload
 - [ ] Secure image upload
 - [x] Add logo to footer
