@@ -4,19 +4,37 @@ import * as React from "react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
-import { Cloud, Flame } from "lucide-react";
+import { Flame, Cloud, Monitor } from "lucide-react";
 
 export function ModeToggle() {
   const { setTheme, theme } = useTheme();
 
   return (
-    <Button
-      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      variant="secondary"
-    >
-      <Cloud className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Flame className="h-5 w-5 absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">Toggle theme</span>
-    </Button>
+    <div className="flex space-x-2 bg-white dark:bg-secondary py-1 px-2 rounded-md">
+      <Button
+        onClick={() => setTheme("system")}
+        variant={theme === "system" ? "default" : "ghost"}
+        size="sm"
+      >
+        <Monitor className="h-5 w-5" />
+        <span className="sr-only">System mode</span>
+      </Button>
+      <Button
+        onClick={() => setTheme("light")}
+        variant={theme === "light" ? "default" : "ghost"}
+        size="sm"
+      >
+        <Flame className="h-5 w-5" />
+        <span className="sr-only">Light mode</span>
+      </Button>
+      <Button
+        onClick={() => setTheme("dark")}
+        variant={theme === "dark" ? "default" : "ghost"}
+        size="sm"
+      >
+        <Cloud className="h-5 w-5" />
+        <span className="sr-only">Dark mode</span>
+      </Button>
+    </div>
   );
 }

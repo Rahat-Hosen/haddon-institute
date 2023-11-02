@@ -22,13 +22,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body
-          className={cn(
-            "flex min-h-screen flex-col bg-background",
-            GeistSans.className,
-          )}
-        >
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+        <body className={cn(GeistSans.className)}>
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
             <Navigation />
             {children}
             <div className="bg-muted mt-10">

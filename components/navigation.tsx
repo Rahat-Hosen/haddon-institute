@@ -7,7 +7,8 @@ import Image from "next/image";
 import { ArrowRight, X, Menu } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
-import { ModeToggle } from "./mode-toggle";
+import { buttonVariants } from "./ui/button";
+import { Badge } from "./ui/badge";
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -35,12 +36,16 @@ export default function Navigation() {
   return (
     <>
       <div
-        className={`xl:hidden flex justify-between px-4 ${
-          hasShadow
-            ? "shadow-2xl bg-muted transition-all duration-300"
-            : "shadow-none bg-none transition-all duration-300"
-        } sticky top-0 z-10`}
+        className={`xl:hidden flex justify-between px-4 backdrop-blur-3xl transition-all duration-300 fixed bottom-0 w-full z-10`}
       >
+        <Link href="/">
+          <Image
+            src="/logos/3.png"
+            height={50}
+            width={50}
+            alt="Haddon Institute Logo"
+          />
+        </Link>
         <div className="my-auto">
           <button onClick={toggleMobileMenu}>
             {mobileMenuOpen ? (
@@ -50,52 +55,16 @@ export default function Navigation() {
             )}
           </button>
         </div>
-        <Link href="/">
-          <Image
-            src="/logos/3.png"
-            height={50}
-            width={50}
-            alt="Haddon Institute Logo"
-          />
-        </Link>
       </div>
 
       <div
-        className={`hidden xl:flex px-24 py-6 w-full sticky top-0 z-10  ${
+        className={`hidden xl:flex px-24 py-3 w-full sticky top-0 z-10  ${
           hasShadow
-            ? "shadow-2xl bg-muted transition-all duration-300"
+            ? "shadow-2xl backdrop-blur-3xl transition-all duration-300"
             : "shadow-none bg-none transition-all duration-300"
         }`}
       >
         <div className="flex-1 my-auto">
-          <div className="flex justify-start gap-8">
-            <Link
-              href="/courses"
-              className="hover:text-muted-foreground transition"
-            >
-              Courses
-            </Link>
-            <Link
-              href="/resources"
-              className="hover:text-muted-foreground transition"
-            >
-              Resources
-            </Link>
-            <Link
-              href="/about-us"
-              className="hover:text-muted-foreground transition"
-            >
-              About Us
-            </Link>
-            <Link
-              href="/our-beliefs"
-              className="hover:text-muted-foreground transition"
-            >
-              Our Beliefs
-            </Link>
-          </div>
-        </div>
-        <div className="shrink-0">
           <Link href="/">
             <Image
               src="/logos/3.png"
@@ -105,10 +74,54 @@ export default function Navigation() {
             />
           </Link>
         </div>
+        <div className="shrink-0 my-auto">
+          <div className="flex gap-8 my-auto">
+            <Link
+              href="/courses"
+              className={`${buttonVariants({ variant: "ghost" })}`}
+            >
+              Courses
+            </Link>
+            <Link
+              href="/resources"
+              className={`${buttonVariants({ variant: "ghost" })}`}
+            >
+              Resources
+            </Link>
+            <Link
+              href="/about-us"
+              className={`${buttonVariants({ variant: "ghost" })}`}
+            >
+              About Us
+            </Link>
+            <Link
+              href="/our-beliefs"
+              className={`${buttonVariants({ variant: "ghost" })}`}
+            >
+              Our Beliefs
+            </Link>
+            <Link
+              href="/scholarships"
+              className={`${buttonVariants({ variant: "ghost" })}`}
+            >
+              Scholarships
+            </Link>
+          </div>
+          <Separator className="max-w-sm mx-auto my-2" />
+          <div className="flex justify-center">
+            <Link
+              href="/course/theology-for-today-s-world"
+              className={`flex gap-2 ${buttonVariants({
+                variant: "ghost",
+              })}`}
+            >
+              <Badge>NEW</Badge> Theology for Today&apos;s World
+            </Link>
+          </div>
+        </div>
         <div className="flex-1 my-auto">
           <div className="flex justify-end">
             <div className="flex gap-4">
-              <ModeToggle />
               <Authentication />
             </div>
           </div>
@@ -122,11 +135,11 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="xl:hidden sticky top-16 z-10 bg-muted rounded-2xl"
+            className="xl:hidden fixed w-full bottom-16 z-10 backdrop-blur-3xl rounded-t-[24px]"
           >
             <Link
               href="/courses"
-              className="block py-4 hover:bg-accent transition rounded-t-2xl"
+              className="block py-4 hover:bg-accent transition rounded-t-[24px]"
               onClick={toggleMobileMenu}
             >
               <div className="flex justify-between px-6">
@@ -136,7 +149,7 @@ export default function Navigation() {
             <Separator />
             <Link
               href="/resources"
-              className="block hover-bg-accent transition py-4"
+              className="block py-4 hover:bg-accent transition"
               onClick={toggleMobileMenu}
             >
               <div className="flex justify-between px-6">
@@ -146,7 +159,7 @@ export default function Navigation() {
             <Separator />
             <Link
               href="/about-us"
-              className="block hover-bg-accent transition py-4"
+              className="block py-4 hover:bg-accent transition"
               onClick={toggleMobileMenu}
             >
               <div className="flex justify-between px-6">
@@ -156,7 +169,7 @@ export default function Navigation() {
             <Separator />
             <Link
               href="/our-beliefs"
-              className="block py-4 hover-bg-accent transition rounded-b-2xl"
+              className="block py-4 hover:bg-accent transition"
               onClick={toggleMobileMenu}
             >
               <div className="flex justify-between px-6">
@@ -164,7 +177,6 @@ export default function Navigation() {
               </div>
             </Link>
             <div className="flex justify-between px-6 py-4">
-              <ModeToggle />
               <Authentication />
             </div>
           </motion.div>
