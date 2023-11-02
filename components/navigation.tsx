@@ -36,7 +36,7 @@ export default function Navigation() {
   return (
     <>
       <div
-        className={`xl:hidden flex justify-between px-4 backdrop-blur-3xl transition-all duration-300 fixed bottom-0 w-full z-10`}
+        className={`xl:hidden flex justify-between px-4 backdrop-blur-3xl transition-all duration-300 fixed bottom-0 w-full z-50`}
       >
         <Link href="/">
           <Image
@@ -58,9 +58,9 @@ export default function Navigation() {
       </div>
 
       <div
-        className={`hidden xl:flex px-24 py-3 w-full sticky top-0 z-10  ${
+        className={`hidden xl:flex px-24 py-3 w-full sticky top-0 z-50  ${
           hasShadow
-            ? "shadow-2xl backdrop-blur-3xl transition-all duration-300"
+            ? "shadow-2xl backdrop-blur-3xl bg-muted/50 transition-all duration-300"
             : "shadow-none bg-none transition-all duration-300"
         }`}
       >
@@ -135,7 +135,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="xl:hidden fixed w-full bottom-16 z-10 backdrop-blur-3xl rounded-t-[24px]"
+            className="xl:hidden fixed w-full bottom-16 z-50 backdrop-blur-3xl rounded-t-[24px]"
           >
             <Link
               href="/courses"

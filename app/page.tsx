@@ -24,13 +24,9 @@ export default function Home() {
           height={2000}
           width={2000}
           alt="Background Image"
-          className="object-cover h-[60vh] rounded-2xl w-full brightness-50 border-b"
+          className="object-cover h-[60vh] w-full brightness-50 border border-b-2"
         />
-        <div
-          className="absolute place-items-center inset-0 flex justify-center
-        
-        "
-        >
+        <div className="absolute place-items-center inset-0 flex justify-center">
           <div className="md:flex px-4 max-w-7xl mx-auto">
             <div className="hidden md:flex md:w-1/2 my-auto">
               <Image
@@ -43,12 +39,13 @@ export default function Home() {
             <div className="md:w-1/2 my-auto space-y-6">
               <Link
                 href="/course/theology-for-today-s-world"
-                className="flex text-sm text-muted-foreground hover:text-black dark:hover:text-white transition"
+                className="flex text-sm text-muted-foreground text-stone-400 hover:text-white transition"
               >
-                <div className="rounded-l-md px-4 py-2 bg-muted flex gap-4">
-                  <Badge>NEW</Badge> Theology for Today&apos;s World
+                <div className="rounded-l-md px-4 py-2 bg-muted flex gap-4 bg-[#171717]  ">
+                  <Badge className="bg-white text-black">NEW</Badge> Theology
+                  for Today&apos;s World
                 </div>
-                <div className="rounded-r-md border-l px-4 py-2 bg-muted font-semibold">
+                <div className="rounded-r-md border-l border-muted-foreground px-4 py-2 bg-muted font-semibold bg-[#171717]">
                   Explore
                 </div>
               </Link>
@@ -56,21 +53,24 @@ export default function Home() {
               <div>
                 <AnimatedText
                   text="Haddon Institute"
-                  className="text-3xl lg:text-4xl xl:text-6xl tracking-tighter font-bold"
+                  className="text-3xl lg:text-4xl xl:text-6xl tracking-tighter font-bold text-white"
                 />
-                <p className="font-semibold text-2xl">
+                <p className="font-semibold text-2xl text-white">
                   It&apos;s time to take Christian education seriously.
                 </p>
-                <p className="text-muted-foreground max-w-lg">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Minima alias fuga et ab magnam aliquam commodi ratione vel
-                  fugit nesciunt voluptatibus.
+                <p className="text-stone-400 max-w-lg font-semibold">
+                  Our mission at the Haddon institute is to provide a
+                  Christ-centered education grounded in Reformed theology.
                 </p>
               </div>
               <div>
                 <Link
                   href="/sign-up"
-                  className={`flex gap-2 ${buttonVariants()}`}
+                  className={`flex gap-2  bg-white text-black/100 hover:text-white ${buttonVariants(
+                    {
+                      size: "lg",
+                    },
+                  )}`}
                 >
                   Join Now
                 </Link>
