@@ -6,7 +6,19 @@ import Stripe from "stripe";
 import { Button, buttonVariants } from "./ui/button";
 import { useAuth } from "@clerk/nextjs";
 import Link from "next/link";
-import { CreditCard, MoveLeft, MoveRight } from "lucide-react";
+import {
+  BadgeDollarSign,
+  Calendar,
+  Clock,
+  CreditCard,
+  Dumbbell,
+  FileDigit,
+  Library,
+  MapPin,
+  MoveLeft,
+  MoveRight,
+  ScrollText,
+} from "lucide-react";
 import Image from "next/image";
 import { utcToZonedTime } from "date-fns-tz";
 import { format } from "date-fns";
@@ -17,6 +29,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Separator } from "./ui/separator";
 
 export default function CourseCard({
   userId,
@@ -74,7 +87,7 @@ export default function CourseCard({
   );
 
   return (
-    <div className="px-4 my-10 xl:px-24 xl:my-20">
+    <div className="px-4 my-10 max-w-7xl mx-auto">
       <div>
         <Image
           src={course.thumbnail || "/logos/haddon-institute-logo.jpeg"}
@@ -88,125 +101,232 @@ export default function CourseCard({
         <Link href="/courses" className={`flex gap-2 my-4 ${buttonVariants()}`}>
           <MoveLeft /> All Courses
         </Link>
-        <div className="xl:flex justify-between w-full">
-          <h1 className="text-2xl xl:text-4xl font-bold">{course.title}</h1>
-          <div className="my-auto xl:mt-0 mt-4">
-            {(isUserAuthenticated && (
-              <div className="flex gap-4">
-                <p className="my-auto">
-                  {new Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: "AUD",
-                    minimumFractionDigits: 2,
-                  }).format(parseFloat(course.price) / 100)}
-                </p>
-                <Button
-                  onClick={() => handleClick()}
-                  className="flex gap-2 w-full xl:w-auto"
-                >
-                  <CreditCard /> Purchase
-                </Button>
+        <div className="space-y-8">
+          <div className="xl:flex justify-between w-full">
+            <div>
+              <h1 className="text-2xl xl:text-4xl font-bold">{course.title}</h1>
+              <div className="flex gap-4 py-4">
+                {course.categories
+                  .split(",")
+                  .map((category: any, index: any) => (
+                    <div key={index} className="border px-4 py-1 rounded-2xl">
+                      {category.trim()}{" "}
+                    </div>
+                  ))}
               </div>
-            )) || (
+            </div>
+            <div className="my-auto xl:mt-0 mt-4">
+              {(isUserAuthenticated && (
+                <div className="flex gap-4">
+                  <p className="my-auto">
+                    {new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "AUD",
+                      minimumFractionDigits: 2,
+                    }).format(parseFloat(course.price) / 100)}
+                  </p>
+                  <Button
+                    onClick={() => handleClick()}
+                    className="flex gap-2 w-full xl:w-auto"
+                  >
+                    <CreditCard /> Purchase
+                  </Button>
+                </div>
+              )) || (
+                <div className="flex gap-4">
+                  <p className="my-auto">
+                    {new Intl.NumberFormat("en-US", {
+                      style: "currency",
+                      currency: "AUD",
+                      minimumFractionDigits: 2,
+                    }).format(parseFloat(course.price) / 100)}
+                  </p>
+                  <Link
+                    href="/sign-in"
+                    className={`flex gap-2 w-full xl:w-auto ${buttonVariants()}`}
+                  >
+                    Sign in to purchase
+                  </Link>
+                </div>
+              )}
+            </div>
+          </div>
+
+          <p className="whitespace-pre-line">{course.description}</p>
+
+          <h2 className="font-bold text-2xl">Course Overview</h2>
+
+          <div className="grid grid-cols-2 gap-8 max-w-3xl">
+            <div>
+              <h3 className="font-semibold text-lg flex gap-2">
+                <FileDigit className="w-5 h-5 my-auto" />
+                Code
+              </h3>
+              <p>{course.code}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg flex gap-2">
+                <BadgeDollarSign className="w-5 h-5 my-auto" /> Fees
+              </h3>
+              <p>
+                {new Intl.NumberFormat("en-US", {
+                  style: "currency",
+                  currency: "AUD",
+                  minimumFractionDigits: 2,
+                }).format(parseFloat(course.price) / 100)}
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg flex gap-2">
+                <Calendar className="w-5 h-5 my-auto" />
+                Period
+              </h3>
+              <p>{course.season}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg flex gap-2">
+                <Clock className="w-5 h-5 my-auto" />
+                Duration
+              </h3>
+              <p className="flex gap-2">
+                {courseStart}
+                <MoveRight />
+                {courseEnd}
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg flex gap-2">
+                <Library className="w-5 h-5 my-auto" />
+                Lessons
+              </h3>
+              <p className="flex gap-2">{course.Lesson.length}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg flex gap-2">
+                <Dumbbell className="w-5 h-5 my-auto" />
+                Workload
+              </h3>
+              {/* Need to replace with DB reference */}
+              <p className="flex gap-2">6 hours per week</p>{" "}
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg flex gap-2">
+                <ScrollText className="w-5 h-5 my-auto" />
+                Lectures
+              </h3>
+              {/* Need to replace with DB reference */}
+              <p className="flex gap-2">Mondays 7:30PM - 9PM</p>{" "}
+            </div>
+            <div>
+              <h3 className="font-semibold text-lg flex gap-2">
+                <MapPin className="w-5 h-5 my-auto" />
+                Campus
+              </h3>
+              {/* Need to replace with DB reference */}
+              <p className="flex gap-2">
+                The Armoury Bookshop, 1484A Logan Rd, Mt Gravatt 4122
+              </p>
+            </div>
+          </div>
+          <div className="space-y-4">
+            <h2 className="font-bold text-2xl">People</h2>
+
+            <h3 className="font-bold text-xl">Lecturer</h3>
+            <div>
               <div className="flex gap-4">
-                <p className="my-auto">
-                  {new Intl.NumberFormat("en-US", {
-                    style: "currency",
-                    currency: "AUD",
-                    minimumFractionDigits: 2,
-                  }).format(parseFloat(course.price) / 100)}
-                </p>
-                <Link
-                  href="/sign-in"
-                  className={`flex gap-2 w-full xl:w-auto ${buttonVariants()}`}
-                >
-                  Sign in to purchase
-                </Link>
+                <Image
+                  src={
+                    course.lecturerImage || "/logos/haddon-institute-logo.jpeg"
+                  }
+                  width={150}
+                  height={150}
+                  alt={course.lecturer}
+                />
+                <div>
+                  <h4 className="font-semibold text-lg">{course.lecturer}</h4>
+                  <p>{course.lecturerEmail || "No email provided."}</p>
+                </div>
               </div>
-            )}
+            </div>
+            <h3 className="font-bold text-xl">Coordinator</h3>
+            <div>
+              <div className="flex gap-4">
+                <Image
+                  src={course.coordImage || "/logos/haddon-institute-logo.jpeg"}
+                  width={150}
+                  height={150}
+                  alt={course.courseCoord}
+                />
+                <div>
+                  <h4 className="font-semibold text-lg">
+                    {course.courseCoord}
+                  </h4>
+                  <p>{course.coordEmail || "No email provided."}</p>
+                </div>
+              </div>
+            </div>
+            <h3 className="font-bold text-xl">Administrator</h3>
+            <div>
+              <div className="flex gap-4">
+                <Image
+                  src={course.adminImage || "/logos/haddon-institute-logo.jpeg"}
+                  width={150}
+                  height={150}
+                  alt={course.courseAdmin}
+                />
+                <div>
+                  <h4 className="font-semibold text-lg">
+                    {course.courseAdmin}
+                  </h4>
+                  <p>{course.adminEmail || "No email provided."}</p>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="xl:flex gap-4 py-4 space-y-2 xl:space-y-0">
-          <div className="border px-4 py-1 rounded-2xl">{course.code}</div>
-          <div className="border px-4 py-1 rounded-2xl flex gap-2">
-            {courseStart}
-            <MoveRight />
-            {courseEnd}
-          </div>
-          <div className="border px-4 py-1 rounded-2xl">
-            {course.Lesson.length} Lessons
-          </div>
-          <div className="border px-4 py-1 rounded-2xl">6 hours per week</div>
         </div>
       </div>
-      <div className="xl:flex gap-8">
-        <div className="w-full xl:w-1/2">
-          <div className="space-y-4">
-            <div>
-              <h2 className="font-bold text-xl">Description</h2>
-              <p className="whitespace-pre-line">{course.description}</p>
-            </div>
-            <div>
-              <h2 className="font-bold text-xl">Overview</h2>
-              <p className="whitespace-pre-line">{course.overview}</p>
-            </div>
-            <div>
-              <h2 className="font-bold text-xl">Format</h2>
-              <p className="whitespace-pre-line">{course.format}</p>
-            </div>
-            <div>
-              <h2 className="font-bold text-xl">Objectives</h2>
-              <p className="whitespace-pre-line">{course.objectives}</p>
-            </div>
-            <div>
-              <h2 className="font-bold text-xl">Texts</h2>
-              <p className="whitespace-pre-line">{course.texts}</p>
-            </div>
-            <div>
-              <h2 className="font-bold text-xl">Workload</h2>
-              <p className="whitespace-pre-line">{course.workload}</p>
-            </div>
-            <div>
-              <h2 className="font-bold text-xl">Assessment</h2>
-              <p className="whitespace-pre-line">{course.assessment}</p>
-            </div>
+
+      <Separator className="my-10" />
+
+      <div className="w-full">
+        <div className="space-y-4">
+          <div>
+            <h2 className="font-bold text-xl">Content Overview</h2>
+            <p className="whitespace-pre-line">{course.overview}</p>
           </div>
-          <h2 className="font-bold text-xl mt-10">Categories</h2>
-          <div className="flex gap-4 py-4">
-            {course.categories.split(",").map((category: any, index: any) => (
-              <div key={index} className="border px-4 py-1 rounded-2xl">
-                {category.trim()}{" "}
-              </div>
-            ))}
+          <div>
+            <h2 className="font-bold text-xl">Objectives</h2>
+            <p className="whitespace-pre-line">{course.objectives}</p>
           </div>
-          <h2 className="font-bold text-xl mt-10">People</h2>
-          <div className="flex gap-4">
-            <div>
-              <h3 className="font-semibold">Course Coordinator</h3>
-              <p>{course.courseCoord}</p>
-            </div>
-            <div>
-              <h3 className="font-semibold">Course Administrator</h3>
-              <p>{course.courseAdmin}</p>
-            </div>
-            <div>
-              <h3 className="font-semibold">Course Lecturer</h3>
-              <p>{course.lecturer}</p>
-            </div>
+          <div>
+            <h2 className="font-bold text-xl">Teaching Format</h2>
+            <p className="whitespace-pre-line">{course.format}</p>
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Texts</h2>
+            <p className="whitespace-pre-line">{course.texts}</p>
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Workload</h2>
+            <p className="whitespace-pre-line">{course.workload}</p>
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Assessment</h2>
+            <p className="whitespace-pre-line">{course.assessment}</p>
           </div>
         </div>
-        <div className="w-full xl:w-1/2">
-          <Accordion type="single" collapsible className="w-full">
-            {course.Lesson.map((lesson: any) => (
-              <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
-                <AccordionTrigger>{lesson.title}</AccordionTrigger>
-                <AccordionContent className="whitespace-pre-line">
-                  {lesson.description.replace(/-/g, "•")}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
+      </div>
+      <div className="w-full">
+        <Accordion type="single" collapsible className="w-full">
+          {course.Lesson.map((lesson: any) => (
+            <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
+              <AccordionTrigger>{lesson.title}</AccordionTrigger>
+              <AccordionContent className="whitespace-pre-line">
+                {lesson.description.replace(/-/g, "•")}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   );

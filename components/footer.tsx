@@ -6,6 +6,7 @@ import {
   Twitter,
   Youtube,
 } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import Link from "next/link";
 import {
   HoverCard,
@@ -18,7 +19,7 @@ import { ModeToggle } from "./mode-toggle";
 export default function Footer() {
   return (
     <div>
-      <div className="my-10 flex justify-center">
+      <div className="flex justify-center">
         <div className="space-y-8">
           <Link href="/">
             <Image
@@ -72,7 +73,7 @@ export default function Footer() {
               href="https://twitter.com"
               className="hover:text-muted-foreground transition"
             >
-              <Twitter />
+              <FaXTwitter className="w-6 h-6" />
             </a>
             <a
               href="https://youtube.com"

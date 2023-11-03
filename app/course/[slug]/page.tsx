@@ -31,23 +31,23 @@ export default async function Course({ params }: any) {
     );
   }
 
-  if (user && course.users.find((u) => u.id === user.id)) {
-    return (
-      <div className="my-10 text-center">
-        <h1 className="font-semibold text-xl">You already own this course.</h1>
-        <p className="text-muted-foreground">
-          View the course on your{" "}
-          <Link
-            href="/my-courses"
-            className="underline hover:no-underline text-black dark:text-white hover:text-muted-foreground"
-          >
-            My Courses
-          </Link>{" "}
-          page.
-        </p>
-      </div>
-    );
-  }
+  // if (user && course.users.find((u) => u.id === user.id)) {
+  //   return (
+  //     <div className="my-10 text-center">
+  //       <h1 className="font-semibold text-xl">You already own this course.</h1>
+  //       <p className="text-muted-foreground">
+  //         View the course on your{" "}
+  //         <Link
+  //           href="/my-courses"
+  //           className="underline hover:no-underline text-black dark:text-white hover:text-muted-foreground"
+  //         >
+  //           My Courses
+  //         </Link>{" "}
+  //         page.
+  //       </p>
+  //     </div>
+  //   );
+  // }
 
   return (
     <>

@@ -41,11 +41,11 @@ export default function Home() {
                 href="/course/theology-for-today-s-world"
                 className="flex text-sm text-muted-foreground text-stone-400 hover:text-white transition"
               >
-                <div className="rounded-l-md px-4 py-2 bg-muted flex gap-4 bg-[#171717]  ">
+                <div className="rounded-l-md px-4 py-2 flex gap-4 bg-[#171717]">
                   <Badge className="bg-white text-black">NEW</Badge> Theology
                   for Today&apos;s World
                 </div>
-                <div className="rounded-r-md border-l border-muted-foreground px-4 py-2 bg-muted font-semibold bg-[#171717]">
+                <div className="rounded-r-md border-l border-muted-foreground px-4 py-2 font-semibold bg-[#171717]">
                   Explore
                 </div>
               </Link>
@@ -66,7 +66,7 @@ export default function Home() {
               <div>
                 <Link
                   href="/sign-up"
-                  className={`flex gap-2  bg-white text-black/100 hover:text-white ${buttonVariants(
+                  className={`flex gap-2  bg-white text-black/90 hover:text-white ${buttonVariants(
                     {
                       size: "lg",
                     },
@@ -80,7 +80,7 @@ export default function Home() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto">
-        <div className="my-20">
+        <div className="my-20 px-4">
           <div className="flex justify-center">
             <div className="space-y-20">
               <div className="space-y-4">
@@ -102,7 +102,7 @@ export default function Home() {
           </div>
         </div>
         <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 px-4">
             <div className="space-y-4 rounded-2xl p-12 hover:bg-muted hover:shadow-2xl transition-all duration-300">
               <BookOpen
                 strokeWidth={1}
@@ -219,93 +219,95 @@ export default function Home() {
           </div>
         </div>
         <div className="px-4 xl:px-24 my-20">
-          <div className="space-y-4">
-            <Separator className="max-w-sm mx-auto bg-gradient-to-r dark:from-muted-foreground from-30% dark:to-muted" />
-            <h2 className="text-center text-muted-foreground uppercase font-semibold tracking-wider text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-b dark:from-muted-foreground from-40% dark:to-muted">
-              Building Legacy & empowering leaders
-            </h2>
-            <Separator className="max-w-sm mx-auto bg-gradient-to-l dark:from-muted-foreground from-30% dark:to-muted" />
-          </div>
-          <div className="flex justify-center">
-            <div className="space-y-20">
-              <div className="lg:flex gap-8 justify-between max-w-[90rem] space-y-8 lg:space-y-0">
-                <div className="space-y-4 my-auto">
-                  <h3 className="font-semibold text-4xl xl:text-6xl ">
-                    Heading Title Goes Here
-                  </h3>
-                  <ul className="space-y-4 text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>
-                  </ul>
+          <div className="space-y-20">
+            <div className="space-y-4">
+              <Separator className="max-w-sm mx-auto bg-gradient-to-r dark:from-muted-foreground from-30% dark:to-muted" />
+              <h2 className="text-center text-muted-foreground uppercase font-semibold tracking-wider text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-b dark:from-muted-foreground from-40% dark:to-muted">
+                Building Legacy & empowering leaders
+              </h2>
+              <Separator className="max-w-sm mx-auto bg-gradient-to-l dark:from-muted-foreground from-30% dark:to-muted" />
+            </div>
+            <div className="flex justify-center">
+              <div className="space-y-20">
+                <div className="lg:flex gap-8 justify-between max-w-[90rem] space-y-8 lg:space-y-0">
+                  <div className="space-y-4 my-auto">
+                    <h3 className="font-semibold text-4xl xl:text-6xl ">
+                      Heading Title Goes Here
+                    </h3>
+                    <ul className="space-y-4 text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>
+                    </ul>
+                  </div>
+                  <Image
+                    src="/priscilla-du-preez-ANJS-bw1Sgo-unsplash.jpg"
+                    height={500}
+                    width={500}
+                    alt="Image"
+                    className="rounded-2xl hover:shadow-2xl transition-all duration-300 h-250 lg:h-500"
+                  />
                 </div>
-                <Image
-                  src="/priscilla-du-preez-ANJS-bw1Sgo-unsplash.jpg"
-                  height={500}
-                  width={500}
-                  alt="Image"
-                  className="rounded-2xl hover:shadow-2xl transition-all duration-300 h-250 lg:h-500"
-                />
-              </div>
-              <div className="lg:flex gap-8 justify-between max-w-[90rem] space-y-8 lg:space-y-0">
-                <Image
-                  src="/sixteen-miles-out-KSaLhgex8F0-unsplash.jpg"
-                  height={500}
-                  width={500}
-                  alt="Image"
-                  className="rounded-2xl hover:shadow-2xl transition-all duration-300 h-250 lg:h-500"
-                />
-                <div className="space-y-4 my-auto">
-                  <h3 className="font-semibold text-4xl xl:text-6xl">
-                    Heading Title Goes Here
-                  </h3>
-                  <ul className="space-y-4 text-black dark:text-transparent bg-clip-text bg-gradient-to-bl dark:from-muted-foreground from-40% dark:to-muted ">
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>{" "}
-                    <li className="flex gap-4 xl:text-2xl">
-                      <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </li>
-                  </ul>
+                <div className="lg:flex gap-8 justify-between max-w-[90rem] space-y-8 lg:space-y-0">
+                  <Image
+                    src="/sixteen-miles-out-KSaLhgex8F0-unsplash.jpg"
+                    height={500}
+                    width={500}
+                    alt="Image"
+                    className="rounded-2xl hover:shadow-2xl transition-all duration-300 h-250 lg:h-500"
+                  />
+                  <div className="space-y-4 my-auto">
+                    <h3 className="font-semibold text-4xl xl:text-6xl">
+                      Heading Title Goes Here
+                    </h3>
+                    <ul className="space-y-4 text-black dark:text-transparent bg-clip-text bg-gradient-to-bl dark:from-muted-foreground from-40% dark:to-muted ">
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>{" "}
+                      <li className="flex gap-4 xl:text-2xl">
+                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>

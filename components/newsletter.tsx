@@ -50,7 +50,7 @@ const Content = () => {
           <div className="flex">
             <Input
               type="text"
-              placeholder="paul@redeemed.com"
+              placeholder="paul@redeemed.church"
               className="w-full mr-4"
             />
             <Button>Submit</Button>
