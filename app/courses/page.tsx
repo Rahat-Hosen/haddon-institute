@@ -44,10 +44,7 @@ export default async function Courses() {
       {courses
         .filter((course) => course.capstone)
         .map((course) => (
-          <div
-            key={course.id}
-            className="relative w-full h-[300px] transform scale-100 hover:scale-95 transition-transform duration-300 ease-in-out"
-          >
+          <div key={course.id} className="relative w-full h-[300px]">
             <Link href={`/course/${course.slug}`}>
               <Badge className="absolute top-8 left-8 z-10">
                 {course.code}

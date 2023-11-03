@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import * as z from "zod";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -44,19 +44,47 @@ const formSchema = z.object({
   code: z.string(),
   description: z.string(),
   overview: z.string(),
+  campus: z.string(),
   format: z.string(),
-  objectives: z.string(),
-  texts: z.string(),
+  lectures: z.array(
+    z.object({
+      value: z.string(),
+    }),
+  ),
+  objectives: z.array(
+    z.object({
+      value: z.string(),
+    }),
+  ),
+  requiredTexts: z.array(
+    z.object({
+      value: z.string(),
+    }),
+  ),
+  optionalTexts: z.array(
+    z.object({
+      value: z.string(),
+    }),
+  ),
   workload: z.string(),
+  workloadHours: z.string(),
+  weeks: z.string(),
   assessment: z.string(),
   passingReq: z.string(),
   season: z.string(),
   startDate: z.date(),
   endDate: z.date(),
   lecturer: z.string(),
-  coordinator: z.string(),
-  administrator: z.string(),
-  categories: z.string(),
+  lecturerEmail: z.string().email("This is not a valid email address."),
+  coord: z.string(),
+  coordEmail: z.string().email("This is not a valid email address."),
+  admin: z.string(),
+  adminEmail: z.string().email("This is not a valid email address."),
+  categories: z.array(
+    z.object({
+      value: z.string(),
+    }),
+  ),
   price: z.string(),
   capstone: z.boolean(),
 });
@@ -73,17 +101,25 @@ export default function NewCourseForm() {
       slug: "",
       description: "",
       overview: "",
+      campus: "",
       format: "",
-      objectives: "",
-      texts: "",
+      lectures: [{ value: "" }],
+      objectives: [{ value: "" }],
+      requiredTexts: [{ value: "" }],
+      optionalTexts: [{ value: "" }],
       workload: "",
+      workloadHours: "",
+      weeks: "",
       assessment: "",
       passingReq: "",
       season: "",
       lecturer: "",
-      coordinator: "",
-      administrator: "",
-      categories: "",
+      lecturerEmail: "",
+      coord: "",
+      coordEmail: "",
+      admin: "",
+      adminEmail: "",
+      categories: [{ value: "" }],
       price: "",
       capstone: false,
     },
@@ -99,6 +135,51 @@ export default function NewCourseForm() {
     setGeneratedSlug(newSlug); // Update the generated slug in the state
     form.setValue("slug", newSlug); // Update the slug field in the form
   };
+
+  const {
+    fields: lectureFields,
+    append: addLecture,
+    remove: removeLecture,
+  } = useFieldArray({
+    name: "lectures",
+    control: form.control,
+  });
+
+  const {
+    fields: objectivesFields,
+    append: addObjective,
+    remove: removeObject,
+  } = useFieldArray({
+    name: "objectives",
+    control: form.control,
+  });
+
+  const {
+    fields: requiredTextsFields,
+    append: addRequiredText,
+    remove: removeRequiredText,
+  } = useFieldArray({
+    name: "requiredTexts",
+    control: form.control,
+  });
+
+  const {
+    fields: optionalTextsFields,
+    append: addOptionalText,
+    remove: removeOptionalText,
+  } = useFieldArray({
+    name: "optionalTexts",
+    control: form.control,
+  });
+
+  const {
+    fields: categoryFields,
+    append: addCategory,
+    remove: removeCategory,
+  } = useFieldArray({
+    name: "categories",
+    control: form.control,
+  });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const priceInCents = parseFloat(values.price.replace(/[^\d.]/g, "")) * 100;
@@ -179,157 +260,6 @@ export default function NewCourseForm() {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="code"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Course Code</FormLabel>
-              <FormControl>
-                <Input placeholder="THEO 101S" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="overview"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Overview<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormDescription>
-                Include all course relevant information and information that
-                does not fit into the other fields.
-              </FormDescription>
-              <FormControl>
-                <Textarea placeholder="Long description" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Description<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormDescription>
-                One to two sentences to describe the course.
-              </FormDescription>
-              <FormControl>
-                <Input placeholder="Short description" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="format"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Teaching Format & Location
-                <span className="text-red-500">*</span>
-              </FormLabel>
-              <FormDescription>
-                Provide information on how the course will be delivered.
-              </FormDescription>
-              <FormControl>
-                <Textarea
-                  placeholder="This course will be delivered in person..."
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="objectives"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Course Learning Objectives
-                <span className="text-red-500">*</span>
-              </FormLabel>
-              <FormControl>
-                <Textarea
-                  placeholder="Students that are successful in this course should be able to..."
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="texts"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Texts</FormLabel>
-              <FormDescription>
-                Provide optional and required reading texts.
-              </FormDescription>
-              <FormControl>
-                <Textarea
-                  placeholder="Students should purchase the following..."
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="assessment"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Assessments</FormLabel>
-              <FormDescription>
-                Describe what assessments will be conducted.
-              </FormDescription>
-              <FormControl>
-                <Textarea
-                  placeholder="To pass this course, students will take..."
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="passingReq"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Passing Requirements<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormDescription>
-                Describe what is required for a pass.
-              </FormDescription>
-              <FormControl>
-                <Textarea
-                  placeholder="To pass this course, students will need to pass 50% of..."
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
         <div className="flex gap-4">
           <FormField
             control={form.control}
@@ -337,7 +267,7 @@ export default function NewCourseForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  Course Season<span className="text-red-500">*</span>
+                  Season<span className="text-red-500">*</span>
                 </FormLabel>
                 <FormControl>
                   <Select onValueChange={field.onChange}>
@@ -363,7 +293,7 @@ export default function NewCourseForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  Course Start Date<span className="text-red-500">*</span>
+                  Start Date<span className="text-red-500">*</span>
                 </FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
@@ -405,7 +335,7 @@ export default function NewCourseForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>
-                  Course End Date<span className="text-red-500">*</span>
+                  End Date<span className="text-red-500">*</span>
                 </FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
@@ -441,6 +371,318 @@ export default function NewCourseForm() {
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="code"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Course Code</FormLabel>
+              <FormControl>
+                <Input placeholder="THEO 101S" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="overview"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                Overview<span className="text-red-500">*</span>
+              </FormLabel>
+              <FormDescription>
+                Include all course relevant information and information that
+                does not fit into the other fields.
+              </FormDescription>
+              <FormControl>
+                <Textarea placeholder="Long description" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="description"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                Description<span className="text-red-500">*</span>
+              </FormLabel>
+              <FormDescription>
+                One to two sentences to describe the course.
+              </FormDescription>
+              <FormControl>
+                <Input placeholder="Short description" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="campus"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                Campus<span className="text-red-500">*</span>
+              </FormLabel>
+              <FormDescription>
+                Add where the course will be taught.
+              </FormDescription>
+              <FormControl>
+                <Input placeholder="The Armoury Bookshop..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="format"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                Teaching Format
+                <span className="text-red-500">*</span>
+              </FormLabel>
+              <FormDescription>
+                Provide information on how the course will be delivered
+              </FormDescription>
+              <FormControl>
+                <Textarea
+                  placeholder="This course will be delivered in person..."
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div>
+          {objectivesFields.map((field, index) => (
+            <FormField
+              control={form.control}
+              key={field.id}
+              name={`objectives.${index}.value`}
+              render={({ field }) => (
+                <div>
+                  <FormItem>
+                    <FormLabel className={cn(index !== 0 && "sr-only")}>
+                      Objectives<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormDescription className={cn(index !== 0 && "sr-only")}>
+                      Add course objectives.
+                    </FormDescription>
+                    <FormControl>
+                      <div className="flex gap-2">
+                        <Input {...field} />
+                        {index !== 0 && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            className="my-auto"
+                            onClick={() => removeObject(index)}
+                          >
+                            Remove
+                          </Button>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                </div>
+              )}
+            />
+          ))}
+          <Button
+            type="button"
+            variant="outline"
+            className="mt-2"
+            onClick={() => addObjective({ value: "" })}
+          >
+            Add Objective
+          </Button>
+        </div>
+        <div>
+          {lectureFields.map((field, index) => (
+            <FormField
+              control={form.control}
+              key={field.id}
+              name={`lectures.${index}.value`}
+              render={({ field }) => (
+                <div>
+                  <FormItem>
+                    <FormLabel className={cn(index !== 0 && "sr-only")}>
+                      Lectures<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormDescription className={cn(index !== 0 && "sr-only")}>
+                      Add day and times for in-person lectures.
+                    </FormDescription>
+                    <FormControl>
+                      <div className="flex gap-2">
+                        <Input {...field} />
+                        {index !== 0 && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            className="my-auto"
+                            onClick={() => removeLecture(index)}
+                          >
+                            Remove
+                          </Button>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                </div>
+              )}
+            />
+          ))}
+          <Button
+            type="button"
+            variant="outline"
+            className="mt-2"
+            onClick={() => addLecture({ value: "" })}
+          >
+            Add Lecture
+          </Button>
+        </div>
+        <div>
+          {requiredTextsFields.map((field, index) => (
+            <FormField
+              control={form.control}
+              key={field.id}
+              name={`requiredTexts.${index}.value`}
+              render={({ field }) => (
+                <div>
+                  <FormItem>
+                    <FormLabel className={cn(index !== 0 && "sr-only")}>
+                      Required Texts<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormDescription className={cn(index !== 0 && "sr-only")}>
+                      Provide required reading texts.
+                    </FormDescription>
+                    <FormControl>
+                      <div className="flex gap-2">
+                        <Input {...field} />
+                        {index !== 0 && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            className="my-auto"
+                            onClick={() => removeRequiredText(index)}
+                          >
+                            Remove
+                          </Button>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                </div>
+              )}
+            />
+          ))}
+          <Button
+            type="button"
+            variant="outline"
+            className="mt-2"
+            onClick={() => addRequiredText({ value: "" })}
+          >
+            Add Text
+          </Button>
+        </div>
+        <div>
+          {optionalTextsFields.map((field, index) => (
+            <FormField
+              control={form.control}
+              key={field.id}
+              name={`optionalTexts.${index}.value`}
+              render={({ field }) => (
+                <div>
+                  <FormItem>
+                    <FormLabel className={cn(index !== 0 && "sr-only")}>
+                      Optional Texts<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormDescription className={cn(index !== 0 && "sr-only")}>
+                      Provide optional reading texts.
+                    </FormDescription>
+                    <FormControl>
+                      <div className="flex gap-2">
+                        <Input {...field} />
+                        {index !== 0 && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            className="my-auto"
+                            onClick={() => removeOptionalText(index)}
+                          >
+                            Remove
+                          </Button>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                </div>
+              )}
+            />
+          ))}
+          <Button
+            type="button"
+            variant="outline"
+            className="mt-2"
+            onClick={() => addOptionalText({ value: "" })}
+          >
+            Add Text
+          </Button>
+        </div>
+        <FormField
+          control={form.control}
+          name="assessment"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Assessments</FormLabel>
+              <FormDescription>
+                Describe what assessments will be conducted.
+              </FormDescription>
+              <FormControl>
+                <Textarea
+                  placeholder="To pass this course, students will take..."
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="passingReq"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                Passing Requirements<span className="text-red-500">*</span>
+              </FormLabel>
+              <FormDescription>
+                Describe what is required for a pass.
+              </FormDescription>
+              <FormControl>
+                <Textarea
+                  placeholder="To pass this course, students will need to pass 50% of..."
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
         <FormField
           control={form.control}
@@ -448,86 +690,179 @@ export default function NewCourseForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Workload</FormLabel>
+              <FormDescription>Desribe the workload.</FormDescription>
+              <FormControl>
+                <Textarea placeholder="Students should expect..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="workloadHours"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Workload Hours</FormLabel>
               <FormDescription>
-                Desribe the estimated workload per week in hours.
+                Estimate of hours per week required.
               </FormDescription>
               <FormControl>
-                <Textarea
-                  placeholder="Students are expected to work for 6 hours per week..."
-                  {...field}
-                />
+                <Input {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="weeks"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Weeks</FormLabel>
+              <FormDescription>
+                How many weeks will the course take place over?
+              </FormDescription>
+              <FormControl>
+                <Input {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
         <div className="flex gap-4">
-          <FormField
-            control={form.control}
-            name="lecturer"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>
-                  Lecturer<span className="text-red-500">*</span>
-                </FormLabel>
-                <FormControl>
-                  <Input placeholder="Lecturer Name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="lecturer"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Lecturer</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Lecturer Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="lecturerEmail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Lecturer Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Lecturer Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
-          <FormField
-            control={form.control}
-            name="coordinator"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Course Coordinator</FormLabel>
-                <FormControl>
-                  <Input placeholder="Course Coordinator Name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="coord"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Coordinator</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Course Coordinator Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="coordEmail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Coordinator Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Coordinator Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
 
-          <FormField
-            control={form.control}
-            name="administrator"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Course Administrator</FormLabel>
-                <FormControl>
-                  <Input placeholder="Course Administrator Name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
+          <div className="space-y-4">
+            <FormField
+              control={form.control}
+              name="admin"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Administrator</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Course Administrator Name" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="adminEmail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Administrator Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Administrator Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
         </div>
-        <FormField
-          control={form.control}
-          name="categories"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>
-                Categories<span className="text-red-500">*</span>
-              </FormLabel>
-              <FormDescription>
-                Separate additional categories with a comma.
-              </FormDescription>
-              <FormControl>
-                <Input
-                  type="text"
-                  placeholder="Category 1,Category 2"
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <div>
+          {categoryFields.map((field, index) => (
+            <FormField
+              control={form.control}
+              key={field.id}
+              name={`categories.${index}.value`}
+              render={({ field }) => (
+                <div>
+                  <FormItem>
+                    <FormLabel className={cn(index !== 0 && "sr-only")}>
+                      Categories<span className="text-red-500">*</span>
+                    </FormLabel>
+                    <FormDescription className={cn(index !== 0 && "sr-only")}>
+                      Add relevant categories to help users find this course.
+                    </FormDescription>
+                    <FormControl>
+                      <div className="flex gap-2">
+                        <Input {...field} />
+                        {index !== 0 && (
+                          <Button
+                            type="button"
+                            variant="outline"
+                            className="my-auto"
+                            onClick={() => removeCategory(index)}
+                          >
+                            Remove
+                          </Button>
+                        )}
+                      </div>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                </div>
+              )}
+            />
+          ))}
+          <Button
+            type="button"
+            variant="outline"
+            className="mt-2"
+            onClick={() => addCategory({ value: "" })}
+          >
+            Add Category
+          </Button>
+        </div>
         <FormField
           control={form.control}
           name="price"

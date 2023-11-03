@@ -20,13 +20,16 @@ model Course {
   id            Int      @id @default(autoincrement())
   createdAt     DateTime @default(now())
   slug          String   @unique
-  code          String? // Course code name
+  code          String // Course code name
   title         String
   overview      String // Long description
   description   String // Short description
+  campus        String // Which campus is the course delivered on?
   format        String // How will the content be delivered?
-  objectives    String // What will the student learn?
-  texts         String? // What texts will be used?
+  lectures      Json     @db.Json
+  objectives    Json     @db.Json
+  requiredTexts Json     @db.Json
+  optionalTexts Json     @db.Json
   workload      String? // How much time will the student need to spend on the course per week
   workloadHours String? // How much time will the student need to spend on the course per week
   assessment    String? // How will the student be assessed?
@@ -35,8 +38,7 @@ model Course {
   weeks         String? // How many weeks will the course run?
   startDate     DateTime
   endDate       DateTime
-  lectures      String? // What date and time will the lectures run?
-  categories    String
+  categories    Json     @db.Json
   thumbnail     String?
   price         String
   lecturer      String?
@@ -48,10 +50,10 @@ model Course {
   coord         String?
   coordImage    String?
   coordEmail    String?
-  users     User[]
-  Lesson    Lesson[]
-  published Boolean  @default(false)
-  capstone  Boolean  @default(false)
+  users         User[]
+  Lesson        Lesson[]
+  published     Boolean  @default(false)
+  capstone      Boolean  @default(false)
 }
 
 model Lesson {

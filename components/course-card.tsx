@@ -105,13 +105,12 @@ export default function CourseCard({
           <div className="xl:flex justify-between w-full">
             <div>
               <h1 className="text-2xl xl:text-4xl font-bold">{course.title}</h1>
-              <div className="flex gap-4 py-4">
-                {course.categories
-                  .split(",")
-                  .map((category: any, index: any) => (
-                    <div key={index} className="border px-4 py-1 rounded-2xl">
-                      {category.trim()}{" "}
-                    </div>
+              <div className="flex gap-4 pt-4">
+                {Array.isArray(course.categories) &&
+                  course.categories.map((data: any, index: any) => (
+                    <p key={index} className="border px-4 py-1 rounded-2xl">
+                      {data.value}
+                    </p>
                   ))}
               </div>
             </div>
@@ -206,26 +205,26 @@ export default function CourseCard({
                 <Dumbbell className="w-5 h-5 my-auto" />
                 Workload
               </h3>
-              {/* Need to replace with DB reference */}
-              <p className="flex gap-2">6 hours per week</p>{" "}
+              <p className="flex gap-2">
+                {course.workloadHours} hours per week
+              </p>
             </div>
             <div>
               <h3 className="font-semibold text-lg flex gap-2">
                 <ScrollText className="w-5 h-5 my-auto" />
                 Lectures
               </h3>
-              {/* Need to replace with DB reference */}
-              <p className="flex gap-2">Mondays 7:30PM - 9PM</p>{" "}
+              {Array.isArray(course.lectures) &&
+                course.lectures.map((data: any, index: any) => (
+                  <p key={index}>{data.value}</p>
+                ))}
             </div>
             <div>
               <h3 className="font-semibold text-lg flex gap-2">
                 <MapPin className="w-5 h-5 my-auto" />
                 Campus
               </h3>
-              {/* Need to replace with DB reference */}
-              <p className="flex gap-2">
-                The Armoury Bookshop, 1484A Logan Rd, Mt Gravatt 4122
-              </p>
+              <p className="flex gap-2">{course.campus}</p>
             </div>
           </div>
           <div className="space-y-4">
@@ -255,12 +254,10 @@ export default function CourseCard({
                   src={course.coordImage || "/logos/haddon-institute-logo.jpeg"}
                   width={150}
                   height={150}
-                  alt={course.courseCoord}
+                  alt={course.coord}
                 />
                 <div>
-                  <h4 className="font-semibold text-lg">
-                    {course.courseCoord}
-                  </h4>
+                  <h4 className="font-semibold text-lg">{course.coord}</h4>
                   <p>{course.coordEmail || "No email provided."}</p>
                 </div>
               </div>
@@ -272,12 +269,10 @@ export default function CourseCard({
                   src={course.adminImage || "/logos/haddon-institute-logo.jpeg"}
                   width={150}
                   height={150}
-                  alt={course.courseAdmin}
+                  alt={course.admin}
                 />
                 <div>
-                  <h4 className="font-semibold text-lg">
-                    {course.courseAdmin}
-                  </h4>
+                  <h4 className="font-semibold text-lg">{course.admin}</h4>
                   <p>{course.adminEmail || "No email provided."}</p>
                 </div>
               </div>
@@ -294,17 +289,37 @@ export default function CourseCard({
             <h2 className="font-bold text-xl">Content Overview</h2>
             <p className="whitespace-pre-line">{course.overview}</p>
           </div>
-          <div>
+          <div className="space-y-2">
             <h2 className="font-bold text-xl">Objectives</h2>
-            <p className="whitespace-pre-line">{course.objectives}</p>
+            <p>Students who are successful in this course should be able to:</p>
+            <ul className="space-y-2">
+              {Array.isArray(course.objectives) &&
+                course.objectives.map((data: any, index: any) => (
+                  <li key={index}>
+                    {index + 1}. {data.value}
+                  </li>
+                ))}
+            </ul>
           </div>
           <div>
             <h2 className="font-bold text-xl">Teaching Format</h2>
             <p className="whitespace-pre-line">{course.format}</p>
           </div>
           <div>
-            <h2 className="font-bold text-xl">Texts</h2>
-            <p className="whitespace-pre-line">{course.texts}</p>
+            <h2 className="font-bold text-xl">Required Texts</h2>
+
+            {Array.isArray(course.requiredTexts) &&
+              course.requiredTexts.map((data: any, index: any) => (
+                <p key={index}>{data.value}</p>
+              ))}
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Optional Texts</h2>
+
+            {Array.isArray(course.optionalTexts) &&
+              course.optionalTexts.map((data: any, index: any) => (
+                <p key={index}>{data.value}</p>
+              ))}
           </div>
           <div>
             <h2 className="font-bold text-xl">Workload</h2>

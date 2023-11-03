@@ -77,12 +77,40 @@ export default async function AdminCoursePage({ params }: any) {
             <p className="whitespace-pre-line">{data.format}</p>
           </div>
           <div>
-            <h2 className="font-bold text-xl">Objectives</h2>
-            <p className="whitespace-pre-line">{data.objectives}</p>
+            <h2 className="font-bold text-xl">Lecture Dates</h2>
+
+            {Array.isArray(data.lectures) &&
+              data.lectures.map((data: any, index) => (
+                <p key={index}>{data.value}</p>
+              ))}
           </div>
           <div>
-            <h2 className="font-bold text-xl">Texts</h2>
-            <p className="whitespace-pre-line">{data.texts}</p>
+            <h2 className="font-bold text-xl">Objectives</h2>
+            <p>Students who are successful in this course should be able to:</p>
+            <ul className="space-y-2">
+              {Array.isArray(data.objectives) &&
+                data.objectives.map((data: any, index) => (
+                  <li key={index}>
+                    {index + 1}. {data.value}
+                  </li>
+                ))}
+            </ul>
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Required Texts</h2>
+
+            {Array.isArray(data.requiredTexts) &&
+              data.requiredTexts.map((data: any, index) => (
+                <p key={index}>{data.value}</p>
+              ))}
+          </div>
+          <div>
+            <h2 className="font-bold text-xl">Optional Texts</h2>
+
+            {Array.isArray(data.optionalTexts) &&
+              data.optionalTexts.map((data: any, index) => (
+                <p key={index}>{data.value}</p>
+              ))}
           </div>
           <div>
             <h2 className="font-bold text-xl">Workload</h2>
@@ -96,15 +124,18 @@ export default async function AdminCoursePage({ params }: any) {
           <div className="flex gap-8">
             <div>
               <h3 className="font-semibold">Course Coordinator</h3>
-              <p>{data.courseCoord}</p>
+              <p>{data.coord}</p>
+              <p>{data.coordEmail}</p>
             </div>
             <div>
               <h3 className="font-semibold">Course Administrator</h3>
-              <p>{data.courseAdmin}</p>
+              <p>{data.admin}</p>
+              <p>{data.adminEmail}</p>
             </div>
             <div>
               <h3 className="font-semibold">Course Lecturer</h3>
               <p>{data.lecturer}</p>
+              <p>{data.lecturerEmail}</p>
             </div>
           </div>
           <div className="flex gap-4">
@@ -118,12 +149,14 @@ export default async function AdminCoursePage({ params }: any) {
             <p>{data.Lesson.length} lessons</p>
             <p>{data.users.length} user/s enrolled</p>
           </div>
+
           <div className="flex gap-4">
-            {data.categories.split(",").map((category, index) => (
-              <div key={index} className="border px-4 py-1 rounded-2xl">
-                {category.trim()}{" "}
-              </div>
-            ))}
+            {Array.isArray(data.categories) &&
+              data.categories.map((data: any, index) => (
+                <p key={index} className="border px-4 py-1 rounded-2xl">
+                  {data.value}
+                </p>
+              ))}
           </div>
         </div>
         <div className="flex gap-4">
