@@ -24,7 +24,7 @@ export default function PublishCourse({
   const [showCreateDialog, setShowCreateDialog] = useState<boolean>(false);
 
   async function onSubmit() {
-    const response = await fetch("/api/admin/publish-course", {
+    const response = await fetch("/api/dashboard/publish-course", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

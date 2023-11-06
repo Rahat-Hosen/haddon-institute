@@ -71,7 +71,7 @@ export default function NewLesson({
       courseId,
     };
 
-    const response = await fetch("/api/admin/new-lesson", {
+    const response = await fetch("/api/dashboard/new-lesson", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export default function NewLesson({
         description: "Lesson was successfully created!",
       });
 
-      router.push(`/admin/edit/${course}/${values.slug}`);
+      router.push(`/dashboard/edit/${course}/${values.slug}`);
     } else {
       toast({
         title: "Something went wrong.",

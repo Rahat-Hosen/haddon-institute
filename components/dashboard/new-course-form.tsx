@@ -189,7 +189,7 @@ export default function NewCourseForm() {
       price: `${priceInCents}`,
     };
 
-    const response = await fetch("/api/admin/new-course", {
+    const response = await fetch("/api/dashboard/new-course", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -203,7 +203,7 @@ export default function NewCourseForm() {
         description: "Course was successfully created!",
       });
 
-      router.push(`/admin/${values.slug}`);
+      router.push(`/dashboard/${values.slug}`);
     } else {
       toast({
         title: "Something went wrong.",
@@ -912,7 +912,10 @@ export default function NewCourseForm() {
           )}
         />
         <div className="flex justify-between">
-          <Link href={`/admin`} className={`flex gap-2 ${buttonVariants()}`}>
+          <Link
+            href={`/dashboard`}
+            className={`flex gap-2 ${buttonVariants()}`}
+          >
             <MoveLeft className="w-4 h-4" /> Course List
           </Link>
 

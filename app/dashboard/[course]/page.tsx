@@ -4,9 +4,9 @@ import { EditIcon, MoveLeft } from "lucide-react";
 import Link from "next/link";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
-import NewLesson from "@/components/admin/new-lesson";
-import PublishCourse from "@/components/admin/publish-course";
-import CoverImage from "@/components/admin/cover-image";
+import NewLesson from "@/components/dashboard/new-lesson";
+import PublishCourse from "@/components/dashboard/publish-course";
+import CoverImage from "@/components/dashboard/cover-image";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
 
@@ -58,7 +58,7 @@ export default async function AdminCoursePage({ params }: any) {
 
   return (
     <div className="px-24 space-y-8 mb-10">
-      <Link href={`/admin`} className={`flex gap-2 ${buttonVariants()}`}>
+      <Link href={`/dashboard`} className={`flex gap-2 ${buttonVariants()}`}>
         <MoveLeft className="w-4 h-4" /> Course List
       </Link>
       <div className="flex justify-between">
@@ -165,7 +165,7 @@ export default async function AdminCoursePage({ params }: any) {
           </div>
 
           <Link
-            href={`/admin/edit/${course}`}
+            href={`/dashboard/edit/${course}`}
             className={`flex gap-2 ${buttonVariants()}`}
           >
             <EditIcon className="w-5 h-5" /> Edit Course

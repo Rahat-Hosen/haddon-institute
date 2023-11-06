@@ -45,7 +45,7 @@ export default function CoverImage({
         setUploadedImageUrl(data.secure_url);
 
         try {
-          const response = await fetch("/api/admin/update-cover-image", {
+          const response = await fetch("/api/dashboard/update-cover-image", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

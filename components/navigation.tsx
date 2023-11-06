@@ -156,7 +156,7 @@ export default function Navigation() {
                     <ListItem href="/tuition" title="Tuition & Fees">
                       Understand the costs and fees associated with our courses.
                     </ListItem>
-                    <ListItem href="/partners" title="Outcomes">
+                    <ListItem href="/outcomes" title="Outcomes">
                       Learn more about what we hope you will get out of our
                       courses.
                     </ListItem>

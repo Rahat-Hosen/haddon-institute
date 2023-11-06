@@ -21,7 +21,7 @@ export default function Editor({ defaultBlocks, slug }: EditorProps) {
     try {
       setIsSaving(true);
 
-      const response = await fetch("/api/admin/edit-lesson", {
+      const response = await fetch("/api/dashboard/edit-lesson", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

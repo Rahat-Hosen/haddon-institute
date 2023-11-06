@@ -73,7 +73,7 @@ export default function Actions({
         <DropdownMenuContent side="right" align="start">
           <DropdownMenuItem>
             <Link
-              href={`/admin/edit/${course}/${slug}`}
+              href={`/dashboard/edit/${course}/${slug}`}
               className="flex cursor-pointer items-center"
             >
               <Edit className="w-4 h-4 mr-2" /> Edit

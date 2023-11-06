@@ -192,7 +192,7 @@ export default function EditCourseForm({ course }: { course: any }) {
       price: `${priceInCents}`,
     };
 
-    const response = await fetch("/api/admin/edit-course", {
+    const response = await fetch("/api/dashboard/edit-course", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -206,7 +206,7 @@ export default function EditCourseForm({ course }: { course: any }) {
         description: "Course was successfully updated.",
       });
 
-      router.push(`/admin/${values.slug}`);
+      router.push(`/dashboard/${values.slug}`);
     } else {
       toast({
         title: "Something went wrong.",
@@ -899,7 +899,7 @@ export default function EditCourseForm({ course }: { course: any }) {
         />
         <div className="flex justify-between">
           <Link
-            href={`/admin/${course.slug}`}
+            href={`/dashboard/${course.slug}`}
             className={`flex gap-2 ${buttonVariants()}`}
           >
             <MoveLeft className="w-4 h-4" /> Back to Course

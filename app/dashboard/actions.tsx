@@ -79,7 +79,7 @@ export default function Actions({
         <DropdownMenuContent side="right" align="start">
           <DropdownMenuItem>
             <Link
-              href={`/admin/${slug}`}
+              href={`/dashboard/${slug}`}
               className="flex cursor-pointer items-center"
             >
               <LayoutDashboard className="w-4 h-4 mr-2" /> Manage

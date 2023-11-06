@@ -1,12 +1,9 @@
-import { Button, buttonVariants } from "@/components/ui/button";
+import NewCourseForm from "@/components/dashboard/new-course-form";
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs";
-import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export default async function NewLesson({ params }: any) {
-  const { course } = params;
-
+export default async function NewCourse() {
   const { userId } = auth();
 
   const isAdmin =
@@ -17,10 +14,8 @@ export default async function NewLesson({ params }: any) {
   }
 
   return (
-    <div>
-      <Link href={`/admin/${course}`} className={buttonVariants()}>
-        Back to Course
-      </Link>
+    <div className="max-w-2xl mx-auto w-full">
+      <NewCourseForm />
     </div>
   );
 }

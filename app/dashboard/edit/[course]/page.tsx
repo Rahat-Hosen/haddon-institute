@@ -1,4 +1,4 @@
-import EditCourseForm from "@/components/admin/edit-course-form";
+import EditCourseForm from "@/components/dashboard/edit-course-form";
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs";
 import { redirect } from "next/navigation";

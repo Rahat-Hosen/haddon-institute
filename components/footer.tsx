@@ -134,6 +134,14 @@ export default function Footer() {
           <div className="flex justify-center">
             <ModeToggle />
           </div>
+          <div className="flex justify-center">
+            <Link
+              href="/dashboard"
+              className="hover:text-muted-foreground transition text-xs"
+            >
+              Administrator Dashboard
+            </Link>
+          </div>
         </div>
       </div>
       <div className="flex justify-between px-4 py-4">

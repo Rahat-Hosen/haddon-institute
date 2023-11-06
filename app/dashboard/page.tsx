@@ -39,7 +39,7 @@ export default async function Admin() {
       <div className="my-10">
         <div className="flex justify-between">
           <h2 className="font-bold text-2xl">Courses</h2>
-          <Link href="/admin/new-course" className={buttonVariants()}>
+          <Link href="/dashboard/new-course" className={buttonVariants()}>
             New Course
           </Link>
         </div>
