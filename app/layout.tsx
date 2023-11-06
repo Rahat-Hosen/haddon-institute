@@ -11,7 +11,7 @@ import Footer from "@/components/footer";
 export const metadata: Metadata = {
   title: "Haddon Institute",
   description:
-    "Raising up Christian leaders to redeem the devastation of many generations.",
+    "Our mission at the Haddon institute is to provide a Christ-centered education grounded in Reformed theology.",
 };
 
 export default function RootLayout({

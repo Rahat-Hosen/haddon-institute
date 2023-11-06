@@ -11,7 +11,7 @@ export default function Player({ playbackId }: Props) {
     <MuxPlayer
       thumbnailTime={5}
       playbackId={playbackId}
-      accent-color="#292524"
+      accent-color="#11271f"
       primary-color="#ffffff"
       // autoPlay
       className="w-full aspect-video"

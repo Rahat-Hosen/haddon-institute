@@ -1,8 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+
+import { Input } from "@/components/ui/input";
+import { toast } from "@/components/ui/use-toast";
+
+const formSchema = z.object({
+  email: z.string().email("Please enter a valid email address."),
+});
 
 const Newsletter = () => {
   return (
@@ -39,23 +57,65 @@ const FuzzyOverlay = () => {
 };
 
 const Content = () => {
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const formData = {
+      ...values,
+    };
+
+    const response = await fetch("/api/subscribe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      toast({
+        title: "Subscribed! 🎉",
+        description: "You have been added to our newsletter!",
+      });
+    } else {
+      toast({
+        title: "Something went wrong.",
+        description: "Please try again.",
+        variant: "destructive",
+      });
+    }
+  }
+
   return (
     <div className="relative grid py-40 place-content-center space-y-6 bg-[#b89c5f] p-8 rounded-2xl">
       <div className="z-10">
         <h2 className="font-semibold text-2xl">
           Stay up to date on promotions and upcoming courses.
         </h2>
-        <div className="space-y-2">
-          <h3 className="font-semibold text-sm">Email Address</h3>
-          <div className="flex">
-            <Input
-              type="text"
-              placeholder="paul@redeemed.church"
-              className="w-full mr-4"
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email Address</FormLabel>
+                  <FormControl>
+                    <Input placeholder="paul@redeemed.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-            <Button>Submit</Button>
-          </div>
-        </div>
+            <Button type="submit">Submit</Button>
+          </form>
+        </Form>
       </div>
     </div>
   );

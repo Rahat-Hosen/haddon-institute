@@ -30,6 +30,8 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Separator } from "./ui/separator";
+import Player from "./player";
+import AnimatedText from "./animated-text";
 
 export default function CourseCard({
   userId,
@@ -89,13 +91,7 @@ export default function CourseCard({
   return (
     <div className="px-4 my-10 max-w-7xl mx-auto">
       <div>
-        <Image
-          src={course.thumbnail || "/logos/haddon-institute-logo.jpeg"}
-          alt={course.title}
-          height={1000}
-          width={1000}
-          className="rounded-2xl brightness-75 shadow-2xl w-full h-[200px] xl:h-[500px] object-cover"
-        />
+        <Player playbackId={course.video} />
       </div>
       <div>
         <Link href="/courses" className={`flex gap-2 my-4 ${buttonVariants()}`}>
@@ -104,7 +100,10 @@ export default function CourseCard({
         <div className="space-y-8">
           <div className="xl:flex justify-between w-full">
             <div>
-              <h1 className="text-2xl xl:text-4xl font-bold">{course.title}</h1>
+              <AnimatedText
+                text={course.title}
+                className="text-2xl xl:text-4xl font-bold"
+              />
               <div className="flex gap-4 pt-4">
                 {Array.isArray(course.categories) &&
                   course.categories.map((data: any, index: any) => (
@@ -155,7 +154,7 @@ export default function CourseCard({
 
           <h2 className="font-bold text-2xl">Course Overview</h2>
 
-          <div className="grid grid-cols-2 gap-8 max-w-3xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl">
             <div>
               <h3 className="font-semibold text-lg flex gap-2">
                 <FileDigit className="w-5 h-5 my-auto" />
@@ -230,50 +229,57 @@ export default function CourseCard({
           <div className="space-y-4">
             <h2 className="font-bold text-2xl">People</h2>
 
-            <h3 className="font-bold text-xl">Lecturer</h3>
-            <div>
-              <div className="flex gap-4">
-                <Image
-                  src={
-                    course.lecturerImage || "/logos/haddon-institute-logo.jpeg"
-                  }
-                  width={150}
-                  height={150}
-                  alt={course.lecturer}
-                />
-                <div>
-                  <h4 className="font-semibold text-lg">{course.lecturer}</h4>
-                  <p>{course.lecturerEmail || "No email provided."}</p>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div>
+                <h3 className="font-bold text-xl">Lecturer</h3>
+                <div className="flex gap-4">
+                  {/* <Image
+                    src={
+                      course.lecturerImage ||
+                      "/logos/haddon-institute-logo.jpeg"
+                    }
+                    width={150}
+                    height={150}
+                    alt={course.lecturer}
+                  /> */}
+                  <div>
+                    <h4 className="font-semibold text-lg">{course.lecturer}</h4>
+                    <p>{course.lecturerEmail || "No email provided."}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <h3 className="font-bold text-xl">Coordinator</h3>
-            <div>
-              <div className="flex gap-4">
-                <Image
-                  src={course.coordImage || "/logos/haddon-institute-logo.jpeg"}
-                  width={150}
-                  height={150}
-                  alt={course.coord}
-                />
-                <div>
-                  <h4 className="font-semibold text-lg">{course.coord}</h4>
-                  <p>{course.coordEmail || "No email provided."}</p>
+              <div>
+                <h3 className="font-bold text-xl">Coordinator</h3>
+                <div className="flex gap-4">
+                  {/* <Image
+                    src={
+                      course.coordImage || "/logos/haddon-institute-logo.jpeg"
+                    }
+                    width={150}
+                    height={150}
+                    alt={course.coord}
+                  /> */}
+                  <div>
+                    <h4 className="font-semibold text-lg">{course.coord}</h4>
+                    <p>{course.coordEmail || "No email provided."}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <h3 className="font-bold text-xl">Administrator</h3>
-            <div>
-              <div className="flex gap-4">
-                <Image
-                  src={course.adminImage || "/logos/haddon-institute-logo.jpeg"}
-                  width={150}
-                  height={150}
-                  alt={course.admin}
-                />
-                <div>
-                  <h4 className="font-semibold text-lg">{course.admin}</h4>
-                  <p>{course.adminEmail || "No email provided."}</p>
+              <div>
+                <h3 className="font-bold text-xl">Administrator</h3>
+                <div className="flex gap-4">
+                  {/* <Image
+                    src={
+                      course.adminImage || "/logos/haddon-institute-logo.jpeg"
+                    }
+                    width={150}
+                    height={150}
+                    alt={course.admin}
+                  /> */}
+                  <div>
+                    <h4 className="font-semibold text-lg">{course.admin}</h4>
+                    <p>{course.adminEmail || "No email provided."}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -284,48 +290,66 @@ export default function CourseCard({
       <Separator className="my-10" />
 
       <div className="w-full">
-        <div className="space-y-4">
-          <div>
+        <div className="space-y-6">
+          <div className="space-y-2">
             <h2 className="font-bold text-xl">Content Overview</h2>
             <p className="whitespace-pre-line">{course.overview}</p>
           </div>
+
           <div className="space-y-2">
             <h2 className="font-bold text-xl">Objectives</h2>
             <p>Students who are successful in this course should be able to:</p>
-            <ul className="space-y-2">
+            <ol className="list-decimal ml-8">
               {Array.isArray(course.objectives) &&
                 course.objectives.map((data: any, index: any) => (
-                  <li key={index}>
-                    {index + 1}. {data.value}
-                  </li>
+                  <li key={index}>{data.value}</li>
                 ))}
-            </ul>
+            </ol>
           </div>
-          <div>
+
+          <div className="space-y-2">
             <h2 className="font-bold text-xl">Teaching Format</h2>
             <p className="whitespace-pre-line">{course.format}</p>
           </div>
-          <div>
-            <h2 className="font-bold text-xl">Required Texts</h2>
 
-            {Array.isArray(course.requiredTexts) &&
-              course.requiredTexts.map((data: any, index: any) => (
-                <p key={index}>{data.value}</p>
-              ))}
-          </div>
-          <div>
-            <h2 className="font-bold text-xl">Optional Texts</h2>
+          <div className="md:flex justify-between gap-8 space-y-6 md:space-y-0">
+            <div className="space-y-2">
+              <h2 className="font-bold text-xl">Required Texts</h2>
+              <p>
+                In order to achieve the learning outcomes of this course,
+                students must obtain the following texts:
+              </p>
 
-            {Array.isArray(course.optionalTexts) &&
-              course.optionalTexts.map((data: any, index: any) => (
-                <p key={index}>{data.value}</p>
-              ))}
+              <ul className="list-disc ml-8">
+                {Array.isArray(course.requiredTexts) &&
+                  course.requiredTexts.map((data: any, index: any) => (
+                    <li key={index}>{data.value}</li>
+                  ))}
+              </ul>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="font-bold text-xl">Optional Texts</h2>
+              <p>
+                Students are encouraged to explore the following supplementary
+                texts to enhance their learning:
+              </p>
+
+              <ul className="list-disc ml-8">
+                {Array.isArray(course.optionalTexts) &&
+                  course.optionalTexts.map((data: any, index: any) => (
+                    <li key={index}>{data.value}</li>
+                  ))}
+              </ul>
+            </div>
           </div>
-          <div>
+
+          <div className="space-y-2">
             <h2 className="font-bold text-xl">Workload</h2>
             <p className="whitespace-pre-line">{course.workload}</p>
           </div>
-          <div>
+
+          <div className="space-y-2">
             <h2 className="font-bold text-xl">Assessment</h2>
             <p className="whitespace-pre-line">{course.assessment}</p>
           </div>
@@ -337,7 +361,7 @@ export default function CourseCard({
             <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
               <AccordionTrigger>{lesson.title}</AccordionTrigger>
               <AccordionContent className="whitespace-pre-line">
-                {lesson.description.replace(/-/g, "•")}
+                {lesson.description}
               </AccordionContent>
             </AccordionItem>
           ))}

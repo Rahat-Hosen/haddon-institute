@@ -50,6 +50,7 @@ model Course {
   coord         String?
   coordImage    String?
   coordEmail    String?
+  video         String?
   users         User[]
   Lesson        Lesson[]
   published     Boolean  @default(false)
@@ -70,4 +71,10 @@ model Lesson {
   published   Boolean  @default(false)
 
   @@index([courseId])
+}
+
+model Newsletter {
+  email      String   @id @unique
+  createdAt  DateTime @default(now())
+  subscribed Boolean  @default(true)
 }
