@@ -13,6 +13,7 @@ export default function Outcomes() {
         text="Outcomes"
         className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
+      <p className="text-center">Page is currently under construction.</p>
     </div>
   );
 }

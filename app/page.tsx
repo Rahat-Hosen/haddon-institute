@@ -66,11 +66,9 @@ export default function Home() {
               <div>
                 <Link
                   href="/sign-up"
-                  className={`flex gap-2  bg-white text-black/90 hover:text-white ${buttonVariants(
-                    {
-                      size: "lg",
-                    },
-                  )}`}
+                  className={`flex gap-2 ${buttonVariants({
+                    size: "lg",
+                  })}`}
                 >
                   Join Now
                 </Link>
@@ -80,7 +78,7 @@ export default function Home() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto">
-        <div className="my-20 px-4">
+        <div className="my-10 px-4">
           <div className="flex justify-center">
             <div className="space-y-20">
               <div className="space-y-4">
@@ -92,81 +90,87 @@ export default function Home() {
               </div>
               <div>
                 <Informational />
-                <div className="flex justify-center my-10">
-                  <Button className="flex gap-2" variant="outline">
+                <div className="flex justify-center mt-20">
+                  <Link
+                    href="/mission-statement"
+                    className={`flex gap-2 ${buttonVariants({
+                      variant: "outline",
+                    })}`}
+                  >
                     Our Vision <MoveRight />
-                  </Button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div>
+        <div className="mb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 px-4">
-            <div className="space-y-4 rounded-2xl p-12 hover:bg-muted hover:shadow-2xl transition-all duration-300">
+            <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
               <BookOpen
                 strokeWidth={1}
                 width={40}
                 height={40}
                 className="text-muted-foreground"
               />
-              <h2 className="font-semibold text-xl">Feature 1</h2>
+              <h2 className="font-semibold text-xl">Deeper Understanding</h2>
               <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                alias fuga et ab magnam aliquam commodi ratione vel fugit
-                nesciunt voluptatibus.
+                Explore and gain profound insights into the Bible and the
+                Christian faith with our in-depth courses.
               </p>
             </div>
-            <div className="space-y-4 rounded-2xl p-12 hover:bg-muted hover:shadow-2xl transition-all duration-300">
+            <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
               <Globe2
                 strokeWidth={1}
                 width={40}
                 height={40}
                 className="text-muted-foreground"
               />
-              <h2 className="font-semibold text-xl">Feature 1</h2>
+              <h2 className="font-semibold text-xl">Online Access</h2>
               <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                alias fuga et ab magnam aliquam commodi ratione vel fugit
-                nesciunt voluptatibus.
+                Access course content and valuable resources from any corner of
+                the world through our online platform.
               </p>
             </div>
-            <div className="space-y-4 rounded-2xl p-12 hover:bg-muted hover:shadow-2xl transition-all duration-300">
+            <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
               <GraduationCap
                 strokeWidth={1}
                 width={40}
                 height={40}
                 className="text-muted-foreground"
               />
-              <h2 className="font-semibold text-xl">Feature 1</h2>
+              <h2 className="font-semibold text-xl">Expository Teaching</h2>
               <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                alias fuga et ab magnam aliquam commodi ratione vel fugit
-                nesciunt voluptatibus.
+                Benefit from a diverse range of instructors and educators who
+                offer a comprehensive and engaging learning experience.
               </p>
             </div>
-            <div className="space-y-4 rounded-2xl p-12 hover:bg-muted hover:shadow-2xl transition-all duration-300">
+            <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
               <Stars
                 strokeWidth={1}
                 width={40}
                 height={40}
                 className="text-muted-foreground"
               />
-              <h2 className="font-semibold text-xl">Feature 1</h2>
+              <h2 className="font-semibold text-xl">Accreditation</h2>
               <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima
-                alias fuga et ab magnam aliquam commodi ratione vel fugit
-                nesciunt voluptatibus.
+                Stay tuned for upcoming accreditation details, ensuring the
+                quality and recognition of our programs in the near future.
               </p>
             </div>
           </div>
-          <div className="flex justify-center my-10">
-            <Button className="flex gap-2" variant="outline">
+          <div className="flex justify-center mt-20">
+            <Link
+              href="/outcomes"
+              className={`flex gap-2 ${buttonVariants({
+                variant: "outline",
+              })}`}
+            >
               Our Goals <MoveRight />
-            </Button>
+            </Link>
           </div>
         </div>
-        <div className="px-4 xl:px-24">
+        <div className="px-4 xl:px-24 my-20">
           <div className="flex justify-center gap-12 rounded-2xl p-4">
             <div className="hidden dark:flex my-auto">
               <Image
@@ -201,10 +205,15 @@ export default function Home() {
               />
             </div>
           </div>
-          <div className="flex justify-center my-10">
-            <Button className="flex gap-2" variant="outline">
+          <div className="flex justify-center mt-20">
+            <Link
+              href="/partners"
+              className={`flex gap-2 ${buttonVariants({
+                variant: "outline",
+              })}`}
+            >
               Our Oaks <MoveRight />
-            </Button>
+            </Link>
           </div>
         </div>
         <div className="mx-auto text-center my-20 py-28 px-4 xl:px-24 bg-muted rounded-2xl">
@@ -218,116 +227,41 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="px-4 xl:px-24 my-20">
-          <div className="space-y-20">
-            <div className="space-y-4">
-              <Separator className="max-w-sm mx-auto bg-gradient-to-r dark:from-muted-foreground from-30% dark:to-muted" />
-              <h2 className="text-center text-muted-foreground uppercase font-semibold tracking-wider text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-b dark:from-muted-foreground from-40% dark:to-muted">
-                Building Legacy & empowering leaders
-              </h2>
-              <Separator className="max-w-sm mx-auto bg-gradient-to-l dark:from-muted-foreground from-30% dark:to-muted" />
-            </div>
-            <div className="flex justify-center">
-              <div className="space-y-20">
-                <div className="lg:flex gap-8 justify-between max-w-[90rem] space-y-8 lg:space-y-0">
-                  <div className="space-y-4 my-auto">
-                    <h3 className="font-semibold text-4xl xl:text-6xl ">
-                      Heading Title Goes Here
-                    </h3>
-                    <ul className="space-y-4 text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>
-                    </ul>
-                  </div>
-                  <Image
-                    src="/priscilla-du-preez-ANJS-bw1Sgo-unsplash.jpg"
-                    height={500}
-                    width={500}
-                    alt="Image"
-                    className="rounded-2xl hover:shadow-2xl transition-all duration-300 h-250 lg:h-500"
-                  />
-                </div>
-                <div className="lg:flex gap-8 justify-between max-w-[90rem] space-y-8 lg:space-y-0">
-                  <Image
-                    src="/sixteen-miles-out-KSaLhgex8F0-unsplash.jpg"
-                    height={500}
-                    width={500}
-                    alt="Image"
-                    className="rounded-2xl hover:shadow-2xl transition-all duration-300 h-250 lg:h-500"
-                  />
-                  <div className="space-y-4 my-auto">
-                    <h3 className="font-semibold text-4xl xl:text-6xl">
-                      Heading Title Goes Here
-                    </h3>
-                    <ul className="space-y-4 text-black dark:text-transparent bg-clip-text bg-gradient-to-bl dark:from-muted-foreground from-40% dark:to-muted ">
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>{" "}
-                      <li className="flex gap-4 xl:text-2xl">
-                        <CheckCircle className="w-4 h-4 xl:w-6 xl:h-6 text-green-500 my-auto" />
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center my-10">
-            <Button className="flex gap-2" variant="outline">
-              Learn More <MoveRight />
-            </Button>
-          </div>
-        </div>
+
         <Separator className="my-10" />
-        <div className="pb-20 pt-10 px-4 xl:px-24 flex">
-          <div className="w-1/5">
-            <h1 className="font-semibold text-2xl">Trusted by</h1>
-          </div>
-          <div className="w-4/5">
-            <div>hrbc</div>
-            <div>hrbc gold coast</div>
-            <div>Ascension Church</div>
-            <div>others</div>
+
+        <div className="px-4 md:flex md:justify-between my-20 space-y-6 md:space-y-0">
+          <h1 className="font-semibold text-2xl my-auto">Trusted by</h1>
+
+          <div className="md:flex gap-8 space-y-4 md:space-y-0">
+            <Image
+              src="/logos/hoperb.webp"
+              width={100}
+              height={100}
+              alt="Hope Reformed Baptist Church"
+              className="p-1 rounded-md bg-[#b92024] aspect-square"
+            />
+            <Image
+              src="/logos/hope-church.webp"
+              width={240}
+              height={100}
+              alt="Hope Reformed Baptist Church - Gold Coast"
+              className="bg-muted-foreground p-1 rounded-md dark:bg-[#0a0a0a]"
+            />
+            <Image
+              src="/logos/reformation.webp"
+              width={100}
+              height={100}
+              alt="Reformation Baptist Church"
+              className="rounded-md aspect-square"
+            />
+            <Image
+              src="/logos/ascension-church.webp"
+              width={140}
+              height={100}
+              alt="Ascension Church"
+              className="rounded-md"
+            />
           </div>
         </div>
         <Newsletter />

@@ -8,46 +8,54 @@ export default function Informational() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
       <div className="relative">
-        <Tilt
-          glareEnable
-          glarePosition="bottom"
-          glareMaxOpacity={0.3}
-          tiltMaxAngleX={2}
-          tiltMaxAngleY={2}
-        >
-          <Link href="/collections/latest-arrivals">
+        <Tilt tiltMaxAngleX={2} tiltMaxAngleY={2}>
+          <Link href="/mission-statement">
             <Image
-              src="/sixteen-miles-out-KSaLhgex8F0-unsplash.jpg"
-              height={500}
-              width={500}
+              src="/emil-widlund-xrbbXIXAWY0-unsplash.jpg"
+              height={1000}
+              width={1000}
               alt="Image"
-              className="rounded-2xl hover:shadow-2xl transition-all duration-300 object-cover brightness-75"
+              className="h-[650px] w-[500px] rounded-2xl hover:shadow-2xl transition-all duration-300 object-cover brightness-75"
             />
-            <p className="absolute bottom-4 left-4 right-4 font-bold text-2xl drop-shadow-2xl p-12 backdrop-blur-xl">
-              Latest Arrivals
-            </p>
+            <div className="absolute bottom-4 left-4 right-4">
+              <div className="relative drop-shadow-2xl backdrop-blur-xl p-8">
+                <div className="space-y-2">
+                  <h3 className="text-center font-semibold text-2xl text-white">
+                    Engaging Culture
+                  </h3>
+                  <p className="text-center dark:text-muted-foreground text-muted">
+                    Equipping the next generation with a culture engaging
+                    mindset for a purposeful future.
+                  </p>
+                </div>
+              </div>
+            </div>
           </Link>
         </Tilt>
       </div>
       <div className="relative">
-        <Tilt
-          glareEnable
-          glarePosition="bottom"
-          glareMaxOpacity={0.3}
-          tiltMaxAngleX={2}
-          tiltMaxAngleY={2}
-        >
-          <Link href="/collections/featured-titles">
+        <Tilt tiltMaxAngleX={2} tiltMaxAngleY={2}>
+          <Link href="/mission-statement">
             <Image
-              src="/sixteen-miles-out-KSaLhgex8F0-unsplash.jpg"
-              height={500}
-              width={500}
+              src="/priscilla-du-preez-Wbyfby353Ag-unsplash.jpg"
+              height={1000}
+              width={1000}
               alt="Image"
-              className="rounded-2xl hover:shadow-2xl transition-all duration-300  object-cover brightness-75"
+              className="h-[650px] w-[500px] rounded-2xl hover:shadow-2xl transition-all duration-300 object-cover brightness-75"
             />
-            <p className="absolute bottom-4 left-4 right-4 font-bold text-2xl drop-shadow-2xl p-12 backdrop-blur-xl">
-              Featured Titles
-            </p>
+            <div className="absolute bottom-4 left-4 right-4">
+              <div className="relative drop-shadow-2xl backdrop-blur-xl p-8">
+                <div className="space-y-2">
+                  <h3 className="text-center font-semibold text-2xl text-white">
+                    Legacy Building
+                  </h3>
+                  <p className="text-center dark:text-muted-foreground text-muted">
+                    Building a legacy by cultivating young leaders and visionary
+                    thinkers, passing on wisdom and faith.
+                  </p>
+                </div>
+              </div>
+            </div>
           </Link>
         </Tilt>
       </div>

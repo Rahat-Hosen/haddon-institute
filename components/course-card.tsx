@@ -353,19 +353,31 @@ export default function CourseCard({
             <h2 className="font-bold text-xl">Assessment</h2>
             <p className="whitespace-pre-line">{course.assessment}</p>
           </div>
+          <div className="w-full space-y-2">
+            <h2 className="font-bold text-xl">Lessons</h2>
+            <p>
+              Explore the lesson overviews to get an idea of what the course
+              will cover.
+            </p>
+
+            <Accordion type="single" collapsible className="w-full space-y-2">
+              {course.Lesson.map((lesson: any) => (
+                <AccordionItem
+                  key={lesson.id}
+                  value={`item-${lesson.id}`}
+                  className="border-b py-1 hover:bg-muted rounded-md transition"
+                >
+                  <AccordionTrigger className="font-semibold">
+                    {lesson.title}
+                  </AccordionTrigger>
+                  <AccordionContent className="whitespace-pre-line">
+                    {lesson.description}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </div>
-      </div>
-      <div className="w-full">
-        <Accordion type="single" collapsible className="w-full">
-          {course.Lesson.map((lesson: any) => (
-            <AccordionItem key={lesson.id} value={`item-${lesson.id}`}>
-              <AccordionTrigger>{lesson.title}</AccordionTrigger>
-              <AccordionContent className="whitespace-pre-line">
-                {lesson.description}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
       </div>
     </div>
   );
