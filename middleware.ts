@@ -19,6 +19,16 @@ export default authMiddleware({
     "/our-beliefs",
     "/terms-of-service",
     "/privacy-policy",
+    "/mission-statement",
+    "/leadership",
+    "/partners",
+    "/scholarships",
+    "/unsubscribe",
+    "/tuition",
+    "/outcomes",
+    "/application-requirements",
+    "/events",
+    "/giving",
   ],
 });
 
