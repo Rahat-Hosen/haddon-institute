@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils";
 import Navigation from "@/components/navigation";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
+import Script from "next/script";
+import { UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } from "@/lib/umami";
 
 export const metadata: Metadata = {
   title: "Haddon Institute",
@@ -32,6 +34,7 @@ export default function RootLayout({
             <Toaster />
           </ThemeProvider>
         </body>
+        <Script src={UMAMI_SCRIPT_URL} data-website-id={UMAMI_WEBSITE_ID} />
       </html>
     </ClerkProvider>
   );
