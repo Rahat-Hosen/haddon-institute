@@ -24,7 +24,7 @@ export default function Home() {
           height={2000}
           width={2000}
           alt="Background Image"
-          className="object-cover h-[60vh] w-full brightness-50 border border-b-2"
+          className="object-cover h-[80vh] w-full brightness-50 border border-b-2"
         />
         <div className="absolute place-items-center inset-0 flex justify-center">
           <div className="md:flex px-4 max-w-7xl mx-auto">
@@ -34,6 +34,7 @@ export default function Home() {
                 width={750}
                 height={750}
                 alt="Haddon Institute Logo"
+                style={{ maxWidth: "100%", height: "auto" }}
               />
             </div>
             <div className="md:w-1/2 my-auto space-y-6">
@@ -55,12 +56,9 @@ export default function Home() {
                   text="Haddon Institute"
                   className="text-3xl lg:text-4xl xl:text-6xl tracking-tighter font-bold text-white"
                 />
-                <p className="font-semibold text-2xl text-white">
-                  It&apos;s time to take Christian education seriously.
-                </p>
                 <p className="text-stone-400 max-w-lg font-semibold">
                   Our mission at the Haddon institute is to provide a
-                  Christ-centered education grounded in Reformed theology.
+                  Christ-centered education grounded in the Reformed tradition.
                 </p>
               </div>
               <div>
