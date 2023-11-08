@@ -87,7 +87,7 @@ export default function Home() {
 
         <Player playbackId="5ta2qsCFRlUy01ruxgcfAP6009UlUQVXUj3MOcosx00wjQ" />
 
-        <h3 className="text-center font-semibold text-lg my-4 underline">
+        <h3 className="text-center font-semibold text-xl my-4">
           Course starting 4th of December 2023
         </h3>
         <p className="text-muted-foreground text-sm text-center">
@@ -96,7 +96,7 @@ export default function Home() {
           in today&apos;s world.
         </p>
 
-        <div className="flex justify-center mt-10">
+        <div className="flex justify-center mt-20">
           <Link
             href="/event/informational-evening-theo-101s"
             className={`flex gap-2 ${buttonVariants({
@@ -108,7 +108,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto mt-20">
         <div className="my-10 px-4">
           <div className="flex justify-center">
             <div className="space-y-20">

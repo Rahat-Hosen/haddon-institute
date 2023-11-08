@@ -58,25 +58,29 @@ export default function Footer() {
           </div>
           <div className="flex justify-center gap-8">
             <a
-              href="https://facebook.com"
+              href="https://www.facebook.com/people/Haddon-Institute/61552824826527/"
+              target="_blank"
               className="hover:text-muted-foreground transition"
             >
               <Facebook />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/haddoninstitute"
+              target="_blank"
               className="hover:text-muted-foreground transition"
             >
               <Instagram />
             </a>
             <a
-              href="https://twitter.com"
+              href="https://twitter.com/haddon-institute"
+              target="_blank"
               className="hover:text-muted-foreground transition"
             >
               <FaXTwitter className="w-6 h-6" />
             </a>
             <a
               href="https://youtube.com"
+              target="_blank"
               className="hover:text-muted-foreground transition"
             >
               <Youtube />

@@ -1,8 +1,7 @@
-import AttendEventForm from "@/components/events/attend-event-form";
 import prisma from "@/lib/prisma";
 import { redirect } from "next/navigation";
 
-export default async function EventPage({ params }: any) {
+export default async function Biography({ params }: any) {
   const slug = params;
 
   const course = await prisma.course.findUnique({
@@ -15,9 +14,5 @@ export default async function EventPage({ params }: any) {
     redirect("/not-found");
   }
 
-  return (
-    <div>
-      <AttendEventForm />
-    </div>
-  );
+  return <div></div>;
 }
