@@ -1,6 +1,6 @@
 "use client";
 
-import MuxUploader, { MuxUploaderDrop } from "@mux/mux-uploader-react";
+import MuxUploader from "@mux/mux-uploader-react";
 
 import React, { useEffect, useState } from "react";
 
@@ -36,7 +36,6 @@ export default function UploadVideo({ slug }: { slug: any }) {
         body: JSON.stringify({ uploadId: uploadId, slug: slug }),
       });
       if (response.ok) {
-        // toast success
       } else {
         console.error("Failed to fetch playback ID");
       }
@@ -46,12 +45,10 @@ export default function UploadVideo({ slug }: { slug: any }) {
   }
 
   return (
-    <MuxUploaderDrop mux-uploader="uploader">
-      <MuxUploader
-        endpoint={uploadUrl}
-        id="uploader"
-        onSuccess={getPlaybackId}
-      ></MuxUploader>
-    </MuxUploaderDrop>
+    <MuxUploader
+      endpoint={uploadUrl}
+      id="uploader"
+      onSuccess={getPlaybackId}
+    ></MuxUploader>
   );
 }
