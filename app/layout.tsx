@@ -25,7 +25,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body className={cn(GeistSans.className)}>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Navigation />
             {children}
             <div className="bg-muted mt-10">

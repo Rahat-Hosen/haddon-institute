@@ -84,7 +84,7 @@ export default function Home() {
               <div className="space-y-4">
                 <Separator className="max-w-sm mx-auto bg-gradient-to-r dark:from-muted-foreground from-30% dark:to-muted" />
                 <h2 className="text-center text-muted-foreground uppercase font-semibold tracking-wider text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-b dark:from-muted-foreground from-40% dark:to-muted">
-                  Beckoning the future & forging runways
+                  #wearehaddon
                 </h2>
                 <Separator className="max-w-sm mx-auto bg-gradient-to-l dark:from-muted-foreground from-30% dark:to-muted" />
               </div>
