@@ -2,7 +2,7 @@ import AnimatedText from "@/components/animated-text";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import prisma from "@/lib/prisma";
-import { BadgePlus, EyeIcon, GraduationCap, Heart, Zap } from "lucide-react";
+import { EyeIcon, GraduationCap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -15,6 +15,9 @@ export const metadata: Metadata = {
 
 export default async function Courses() {
   const courses = await prisma.course.findMany({
+    where: {
+      published: true,
+    },
     include: {
       users: true,
     },

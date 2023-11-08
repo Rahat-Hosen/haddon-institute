@@ -8,7 +8,7 @@ export default function Informational() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
       <div className="relative">
-        <Tilt tiltMaxAngleX={2} tiltMaxAngleY={2}>
+        <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4}>
           <Link href="/mission-statement">
             <Image
               src="/emil-widlund-xrbbXIXAWY0-unsplash.jpg"
@@ -18,7 +18,7 @@ export default function Informational() {
               className="h-[650px] w-[500px] rounded-2xl hover:shadow-2xl transition-all duration-300 object-cover brightness-75"
             />
             <div className="absolute bottom-4 left-4 right-4">
-              <div className="relative drop-shadow-2xl backdrop-blur-xl p-8">
+              <div className="relative drop-shadow-2xl backdrop-blur-xl rounded-2xl p-8">
                 <div className="space-y-2">
                   <h3 className="text-center font-semibold text-2xl text-white">
                     Engaging Culture
@@ -34,7 +34,7 @@ export default function Informational() {
         </Tilt>
       </div>
       <div className="relative">
-        <Tilt tiltMaxAngleX={2} tiltMaxAngleY={2}>
+        <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4}>
           <Link href="/mission-statement">
             <Image
               src="/priscilla-du-preez-Wbyfby353Ag-unsplash.jpg"
@@ -44,7 +44,7 @@ export default function Informational() {
               className="h-[650px] w-[500px] rounded-2xl hover:shadow-2xl transition-all duration-300 object-cover brightness-75"
             />
             <div className="absolute bottom-4 left-4 right-4">
-              <div className="relative drop-shadow-2xl backdrop-blur-xl p-8">
+              <div className="relative drop-shadow-2xl backdrop-blur-xl rounded-2xl p-8">
                 <div className="space-y-2">
                   <h3 className="text-center font-semibold text-2xl text-white">
                     Legacy Building

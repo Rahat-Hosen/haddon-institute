@@ -102,7 +102,7 @@ export default function CourseCard({
             <div>
               <AnimatedText
                 text={course.title}
-                className="text-2xl xl:text-4xl font-bold"
+                className="text-2xl xl:text-4xl font-bold tracking-tighter"
               />
               <div className="flex gap-4 pt-4">
                 {Array.isArray(course.categories) &&
@@ -365,7 +365,7 @@ export default function CourseCard({
                 <AccordionItem
                   key={lesson.id}
                   value={`item-${lesson.id}`}
-                  className="border-b py-1 hover:bg-muted rounded-md transition"
+                  className="border py-2 px-6 hover:bg-muted rounded-md transition"
                 >
                   <AccordionTrigger className="font-semibold">
                     {lesson.title}
