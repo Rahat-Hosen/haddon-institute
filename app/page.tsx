@@ -77,20 +77,41 @@ export default function Home() {
       </div>
 
       <div className="max-w-7xl mx-auto my-10 px-4">
+        <div className="space-y-4 my-10">
+          <Separator className="max-w-sm mx-auto bg-gradient-to-r dark:from-muted-foreground from-30% dark:to-muted" />
+          <h2 className="text-center uppercase font-semibold tracking-wider text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-b dark:from-muted-foreground from-40% dark:to-muted">
+            #wearehaddon
+          </h2>
+          <Separator className="max-w-sm mx-auto bg-gradient-to-l dark:from-muted-foreground from-30% dark:to-muted" />
+        </div>
+
         <Player playbackId="5ta2qsCFRlUy01ruxgcfAP6009UlUQVXUj3MOcosx00wjQ" />
+
+        <h3 className="text-center font-semibold text-lg my-4 underline">
+          Course starting 4th of December 2023
+        </h3>
+        <p className="text-muted-foreground text-sm text-center">
+          This 6-week course aims to provide students with a comprehensive
+          overview of the theology of the Christian worldview, and its relevance
+          in today&apos;s world.
+        </p>
+
+        <div className="flex justify-center mt-10">
+          <Link
+            href="/event/informational-evening-theo-101s"
+            className={`flex gap-2 ${buttonVariants({
+              variant: "outline",
+            })}`}
+          >
+            Learn More <MoveRight />
+          </Link>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto">
         <div className="my-10 px-4">
           <div className="flex justify-center">
             <div className="space-y-20">
-              <div className="space-y-4">
-                <Separator className="max-w-sm mx-auto bg-gradient-to-r dark:from-muted-foreground from-30% dark:to-muted" />
-                <h2 className="text-center uppercase font-semibold tracking-wider text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-b dark:from-muted-foreground from-40% dark:to-muted">
-                  #wearehaddon
-                </h2>
-                <Separator className="max-w-sm mx-auto bg-gradient-to-l dark:from-muted-foreground from-30% dark:to-muted" />
-              </div>
               <div>
                 <Informational />
                 <div className="flex justify-center mt-20">
@@ -164,14 +185,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mx-auto text-center my-20 py-28 px-4 xl:px-24 bg-muted rounded-2xl">
-          <p className="text-2xl italic font-semibold text-black dark:text-transparent bg-clip-text bg-gradient-to-r dark:from-white from-40% dark:to-muted to-100%">
-            &quot;Wisdom gives strength to the wise man more than ten rulers who
-            are in a city.&quot;
-          </p>
-          <div className="flex justify-center items-center mt-6 space-x-3">
-            <div className="flex items-center">
-              <cite>— Ecclesiastes 7:19 ESV</cite>
+        <div className="px-4">
+          <div className="mx-auto text-center my-20 py-28 px-24 bg-muted rounded-2xl">
+            <p className="text-2xl italic font-semibold text-black dark:text-transparent bg-clip-text bg-gradient-to-r dark:from-white from-40% dark:to-muted to-100%">
+              &quot;Wisdom gives strength to the wise man more than ten rulers
+              who are in a city.&quot;
+            </p>
+            <div className="flex justify-center items-center mt-6 space-x-3">
+              <div className="flex items-center">
+                <cite>— Ecclesiastes 7:19 ESV</cite>
+              </div>
             </div>
           </div>
         </div>
@@ -257,7 +280,9 @@ export default function Home() {
             />
           </div>
         </div> */}
-        <Newsletter />
+        <div className="px-4">
+          <Newsletter />
+        </div>
       </div>
     </main>
   );

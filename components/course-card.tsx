@@ -221,7 +221,7 @@ export default function CourseCard({
             <div>
               <h3 className="font-semibold text-lg flex gap-2">
                 <MapPin className="w-5 h-5 my-auto" />
-                Campus
+                Location
               </h3>
               <p className="flex gap-2">{course.campus}</p>
             </div>

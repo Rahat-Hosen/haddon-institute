@@ -52,7 +52,7 @@ export default function Navigation() {
   return (
     <>
       <div
-        className={`lg:hidden flex justify-between px-4 backdrop-blur-3xl bg-muted/50 transition-all duration-300 fixed bottom-0 w-full z-50`}
+        className={`xl:hidden flex justify-between px-4 backdrop-blur-3xl bg-muted/50 transition-all duration-300 fixed bottom-0 w-full z-50`}
       >
         <Link href="/">
           <Image
@@ -74,7 +74,7 @@ export default function Navigation() {
       </div>
 
       <div
-        className={`hidden lg:flex px-24 py-3 w-full sticky top-0 z-50  ${
+        className={`hidden xl:flex px-24 py-3 w-full sticky top-0 z-50  ${
           hasShadow
             ? "shadow-2xl backdrop-blur-3xl bg-muted/50 transition-all duration-300"
             : "shadow-none bg-none transition-all duration-300"
@@ -127,7 +127,7 @@ export default function Navigation() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
 
-              <NavigationMenuItem>
+              {/* <NavigationMenuItem>
                 <NavigationMenuTrigger>Admissions</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-1 p-4 md:w-[400px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]">
@@ -162,7 +162,7 @@ export default function Navigation() {
                     </ListItem>
                   </ul>
                 </NavigationMenuContent>
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
               <NavigationMenuItem>
                 <Link href="/courses" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
@@ -184,13 +184,13 @@ export default function Navigation() {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              <NavigationMenuItem>
+              {/* <NavigationMenuItem>
                 <Link href="/giving" legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                     Giving
                   </NavigationMenuLink>
                 </Link>
-              </NavigationMenuItem>
+              </NavigationMenuItem> */}
             </NavigationMenuList>
           </NavigationMenu>
           <Separator className="max-w-sm mx-auto my-2" />
@@ -221,7 +221,7 @@ export default function Navigation() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden fixed w-full bottom-16 z-50 backdrop-blur-3xl bg-muted/50 rounded-t-[24px]"
+            className="xl:hidden fixed w-full bottom-16 z-50 backdrop-blur-3xl bg-muted/50 rounded-t-[24px]"
           >
             <div className="block py-4 hover:bg-accent transition rounded-t-[24px] px-6">
               <Accordion type="single" collapsible className="w-full">
@@ -272,7 +272,7 @@ export default function Navigation() {
               </Accordion>
             </div>
             <Separator />
-            <div className="block py-4 hover:bg-accent transition rounded-t-[24px] px-6">
+            {/* <div className="block py-4 hover:bg-accent transition rounded-t-[24px] px-6">
               <Accordion type="single" collapsible className="w-full">
                 <AccordionItem value="item-1">
                   <AccordionTrigger>Admissions</AccordionTrigger>
@@ -320,7 +320,7 @@ export default function Navigation() {
                 </AccordionItem>
               </Accordion>
             </div>
-            <Separator />
+            <Separator /> */}
             <Link
               href="/courses"
               className="block py-4 hover:bg-accent transition "
@@ -341,7 +341,7 @@ export default function Navigation() {
               </div>
             </Link>
             <Separator />
-            <Link
+            {/* <Link
               href="/giving"
               className="block py-4 hover:bg-accent transition"
               onClick={toggleMobileMenu}
@@ -350,7 +350,7 @@ export default function Navigation() {
                 Giving <ArrowRight />
               </div>
             </Link>
-            <Separator />
+            <Separator /> */}
             <Link
               href="/events"
               className="block py-4 hover:bg-accent transition"
