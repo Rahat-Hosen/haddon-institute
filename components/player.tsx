@@ -14,7 +14,7 @@ export default function Player({ playbackId }: Props) {
       accent-color="#11271f"
       primary-color="#ffffff"
       // autoPlay
-      className="w-full aspect-video"
+      className="w-full aspect-video shadow-2xl"
     />
   );
 }

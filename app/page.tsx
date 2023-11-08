@@ -1,12 +1,12 @@
 import AnimatedText from "@/components/animated-text";
 import Informational from "@/components/informational";
 import Newsletter from "@/components/newsletter";
+import Player from "@/components/player";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import {
   BookOpen,
-  CheckCircle,
   Globe2,
   GraduationCap,
   MoveRight,
@@ -75,13 +75,18 @@ export default function Home() {
           </div>
         </div>
       </div>
+
+      <div className="max-w-7xl mx-auto my-10 px-4">
+        <Player playbackId="5ta2qsCFRlUy01ruxgcfAP6009UlUQVXUj3MOcosx00wjQ" />
+      </div>
+
       <div className="max-w-7xl mx-auto">
         <div className="my-10 px-4">
           <div className="flex justify-center">
             <div className="space-y-20">
               <div className="space-y-4">
                 <Separator className="max-w-sm mx-auto bg-gradient-to-r dark:from-muted-foreground from-30% dark:to-muted" />
-                <h2 className="text-center text-muted-foreground uppercase font-semibold tracking-wider text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-b dark:from-muted-foreground from-40% dark:to-muted">
+                <h2 className="text-center uppercase font-semibold tracking-wider text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-b dark:from-muted-foreground from-40% dark:to-muted">
                   #wearehaddon
                 </h2>
                 <Separator className="max-w-sm mx-auto bg-gradient-to-l dark:from-muted-foreground from-30% dark:to-muted" />
@@ -157,17 +162,20 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="flex justify-center mt-20">
-            <Link
-              href="/outcomes"
-              className={`flex gap-2 ${buttonVariants({
-                variant: "outline",
-              })}`}
-            >
-              Our Goals <MoveRight />
-            </Link>
+        </div>
+
+        <div className="mx-auto text-center my-20 py-28 px-4 xl:px-24 bg-muted rounded-2xl">
+          <p className="text-2xl italic font-semibold text-black dark:text-transparent bg-clip-text bg-gradient-to-r dark:from-white from-40% dark:to-muted to-100%">
+            &quot;Wisdom gives strength to the wise man more than ten rulers who
+            are in a city.&quot;
+          </p>
+          <div className="flex justify-center items-center mt-6 space-x-3">
+            <div className="flex items-center">
+              <cite>— Ecclesiastes 7:19 ESV</cite>
+            </div>
           </div>
         </div>
+
         <div className="px-4 xl:px-24 my-20">
           <div className="flex justify-center gap-12 rounded-2xl p-4">
             <div className="hidden dark:flex my-auto">
@@ -214,21 +222,8 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className="mx-auto text-center my-20 py-28 px-4 xl:px-24 bg-muted rounded-2xl">
-          <p className="text-2xl italic font-semibold text-black dark:text-transparent bg-clip-text bg-gradient-to-r dark:from-white from-40% dark:to-muted to-100%">
-            &quot;Wisdom gives strength to the wise man more than ten rulers who
-            are in a city.&quot;
-          </p>
-          <div className="flex justify-center items-center mt-6 space-x-3">
-            <div className="flex items-center">
-              <cite>— Ecclesiastes 7:19 ESV</cite>
-            </div>
-          </div>
-        </div>
 
-        <Separator className="my-10" />
-
-        <div className="px-4 md:flex md:justify-between my-20 space-y-6 md:space-y-0">
+        {/* <div className="px-4 md:flex md:justify-between my-20 space-y-6 md:space-y-0">
           <h1 className="font-semibold text-2xl my-auto">Trusted by</h1>
 
           <div className="md:flex gap-8 space-y-4 md:space-y-0">
@@ -261,7 +256,7 @@ export default function Home() {
               className="rounded-md"
             />
           </div>
-        </div>
+        </div> */}
         <Newsletter />
       </div>
     </main>

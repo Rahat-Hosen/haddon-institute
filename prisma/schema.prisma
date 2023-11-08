@@ -78,3 +78,25 @@ model Newsletter {
   createdAt  DateTime @default(now())
   subscribed Boolean  @default(true)
 }
+
+model Events {
+  id          Int           @id @default(autoincrement())
+  createdAt   DateTime      @default(now())
+  slug        String        @unique
+  title       String
+  description String
+  published   Boolean       @default(false)
+  EventSignup EventSignup[]
+}
+
+model EventSignup {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String
+  email     String
+  phone     String
+  events    Events   @relation(fields: [eventId], references: [id])
+  eventId   Int
+
+  @@index([eventId])
+}
