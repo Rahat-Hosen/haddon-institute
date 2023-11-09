@@ -899,7 +899,7 @@ export default function EditCourseForm({ course }: { course: any }) {
         />
         <div className="flex justify-between">
           <Link
-            href={`/dashboard/${course.slug}`}
+            href={`/dashboard/course/${course.slug}`}
             className={`flex gap-2 ${buttonVariants()}`}
           >
             <MoveLeft className="w-4 h-4" /> Back to Course

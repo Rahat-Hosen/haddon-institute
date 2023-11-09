@@ -1,30 +1,24 @@
-import { Button, buttonVariants } from "@/components/ui/button";
+import AnimatedText from "@/components/animated-text";
 import prisma from "@/lib/prisma";
+import { Metadata } from "next";
 import Link from "next/link";
-import { columns } from "./columns";
-import { DataTable } from "./data-table";
-import { auth } from "@clerk/nextjs";
-import { redirect } from "next/navigation";
-import type { Metadata } from "next";
+import { columns as courseColumns } from "./course-columns";
+import { columns as eventColumns } from "./event-columns";
+import { DataTable as CourseDataTable } from "./course-data-table";
+import { DataTable as EventDataTable } from "./event-data-table";
+import { Separator } from "@/components/ui/separator";
+import { PlusIcon } from "lucide-react";
+import { buttonVariants } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Dashboard | Haddon Institute",
+  title: "Administrator Dashboard | Haddon Institute",
   description: "Administrator Dashboard for Haddon Institute.",
 };
 
-export default async function Admin() {
-  const { userId } = auth();
-
-  const isAdmin =
-    userId && (await prisma.user.findUnique({ where: { id: userId } }))?.admin;
-
-  if (!isAdmin) {
-    redirect("/unauthorised");
-  }
-
+export default async function AdministratorDashboard() {
   const courses = await prisma.course.findMany();
 
-  const tableData = courses.map((course: any) => {
+  const courseData = courses.map((course: any) => {
     return {
       id: course.id,
       slug: course.slug,
@@ -34,16 +28,51 @@ export default async function Admin() {
     };
   });
 
+  const events = await prisma.events.findMany();
+
+  const eventData = events.map((event: any) => {
+    return {
+      id: event.id,
+      slug: event.slug,
+      title: event.title,
+      published: event.published,
+    };
+  });
+
   return (
-    <div className="px-24">
-      <div className="my-10">
-        <div className="flex justify-between">
-          <h2 className="font-bold text-2xl">Courses</h2>
-          <Link href="/dashboard/new-course" className={buttonVariants()}>
-            New Course
-          </Link>
+    <div className="flex justify-center items-center h-[80vh] w-full">
+      <div className="space-y-8">
+        <AnimatedText
+          text="Administrator Dashboard"
+          className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
+        />
+        <div className="space-y-4">
+          <div>
+            <div className="flex justify-between">
+              <h2 className="font-bold text-2xl">Courses</h2>
+              <Link
+                href={`/dashboard/new-course`}
+                className={`flex gap-2 ${buttonVariants({ size: "sm" })}`}
+              >
+                <PlusIcon className="w-5 h-5" /> New Course
+              </Link>
+            </div>
+            <CourseDataTable columns={courseColumns} data={courseData} />
+          </div>
+          <Separator />
+          <div>
+            <div className="flex justify-between">
+              <h2 className="font-bold text-2xl">Events</h2>
+              <Link
+                href={`/dashboard/new-event`}
+                className={`flex gap-2 ${buttonVariants({ size: "sm" })}`}
+              >
+                <PlusIcon className="w-5 h-5" /> New Event
+              </Link>
+            </div>
+            <EventDataTable columns={eventColumns} data={eventData} />
+          </div>
         </div>
-        <DataTable columns={columns} data={tableData} />
       </div>
     </div>
   );

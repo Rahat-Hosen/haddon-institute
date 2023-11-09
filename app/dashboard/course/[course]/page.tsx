@@ -23,11 +23,7 @@ export default async function AdminCoursePage({ params }: any) {
   const { course } = params;
 
   if (!course) {
-    return (
-      <>
-        <p>Course not found</p>
-      </>
-    );
+    redirect("/not-found");
   }
 
   const data = await prisma.course.findUnique({
@@ -38,21 +34,17 @@ export default async function AdminCoursePage({ params }: any) {
   });
 
   if (!data) {
-    return (
-      <>
-        <p>Course not found</p>
-      </>
-    );
+    redirect("/not-found");
   }
 
   const tableData = data.Lesson.map((lesson: any) => {
     return {
       id: lesson.id,
-      slug: lesson.slug,
+      course: course,
       title: lesson.title,
       video: lesson.video,
       published: lesson.published,
-      course: course,
+      lesson: lesson.slug,
     };
   });
 
@@ -165,10 +157,10 @@ export default async function AdminCoursePage({ params }: any) {
           </div>
 
           <Link
-            href={`/dashboard/edit/${course}`}
+            href={`/dashboard/course/${course}/edit`}
             className={`flex gap-2 ${buttonVariants()}`}
           >
-            <EditIcon className="w-5 h-5" /> Edit Course
+            <EditIcon className="w-5 h-5" /> Edit
           </Link>
         </div>
       </div>

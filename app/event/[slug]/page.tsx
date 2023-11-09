@@ -1,8 +1,9 @@
 import AnimatedText from "@/components/animated-text";
 import AttendEventForm from "@/components/events/attend-event-form";
 import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import prisma from "@/lib/prisma";
-import { MoveLeft, MoveRight } from "lucide-react";
+import { FileText, MapPin, MoveLeft, MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -24,10 +25,46 @@ export default async function EventPage({ params }: any) {
     <div className="space-y-8 px-4 my-20">
       <AnimatedText
         text={event.title}
-        className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
+        className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
       <div className="max-w-2xl mx-auto space-y-8">
-        <p>{event.description}</p>
+        <div className="space-y-2">
+          <h3 className="font-semibold text-lg flex gap-2">
+            <FileText className="w-5 h-5 my-auto" />
+            Overview
+          </h3>
+          <p>
+            Join us on Monday the 20th of November to learn more about our first
+            course - Theology for Today&apos;s World.
+          </p>
+          <p>
+            This 6-week course aims to provide students with a comprehensive
+            overview of the theology of the Christian worldview, and its
+            relevance in today&apos;s world. This 6-week course is delivered
+            fully in-person in a lecture format, with the sixth lecture
+            incorporating an interactive Q&A session.
+          </p>
+          <p>
+            From 6:45PM, join us in person at the Garden City Library to enjoy
+            some light refreshments and learn more about the course.{" "}
+          </p>
+        </div>
+        <div className="space-y-2">
+          <h3 className="font-semibold text-lg flex gap-2 mb-2">
+            <MapPin className="w-5 h-5 my-auto" />
+            Location
+          </h3>
+          <a
+            href="https://maps.app.goo.gl/GofDmFbEyQ8ibCHm6"
+            target="_blank"
+            className="hover:text-muted-foreground underline hover:no-underline"
+          >
+            Garden City Library - Level R4, Corner Logan and Kessels Road, Upper
+            Mount Gravatt QLD 4122 (access via top-level yellow carpark).
+          </a>
+        </div>
+
+        <Separator />
 
         <div className="space-y-4">
           <h2 className="font-bold text-2xl">Attend Event</h2>
@@ -57,7 +94,7 @@ export default async function EventPage({ params }: any) {
             width={750}
             height={750}
             alt="Informational Evening"
-            className="w-full h-auto"
+            className="w-full h-auto rounded-2xl"
           />
         </div>
         <div className="w-full sm:max-w-full">
@@ -66,7 +103,7 @@ export default async function EventPage({ params }: any) {
             width={750}
             height={750}
             alt="Informational Evening"
-            className="w-full h-auto"
+            className="w-full h-auto rounded-2xl"
           />
         </div>
       </div>

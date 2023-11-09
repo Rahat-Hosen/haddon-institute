@@ -44,7 +44,7 @@ export default async function EditLesson({ params }: any) {
   return (
     <div className="px-24 space-y-8">
       <Link
-        href={`/dashboard/${data.course.slug}`}
+        href={`/dashboard/course/${data.course.slug}`}
         className={`flex gap-2 ${buttonVariants()}`}
       >
         <MoveLeft className="w-4 h-4" />

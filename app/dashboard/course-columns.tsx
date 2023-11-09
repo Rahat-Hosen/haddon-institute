@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import Actions from "./actions";
+import Actions from "./course-actions";
 import { Check, X } from "lucide-react";
 
 export type Data = {
@@ -15,7 +15,7 @@ export type Data = {
 export const columns: ColumnDef<Data>[] = [
   {
     accessorKey: "title",
-    header: "Lesson",
+    header: "Course",
   },
 
   {

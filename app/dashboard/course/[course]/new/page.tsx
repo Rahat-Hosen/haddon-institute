@@ -5,7 +5,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function NewLesson({ params }: any) {
-  const { course } = params;
+  const { slug } = params;
 
   const { userId } = auth();
 
@@ -18,7 +18,7 @@ export default async function NewLesson({ params }: any) {
 
   return (
     <div>
-      <Link href={`/dashboard/${course}`} className={buttonVariants()}>
+      <Link href={`/dashboard/course/${slug}`} className={buttonVariants()}>
         Back to Course
       </Link>
     </div>

@@ -73,7 +73,7 @@ export default function Actions({
         <DropdownMenuContent side="right" align="start">
           <DropdownMenuItem>
             <Link
-              href={`/dashboard/edit/${course}/${slug}`}
+              href={`/dashboard/course/${course}/edit/${slug}`}
               className="flex cursor-pointer items-center"
             >
               <Edit className="w-4 h-4 mr-2" /> Edit
@@ -117,7 +117,7 @@ export default function Actions({
                     router.refresh();
                   });
                   toast({
-                    title: "Lesson deleted.",
+                    title: "Lesson Deleted",
                     description: `${title} was successfully deleted.`,
                     variant: "default",
                   });

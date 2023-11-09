@@ -121,7 +121,7 @@ export default function AttendEventForm({ id }: { id: any }) {
               <Loader2 className="animate-spin" />
             </Button>
           ) : (
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Attend</Button>
           )}
         </form>
       </Form>
