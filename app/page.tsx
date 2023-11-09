@@ -90,13 +90,18 @@ export default function Home() {
         <h3 className="text-center font-semibold text-xl my-4">
           Course starting 4th of December 2023
         </h3>
-        <p className="text-muted-foreground text-sm text-center">
+        <p className="text-muted-foreground text-center">
           This 6-week course aims to provide students with a comprehensive
           overview of the theology of the Christian worldview, and its relevance
           in today&apos;s world.
         </p>
 
-        <div className="flex justify-center mt-20">
+        <p className="text-muted-foreground text-center">
+          From 6:45PM, join us in person at the Garden City Library to enjoy
+          some light refreshments and learn more about the course.
+        </p>
+
+        <div className="flex justify-center mt-20 gap-4">
           <Link
             href="/event/informational-evening-theo-101s"
             className={`flex gap-2 ${buttonVariants({
@@ -104,6 +109,14 @@ export default function Home() {
             })}`}
           >
             Learn More <MoveRight />
+          </Link>
+          <Link
+            href="/course/theology-for-today-s-world"
+            className={`flex gap-2 ${buttonVariants({
+              variant: "outline",
+            })}`}
+          >
+            Course Page <MoveRight />
           </Link>
         </div>
       </div>

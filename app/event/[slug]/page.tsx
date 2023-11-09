@@ -1,7 +1,10 @@
 import AnimatedText from "@/components/animated-text";
 import AttendEventForm from "@/components/events/attend-event-form";
+import { buttonVariants } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
+import { MoveLeft, MoveRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function EventPage({ params }: any) {
@@ -25,7 +28,27 @@ export default async function EventPage({ params }: any) {
       />
       <div className="max-w-2xl mx-auto space-y-8">
         <p>{event.description}</p>
-        <AttendEventForm id={event.id} />
+
+        <div className="space-y-4">
+          <h2 className="font-bold text-2xl">Attend Event</h2>
+
+          <AttendEventForm id={event.id} />
+        </div>
+        <div className="flex justify-between gap-4">
+          <Link
+            href="/events"
+            className={`flex gap-2 my-4 ${buttonVariants()}`}
+          >
+            <MoveLeft /> Events
+          </Link>
+          <Link
+            href="/course/theology-for-today-s-world"
+            className={`flex gap-2 my-4 ${buttonVariants()}`}
+          >
+            View Course
+            <MoveRight />
+          </Link>
+        </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="w-full sm:max-w-full">

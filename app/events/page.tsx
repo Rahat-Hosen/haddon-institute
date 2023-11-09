@@ -14,7 +14,10 @@ export default function Events() {
         text="Events"
         className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
-      <EventCalendar />
+      <p className="text-center">View our upcoming events and open nights!</p>
+      <div className="max-w-7xl mx-auto rounded-2xl bg-muted p-8">
+        <EventCalendar />
+      </div>
     </div>
   );
 }
