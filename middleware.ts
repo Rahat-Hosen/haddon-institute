@@ -28,6 +28,7 @@ export default authMiddleware({
     "/outcomes",
     "/application-requirements",
     "/events",
+    "/(event)(.*)",
     "/giving",
   ],
 });
