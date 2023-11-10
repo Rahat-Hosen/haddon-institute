@@ -53,8 +53,17 @@ export default async function Courses() {
                 {course.code}
               </Badge>
               <Badge className="absolute top-8 right-8 z-10">
-                {course.startDate.toDateString()} -{" "}
-                {course.endDate.toDateString()}
+                {new Date(course.startDate).toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}{" "}
+                -{" "}
+                {new Date(course.endDate).toLocaleDateString("en-US", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}
               </Badge>
               <div className="absolute inset-0 rounded-[48px]">
                 <Image
@@ -75,7 +84,7 @@ export default async function Courses() {
                 </Button>
               </div>
               <Badge className="absolute bottom-8 right-8 z-10">
-                Lectured by {course.lecturer}
+                Taught by {course.lecturer}
               </Badge>
             </Link>
           </div>
