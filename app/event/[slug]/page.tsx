@@ -93,7 +93,7 @@ export default async function EventPage({ params }: any) {
             src="/400432987_122110604636094160_4219764007611338982_n.jpg"
             width={750}
             height={750}
-            alt="Informational Evening"
+            alt="Information Evening"
             className="w-full h-auto rounded-2xl"
           />
         </div>
@@ -102,7 +102,7 @@ export default async function EventPage({ params }: any) {
             src="/400539316_122110604618094160_7120956564591306414_n.jpg"
             width={750}
             height={750}
-            alt="Informational Evening"
+            alt="Information Evening"
             className="w-full h-auto rounded-2xl"
           />
         </div>
