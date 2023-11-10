@@ -12,10 +12,10 @@ export default function EventCalendar() {
       timeZone="Australia/Brisbane"
       events={[
         {
-          title: "Information Evening - Theo 101S",
+          title: "Info Night - Theo 101S",
           start: "2023-11-20T18:45:00",
           end: "2023-11-20T20:00:00",
-          url: "/event/information-evening-theo-101s",
+          url: "/event/info-night-theo-101s",
         },
         {
           title: "THEO 101S",

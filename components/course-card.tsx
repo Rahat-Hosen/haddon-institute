@@ -229,53 +229,56 @@ export default function CourseCard({
           <div className="space-y-4">
             <h2 className="font-bold text-2xl">People</h2>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div>
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+              <div className="space-y-4">
                 <h3 className="font-bold text-xl">Course Lecturer</h3>
                 <div className="flex gap-4">
-                  {/* <Image
+                  <Image
                     src={
                       course.lecturerImage ||
                       "/logos/haddon-institute-logo.jpeg"
                     }
-                    width={150}
-                    height={150}
+                    width={100}
+                    height={100}
                     alt={course.lecturer}
-                  /> */}
+                    className="rounded-md object-cover aspect-square"
+                  />
                   <div>
                     <h4 className="font-semibold text-lg">{course.lecturer}</h4>
                     <p>{course.lecturerEmail || "No email provided."}</p>
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="space-y-4">
                 <h3 className="font-bold text-xl">Course Coordinator</h3>
                 <div className="flex gap-4">
-                  {/* <Image
+                  <Image
                     src={
                       course.coordImage || "/logos/haddon-institute-logo.jpeg"
                     }
-                    width={150}
-                    height={150}
+                    width={100}
+                    height={100}
                     alt={course.coord}
-                  /> */}
+                    className="rounded-md"
+                  />
                   <div>
                     <h4 className="font-semibold text-lg">{course.coord}</h4>
                     <p>{course.coordEmail || "No email provided."}</p>
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="space-y-4">
                 <h3 className="font-bold text-xl">Course Administrator</h3>
                 <div className="flex gap-4">
-                  {/* <Image
+                  <Image
                     src={
                       course.adminImage || "/logos/haddon-institute-logo.jpeg"
                     }
-                    width={150}
-                    height={150}
+                    width={100}
+                    height={100}
                     alt={course.admin}
-                  /> */}
+                    className="rounded-md"
+                  />
                   <div>
                     <h4 className="font-semibold text-lg">{course.admin}</h4>
                     <p>{course.adminEmail || "No email provided."}</p>

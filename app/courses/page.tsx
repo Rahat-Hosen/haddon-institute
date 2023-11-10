@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
+import { utcToZonedTime } from "date-fns-tz";
+import { format } from "date-fns";
 
 export const metadata: Metadata = {
   title: "Courses | Haddon Institute",
@@ -22,6 +24,8 @@ export default async function Courses() {
       users: true,
     },
   });
+
+  const timezone = "Australia/Brisbane";
 
   return (
     <div className="space-y-8 px-4 my-10 xl:px-24 xl:my-20 max-w-7xl mx-auto">
@@ -53,17 +57,15 @@ export default async function Courses() {
                 {course.code}
               </Badge>
               <Badge className="absolute top-8 right-8 z-10">
-                {new Date(course.startDate).toLocaleDateString("en-US", {
-                  day: "numeric",
-                  month: "short",
-                  year: "numeric",
-                })}{" "}
+                {format(
+                  utcToZonedTime(new Date(course.startDate), timezone),
+                  "MMMM d, yyyy",
+                )}{" "}
                 -{" "}
-                {new Date(course.endDate).toLocaleDateString("en-US", {
-                  day: "numeric",
-                  month: "short",
-                  year: "numeric",
-                })}
+                {format(
+                  utcToZonedTime(new Date(course.endDate), timezone),
+                  "MMMM d, yyyy",
+                )}
               </Badge>
               <div className="absolute inset-0 rounded-[48px]">
                 <Image

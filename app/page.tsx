@@ -103,7 +103,7 @@ export default function Home() {
 
         <div className="flex justify-center mt-20 gap-4">
           <Link
-            href="/event/information-evening-theo-101s"
+            href="/event/info-night-theo-101s"
             className={`flex gap-2 ${buttonVariants({
               variant: "outline",
             })}`}

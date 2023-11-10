@@ -30,7 +30,7 @@ export default async function Events() {
         text="Events"
         className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
-      <p className="text-center">View our upcoming events and open nights!</p>
+      <p className="text-center">View our upcoming events and info nights!</p>
 
       {events.map((event) => (
         <div key={event.id} className="relative w-full h-[300px]">
@@ -38,7 +38,7 @@ export default async function Events() {
             <Badge className="absolute top-8 right-8 z-10">
               {format(
                 utcToZonedTime(new Date(event.date), timezone),
-                "MMMM d, yyyy, h:mm aaaa",
+                "cccc MMMM d yyyy, h:mm bbb",
               )}
             </Badge>
             <div className="absolute inset-0 rounded-[48px]">
@@ -49,12 +49,10 @@ export default async function Events() {
                 className="rounded-2xl brightness-50 shadow-2xl w-full object-cover"
               />
             </div>
-            <div className="absolute z-10 space-y-4 bottom-8 left-8 right-8">
+            <div className="absolute z-10 space-y-12 bottom-8 left-8 right-8">
               <h1 className="text-2xl tracking-tighter font-semibold leading-none text-white">
                 {event.title}
               </h1>
-              <p className="text-gray-200">{event.description}</p>
-
               <Button className="flex gap-2">
                 <EyeIcon className="w-4 h-4" /> View Event
               </Button>
