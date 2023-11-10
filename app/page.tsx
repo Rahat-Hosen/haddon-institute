@@ -97,8 +97,8 @@ export default function Home() {
         </p>
 
         <p className="text-muted-foreground text-center">
-          From 6:45PM, join us in person at the Garden City Library to enjoy
-          some light refreshments and learn more about the course.
+          Join us on Monday evening 20th November in person to learn more about
+          our very first course.
         </p>
 
         <div className="flex justify-center mt-20 gap-4">

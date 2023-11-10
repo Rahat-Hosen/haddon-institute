@@ -92,7 +92,7 @@ export default function Footer() {
               2023 Haddon Institute. All rights reserved.
             </div>
             <p>
-              Part of the{" "}
+              Part of{" "}
               <HoverCard>
                 <HoverCardTrigger className="font-medium hover:underline underline-offset-4 cursor-pointer">
                   61 Oaks Group
@@ -153,7 +153,7 @@ export default function Footer() {
           href="https://www.google.com/maps/place/The+Armoury+Bookshop/@-27.5382402,153.0773563,17z/data=!3m1!4b1!4m6!3m5!1s0x6b915b9f7aaab563:0xc457c329bdff0092!8m2!3d-27.5382402!4d153.0799312!16s%2Fg%2F11kqny3txl?hl=en&entry=ttu"
           className="text-sm text-muted-foreground hover:underline"
         >
-          1484A Logan Rd, Mount Gravatt East QLD 4122
+          Mount Gravatt East QLD 4122
         </a>
         <a
           href="tel:0468557200"

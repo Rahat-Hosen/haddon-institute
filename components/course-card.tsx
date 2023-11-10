@@ -231,7 +231,7 @@ export default function CourseCard({
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div>
-                <h3 className="font-bold text-xl">Lecturer</h3>
+                <h3 className="font-bold text-xl">Course Lecturer</h3>
                 <div className="flex gap-4">
                   {/* <Image
                     src={
@@ -249,7 +249,7 @@ export default function CourseCard({
                 </div>
               </div>
               <div>
-                <h3 className="font-bold text-xl">Coordinator</h3>
+                <h3 className="font-bold text-xl">Course Coordinator</h3>
                 <div className="flex gap-4">
                   {/* <Image
                     src={
@@ -266,7 +266,7 @@ export default function CourseCard({
                 </div>
               </div>
               <div>
-                <h3 className="font-bold text-xl">Administrator</h3>
+                <h3 className="font-bold text-xl">Course Administrator</h3>
                 <div className="flex gap-4">
                   {/* <Image
                     src={
@@ -314,10 +314,13 @@ export default function CourseCard({
 
           <div className="md:flex justify-between gap-8 space-y-6 md:space-y-0">
             <div className="space-y-2">
-              <h2 className="font-bold text-xl">Required Texts</h2>
+              <h2 className="font-bold text-xl">
+                Required Text{course.requiredTexts.length === 1 ? "" : "s"}
+              </h2>
               <p>
                 In order to achieve the learning outcomes of this course,
-                students must obtain the following texts:
+                students must obtain the following text
+                {course.requiredTexts.length === 1 ? "" : "s"}:
               </p>
 
               <ul className="list-disc ml-8">
@@ -329,10 +332,13 @@ export default function CourseCard({
             </div>
 
             <div className="space-y-2">
-              <h2 className="font-bold text-xl">Optional Texts</h2>
+              <h2 className="font-bold text-xl">
+                Optional Text{course.optionalTexts.length === 1 ? "" : "s"}
+              </h2>
               <p>
                 Students are encouraged to explore the following supplementary
-                texts to enhance their learning:
+                text{course.optionalTexts.length === 1 ? "" : "s"} to enhance
+                their learning:
               </p>
 
               <ul className="list-disc ml-8">

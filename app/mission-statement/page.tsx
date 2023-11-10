@@ -1,5 +1,5 @@
 import AnimatedText from "@/components/animated-text";
-import { BookOpen, Globe2, GraduationCap } from "lucide-react";
+import { Globe2, GraduationCap } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 

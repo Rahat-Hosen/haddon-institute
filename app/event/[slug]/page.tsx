@@ -34,8 +34,8 @@ export default async function EventPage({ params }: any) {
             Overview
           </h3>
           <p>
-            Join us on Monday the 20th of November to learn more about our first
-            course - Theology for Today&apos;s World.
+            Join us on Monday the 20th of November to learn more about our very
+            first course - Theology for Today&apos;s World.
           </p>
           <p>
             This 6-week course aims to provide students with a comprehensive
@@ -45,8 +45,9 @@ export default async function EventPage({ params }: any) {
             incorporating an interactive Q&A session.
           </p>
           <p>
-            From 6:45PM, join us in person at the Garden City Library to enjoy
-            some light refreshments and learn more about the course.{" "}
+            From 6:45pm join us in person at the Garden City Library to meet our
+            course staff, enjoy light refreshments and learn what&apos;s on
+            offer in this course.
           </p>
         </div>
         <div className="space-y-2">
