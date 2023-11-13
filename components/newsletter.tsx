@@ -16,6 +16,8 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { toast } from "@/components/ui/use-toast";
+import { Loader2 } from "lucide-react";
+import { useState } from "react";
 
 const formSchema = z.object({
   email: z.string().email("Please enter a valid email address."),
@@ -56,6 +58,8 @@ const FuzzyOverlay = () => {
 };
 
 const Content = () => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -64,6 +68,8 @@ const Content = () => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+
     const formData = {
       ...values,
     };
@@ -77,11 +83,15 @@ const Content = () => {
     });
 
     if (response.ok) {
+      setIsSubmitting(false);
+
       toast({
         title: "Subscribed! 🎉",
         description: "You have been added to our newsletter!",
       });
     } else {
+      setIsSubmitting(false);
+
       toast({
         title: "Something went wrong.",
         description: "Please try again.",
@@ -116,7 +126,13 @@ const Content = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            {isSubmitting ? (
+              <Button disabled>
+                <Loader2 className="h-4 w-4 animate-spin" />
+              </Button>
+            ) : (
+              <Button type="submit">Submit</Button>
+            )}
           </form>
         </Form>
       </div>
