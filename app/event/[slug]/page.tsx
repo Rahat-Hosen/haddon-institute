@@ -4,22 +4,56 @@ import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import prisma from "@/lib/prisma";
 import { FileText, MapPin, MoveLeft, MoveRight } from "lucide-react";
+import type { Metadata, ResolvingMetadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-export default async function EventPage({ params }: any) {
-  const slug = params.slug;
-
-  const event = await prisma.events.findUnique({
+async function retrieveEvent(slug: string) {
+  const data = await prisma.events.findUnique({
     where: {
       slug: slug,
     },
   });
 
-  if (!event) {
+  if (!data) {
     redirect("/not-found");
   }
+
+  return data;
+}
+
+export async function generateMetadata(
+  { params }: any,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const slug = params.slug;
+
+  if (!slug) {
+    redirect("/not-found");
+  }
+
+  const event = await retrieveEvent(slug);
+
+  const previousImages = (await parent).openGraph?.images || [];
+
+  return {
+    title: `${event.title} | Haddon Institute`,
+    description: event.description,
+    openGraph: {
+      images: ["/logos/5.jpeg", ...previousImages],
+    },
+  };
+}
+
+export default async function EventPage({ params }: any) {
+  const slug = params.slug;
+
+  if (!slug) {
+    redirect("/not-found");
+  }
+
+  const event = await retrieveEvent(slug);
 
   return (
     <div className="space-y-8 px-4 my-20">

@@ -11,9 +11,13 @@ import Script from "next/script";
 import { UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } from "@/lib/umami";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://haddoninstitute.org/"),
   title: "Haddon Institute",
   description:
     "Our mission at the Haddon institute is to provide a Christ-centered education grounded in Reformed theology.",
+  openGraph: {
+    images: "/logos/5.jpeg",
+  },
 };
 
 export default function RootLayout({
