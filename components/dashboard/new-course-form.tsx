@@ -20,7 +20,7 @@ import { toast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Checkbox } from "../ui/checkbox";
-import { CalendarIcon, MoveLeft, Save } from "lucide-react";
+import { CalendarIcon, Loader2, MoveLeft, Save } from "lucide-react";
 import Link from "next/link";
 import { Textarea } from "../ui/textarea";
 import {
@@ -93,6 +93,7 @@ export default function NewCourseForm() {
   const router = useRouter();
 
   const [generatedSlug, setGeneratedSlug] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -182,6 +183,8 @@ export default function NewCourseForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+
     const priceInCents = parseFloat(values.price.replace(/[^\d.]/g, "")) * 100;
 
     const formData = {
@@ -198,6 +201,8 @@ export default function NewCourseForm() {
     });
 
     if (response.ok) {
+      setIsSubmitting(false);
+
       toast({
         title: "Course Created",
         description: "Course was successfully created!",
@@ -205,6 +210,8 @@ export default function NewCourseForm() {
 
       router.push(`/dashboard/${values.slug}`);
     } else {
+      setIsSubmitting(false);
+
       toast({
         title: "Something went wrong.",
         description: "Please try again.",
@@ -919,9 +926,13 @@ export default function NewCourseForm() {
             <MoveLeft className="w-4 h-4" /> Course List
           </Link>
 
-          <Button type="submit" className="flex gap-2">
-            <Save className="w-4 h-4" /> Submit
-          </Button>
+          {isSubmitting ? (
+            <Button disabled>
+              <Loader2 className="h-4 w-4 animate-spin" />
+            </Button>
+          ) : (
+            <Button type="submit">Submit</Button>
+          )}
         </div>
       </form>
     </Form>

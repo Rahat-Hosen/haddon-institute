@@ -118,7 +118,7 @@ export default function AttendEventForm({ id }: { id: any }) {
           />
           {isSubmitting ? (
             <Button disabled>
-              <Loader2 className="animate-spin" />
+              <Loader2 className="h-4 w-4 animate-spin" />
             </Button>
           ) : (
             <Button type="submit">Attend</Button>

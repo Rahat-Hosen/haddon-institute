@@ -93,7 +93,7 @@ export default function CoverImage({
           className={`flex gap-2 ${buttonVariants()} relative overflow-hidden`}
         >
           {uploading ? (
-            <Loader2 className="animate-spin" /> // Render your loading component here
+            <Loader2 className="h-4 w-4 animate-spin" /> // Render your loading component here
           ) : (
             <>
               <ImagePlus className="w-5 h-5" /> Replace Image

@@ -18,7 +18,7 @@ import { toast } from "../ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Checkbox } from "../ui/checkbox";
-import { CalendarIcon, MoveLeft, Save } from "lucide-react";
+import { CalendarIcon, Loader2, MoveLeft, Save } from "lucide-react";
 import Link from "next/link";
 import { Textarea } from "../ui/textarea";
 import {
@@ -92,6 +92,7 @@ export default function EditCourseForm({ course }: { course: any }) {
   const router = useRouter();
 
   const [generatedSlug, setGeneratedSlug] = useState(course.slug || "");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -184,6 +185,8 @@ export default function EditCourseForm({ course }: { course: any }) {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+
     const priceInCents = parseFloat(values.price.replace(/[^\d.]/g, "")) * 100;
 
     const formData = {
@@ -201,13 +204,17 @@ export default function EditCourseForm({ course }: { course: any }) {
     });
 
     if (response.ok) {
+      setIsSubmitting(false);
+
       toast({
         title: "Course Updated",
         description: "Course was successfully updated.",
       });
 
-      router.push(`/dashboard/${values.slug}`);
+      router.push(`/dashboard/course/${values.slug}`);
     } else {
+      setIsSubmitting(false);
+
       toast({
         title: "Something went wrong.",
         description: "Please try again.",
@@ -905,9 +912,13 @@ export default function EditCourseForm({ course }: { course: any }) {
             <MoveLeft className="w-4 h-4" /> Back to Course
           </Link>
 
-          <Button type="submit" className="flex gap-2">
-            <Save className="w-4 h-4" /> Submit
-          </Button>
+          {isSubmitting ? (
+            <Button disabled>
+              <Loader2 className="h-4 w-4 animate-spin" />
+            </Button>
+          ) : (
+            <Button type="submit">Submit</Button>
+          )}
         </div>
       </form>
     </Form>

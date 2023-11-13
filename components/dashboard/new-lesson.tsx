@@ -23,7 +23,7 @@ import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-import { PlusSquare } from "lucide-react";
+import { Loader2, PlusSquare } from "lucide-react";
 import { toast } from "../ui/use-toast";
 import { Textarea } from "../ui/textarea";
 
@@ -44,6 +44,7 @@ export default function NewLesson({
 
   const [showCreateDialog, setShowCreateDialog] = useState<boolean>(false);
   const [generatedSlug, setGeneratedSlug] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -66,6 +67,8 @@ export default function NewLesson({
   };
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+
     const formData = {
       ...values,
       courseId,
@@ -80,13 +83,17 @@ export default function NewLesson({
     });
 
     if (response.ok) {
+      setIsSubmitting(false);
+
       toast({
         title: "Lesson Created",
         description: "Lesson was successfully created!",
       });
 
-      router.push(`/dashboard/edit/${course}/${values.slug}`);
+      router.push(`/dashboard/course/${course}/edit/${values.slug}`);
     } else {
+      setIsSubmitting(false);
+
       toast({
         title: "Something went wrong.",
         description: "Please try again.",
@@ -173,7 +180,13 @@ export default function NewLesson({
                 )}
               />
 
-              <Button type="submit">Submit</Button>
+              {isSubmitting ? (
+                <Button disabled>
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                </Button>
+              ) : (
+                <Button type="submit">Submit</Button>
+              )}
             </form>
           </Form>
         </DialogContent>
