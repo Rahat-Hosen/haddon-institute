@@ -54,7 +54,7 @@ export default function AttendEventForm({ id }: { id: any }) {
     if (response.ok) {
       toast({
         title: "Attendence Marked! 🎉",
-        description: "You have been added our guest list!",
+        description: "You have been added to our guest list!",
       });
     } else {
       toast({

@@ -108,7 +108,7 @@ export default function Home() {
               variant: "outline",
             })}`}
           >
-            Learn More <MoveRight />
+            Info Night <MoveRight />
           </Link>
           <Link
             href="/course/theology-for-today-s-world"
@@ -199,8 +199,8 @@ export default function Home() {
         </div>
 
         <div className="px-4">
-          <div className="mx-auto text-center my-20 py-28 px-24 bg-muted rounded-2xl">
-            <p className="text-2xl italic font-semibold text-black dark:text-transparent bg-clip-text bg-gradient-to-r dark:from-white from-40% dark:to-muted to-100%">
+          <div className="mx-auto text-center my-20 py-28 px-4 bg-muted rounded-2xl">
+            <p className="text-2xl italic font-semibold md:text-black dark:md:text-transparent md:bg-clip-text md:bg-gradient-to-r dark:md:from-white md:from-40% md:dark:to-muted md:to-100%">
               &quot;Wisdom gives strength to the wise man more than ten rulers
               who are in a city.&quot;
             </p>

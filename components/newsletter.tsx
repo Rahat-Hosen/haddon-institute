@@ -92,7 +92,7 @@ const Content = () => {
 
   return (
     <div className="relative grid py-40 place-content-center space-y-6 bg-[#b89c5f] p-8 rounded-2xl">
-      <div className="z-10">
+      <div className="z-20">
         <h2 className="font-semibold text-2xl">
           Stay up to date on promotions and upcoming courses.
         </h2>
@@ -106,7 +106,11 @@ const Content = () => {
                 <FormItem>
                   <FormLabel>Email Address</FormLabel>
                   <FormControl>
-                    <Input placeholder="paul@redeemed.com" {...field} />
+                    <Input
+                      placeholder="paul@redeemed.com"
+                      className="bg-black text-white"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
