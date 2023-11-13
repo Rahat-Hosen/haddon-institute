@@ -104,11 +104,15 @@ model EventSignup {
   @@index([eventId])
 }
 
-model Biographies {
+model People {
   id          Int      @id @default(autoincrement())
-  createdAt   DateTime @default(now())
   slug        String   @unique
   name        String
   description String
-  image       String
+  position    String
+  email       String?
+  linkedin    String?
+  x           String?
+  website     String?
+  image       String?
 }
