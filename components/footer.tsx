@@ -72,7 +72,7 @@ export default function Footer() {
               <Instagram />
             </a>
             <a
-              href="https://twitter.com/haddon-institute"
+              href="https://x.com/wearehaddon"
               target="_blank"
               className="hover:text-muted-foreground transition"
             >
