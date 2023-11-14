@@ -52,19 +52,21 @@ export default function AttendEventForm({ id }: { id: any }) {
     });
 
     if (response.ok) {
+      setIsSubmitting(false);
+
       toast({
         title: "Attendence Marked! 🎉",
         description: "You have been added to our guest list!",
       });
     } else {
+      setIsSubmitting(false);
+
       toast({
         title: "Something went wrong.",
         description: "Please try again.",
         variant: "destructive",
       });
     }
-
-    setIsSubmitting(false);
   }
 
   return (
