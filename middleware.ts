@@ -30,6 +30,7 @@ export default authMiddleware({
     "/events",
     "/(event)(.*)",
     "/giving",
+    "/api/attend",
   ],
 });
 
