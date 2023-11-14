@@ -213,39 +213,91 @@ export default function Home() {
         </div>
 
         <div className="px-4 xl:px-24 my-20">
-          <div className="flex justify-center gap-12 rounded-2xl p-4">
-            <div className="hidden dark:flex my-auto">
+          <div className="flex justify-center gap-20 rounded-2xl p-4">
+            <a
+              href="https://61oaksgroup.com.au"
+              target="_blank"
+              className="my-auto"
+            >
               <Image
                 src="/logos/61-oaks-group-logo-white.png"
                 width={140}
                 height={140}
                 alt="61 Oaks Group Logo"
+                className="hidden dark:flex my-auto"
               />
-            </div>
-            <div className="dark:hidden flex my-auto">
+
               <Image
                 src="/logos/61-oaks-group-logo.png"
                 width={140}
                 height={140}
                 alt="61 Oaks Group Logo"
+                className="dark:hidden flex my-auto"
               />
-            </div>
-            <div className="hidden dark:flex my-auto">
+            </a>
+            <a
+              href="https://thearmourybookshop.com.au"
+              target="_blank"
+              className="my-auto"
+            >
               <Image
                 src="/logos/the-armoury-bookshop-logo-white.png"
                 width={75}
                 height={75}
                 alt="The Armoury Bookshop Logo"
+                className="hidden dark:flex my-auto"
               />
-            </div>
-            <div className="dark:hidden flex my-auto">
+
               <Image
                 src="/logos/the-armoury-bookshop-logo.png"
                 width={75}
                 height={75}
-                alt="61 Oaks Group Logo"
+                alt="The Armoury Bookshop Logo"
+                className="dark:hidden flex my-auto"
               />
-            </div>
+            </a>
+            <a
+              href="https://starcompass.com.au"
+              target="_blank"
+              className="my-auto"
+            >
+              <Image
+                src="/logos/star-compass.png"
+                width={80}
+                height={80}
+                alt="Star Compass Logo"
+                className="grayscale invert hidden dark:flex my-auto"
+              />
+
+              <Image
+                src="/logos/star-compass.png"
+                width={80}
+                height={80}
+                alt="Star Compass Logo"
+                className="dark:hidden flex my-auto"
+              />
+            </a>
+            <a
+              href="https://lbnuconsulting.com.au"
+              target="_blank"
+              className="my-auto"
+            >
+              <Image
+                src="/logos/lbnu-consulting.png"
+                width={80}
+                height={80}
+                alt="LBNU Consulting Logo"
+                className="rounded-md hidden dark:flex my-auto"
+              />
+
+              <Image
+                src="/logos/lbnu-consulting.png"
+                width={80}
+                height={80}
+                alt="LBNU Consulting Logo"
+                className="rounded-md dark:hidden flex my-auto"
+              />
+            </a>
           </div>
           <div className="flex justify-center mt-20">
             <Link
