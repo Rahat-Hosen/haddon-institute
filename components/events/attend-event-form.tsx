@@ -19,8 +19,13 @@ import { Loader2 } from "lucide-react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Please enter a valid name."),
-  email: z.string().email("Please enter a valid email address."),
-  phone: z.string().min(10, "Please enter a valid phone number."),
+  email: z.string().email("Please enter a valid email address.").min(1),
+  phone: z
+    .string()
+    .min(10, "Please enter a valid phone number.")
+    .refine((data) => /^\d{10}$/.test(data), {
+      message: "Phone number must be 10 digits.",
+    }),
 });
 
 export default function AttendEventForm({ id }: { id: any }) {
