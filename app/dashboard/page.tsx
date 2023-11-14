@@ -9,6 +9,8 @@ import { DataTable as EventDataTable } from "./event-data-table";
 import { Separator } from "@/components/ui/separator";
 import { PlusIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
+import { redirect } from "next/navigation";
+import { auth } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Administrator Dashboard | Haddon Institute",
@@ -16,6 +18,19 @@ export const metadata: Metadata = {
 };
 
 export default async function AdministratorDashboard() {
+  const { userId } = auth();
+
+  if (!userId) {
+    redirect("/sign-in");
+  }
+
+  const isAdmin =
+    userId && (await prisma.user.findUnique({ where: { id: userId } }))?.admin;
+
+  if (!isAdmin) {
+    redirect("/unauthorised");
+  }
+
   const courses = await prisma.course.findMany();
 
   const courseData = courses.map((course: any) => {
