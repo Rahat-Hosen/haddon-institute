@@ -41,7 +41,7 @@ export default async function MyCourses() {
               browse our available options.
             </p>
             <Link href="/courses" className={`flex gap-2 ${buttonVariants()}`}>
-              Courses <MoveRight />
+              Courses <MoveRight className="w-5 h-5" />
             </Link>
           </div>
         ) : (

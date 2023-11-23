@@ -118,7 +118,7 @@ export default async function EventPage({ params }: any) {
             className={`flex gap-2 my-4 ${buttonVariants()}`}
           >
             View Course
-            <MoveRight />
+            <MoveRight className="w-5 h-5" />
           </Link>
         </div>
       </div>

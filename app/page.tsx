@@ -1,7 +1,11 @@
 import AnimatedText from "@/components/animated-text";
+import { CardHover } from "@/components/card-hover";
+import { CustomBadge } from "@/components/custom-badge";
 import Informational from "@/components/informational";
 import Newsletter from "@/components/newsletter";
 import Player from "@/components/player";
+import { HeroScroll } from "@/components/scroll-up-in";
+import { TextGenerateEffect } from "@/components/text-generate";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
@@ -18,7 +22,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-      <div className="relative">
+      <div className="relative lg:mb-[650px] md:mb-[500px] sm:mb-[350px] mb-[250px]">
         <Image
           src="/henry-be-lc7xcWebECc-unsplash.jpg"
           height={2000}
@@ -26,6 +30,7 @@ export default function Home() {
           alt="Background Image"
           className="object-cover h-[80vh] w-full brightness-50 border border-b-2"
         />
+
         <div className="absolute place-items-center inset-0 flex justify-center">
           <div className="md:flex px-4 max-w-7xl mx-auto">
             <div className="hidden md:flex md:w-1/2 my-auto">
@@ -38,17 +43,8 @@ export default function Home() {
               />
             </div>
             <div className="md:w-1/2 my-auto space-y-6">
-              <Link
-                href="/course/theology-for-today-s-world"
-                className="flex text-sm text-muted-foreground text-stone-400 hover:text-white transition"
-              >
-                <div className="rounded-l-md px-4 py-2 flex gap-4 bg-[#171717]">
-                  <Badge className="bg-white text-black">NEW</Badge> Theology
-                  for Today&apos;s World
-                </div>
-                <div className="rounded-r-md border-l border-muted-foreground px-4 py-2 font-semibold bg-[#171717]">
-                  Explore
-                </div>
+              <Link href="/course/theology-for-today-s-world">
+                <CustomBadge text="Theology for Today's World" />
               </Link>
 
               <div>
@@ -56,16 +52,19 @@ export default function Home() {
                   text="Haddon Institute"
                   className="text-3xl lg:text-4xl xl:text-6xl tracking-tighter font-bold text-white"
                 />
-                <p className="text-stone-400 max-w-lg font-semibold">
-                  Our mission at the Haddon institute is to provide a
-                  Christ-centered education grounded in the Reformed tradition.
-                </p>
+                <div className="text-stone-300 max-w-lg font-semibold">
+                  <TextGenerateEffect
+                    words="Our mission at the Haddon institute is to provide a
+                  Christ-centered education grounded in the Reformed tradition."
+                  />
+                </div>
               </div>
               <div>
                 <Link
                   href="/sign-up"
                   className={`flex gap-2 ${buttonVariants({
                     size: "lg",
+                    variant: "secondary",
                   })}`}
                 >
                   Join Now
@@ -74,49 +73,38 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div className="absolute w-full flex items-center justify-center -mt-20 lg:px-8 px-4">
+          <HeroScroll />
+        </div>
       </div>
 
-      <div className="max-w-7xl mx-auto my-10 px-4">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="space-y-4 my-10">
-          <Separator className="max-w-sm mx-auto bg-gradient-to-r dark:from-muted-foreground from-30% dark:to-muted" />
-          <h2 className="text-center uppercase font-semibold tracking-wider text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-b dark:from-muted-foreground from-40% dark:to-muted">
-            #wearehaddon
+          <h2 className="text-center uppercase font-semibold text-xl text-black dark:text-transparent bg-clip-text bg-gradient-to-t dark:from-muted-foreground from-50% dark:to-muted">
+            Theology for Today&apos;s World
           </h2>
           <Separator className="max-w-sm mx-auto bg-gradient-to-l dark:from-muted-foreground from-30% dark:to-muted" />
         </div>
 
-        <Player playbackId="5ta2qsCFRlUy01ruxgcfAP6009UlUQVXUj3MOcosx00wjQ" />
-
-        <h3 className="text-center font-semibold text-xl my-4">
+        <h3 className="text-center font-semibold text-lg my-4">
           Course starting 4th of December 2023
         </h3>
-        <p className="text-muted-foreground text-center">
-          This 6-week course aims to provide students with a comprehensive
-          overview of the theology of the Christian worldview, and its relevance
-          in today&apos;s world.
-        </p>
-
-        <p className="text-muted-foreground text-center">
-          Join us on Monday evening 20th November in person to learn more about
-          our very first course.
-        </p>
+        <div className="space-y-2">
+          <p className="text-muted-foreground text-center max-w-2xl mx-auto">
+            This 6-week course aims to provide students with a comprehensive
+            overview of the theology of the Christian worldview, and its
+            relevance in today&apos;s world.
+          </p>
+        </div>
 
         <div className="flex justify-center mt-20 gap-4">
-          <Link
-            href="/event/info-night-theo-101s"
-            className={`flex gap-2 ${buttonVariants({
-              variant: "outline",
-            })}`}
-          >
-            Info Night <MoveRight />
-          </Link>
           <Link
             href="/course/theology-for-today-s-world"
             className={`flex gap-2 ${buttonVariants({
               variant: "outline",
             })}`}
           >
-            Course Page <MoveRight />
+            Learn More <MoveRight className="w-5 h-5" />
           </Link>
         </div>
       </div>
@@ -134,7 +122,7 @@ export default function Home() {
                       variant: "outline",
                     })}`}
                   >
-                    Our Vision <MoveRight />
+                    Our Vision <MoveRight className="w-5 h-5" />
                   </Link>
                 </div>
               </div>
@@ -142,68 +130,17 @@ export default function Home() {
           </div>
         </div>
         <div className="mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4 px-4">
-            <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
-              <BookOpen
-                strokeWidth={1}
-                width={40}
-                height={40}
-                className="text-muted-foreground"
-              />
-              <h2 className="font-semibold text-xl">Deeper Understanding</h2>
-              <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                Explore and gain profound insights into the Bible and the
-                Christian faith with our in-depth courses.
-              </p>
-            </div>
-            <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
-              <Globe2
-                strokeWidth={1}
-                width={40}
-                height={40}
-                className="text-muted-foreground"
-              />
-              <h2 className="font-semibold text-xl">Online Access</h2>
-              <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                Access course content and valuable resources from any corner of
-                the world through our online platform.
-              </p>
-            </div>
-            <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
-              <GraduationCap
-                strokeWidth={1}
-                width={40}
-                height={40}
-                className="text-muted-foreground"
-              />
-              <h2 className="font-semibold text-xl">Expository Teaching</h2>
-              <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                Benefit from a diverse range of instructors and educators who
-                offer a comprehensive and engaging learning experience.
-              </p>
-            </div>
-            <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
-              <Stars
-                strokeWidth={1}
-                width={40}
-                height={40}
-                className="text-muted-foreground"
-              />
-              <h2 className="font-semibold text-xl">Accreditation</h2>
-              <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-                Stay tuned for upcoming accreditation details, ensuring the
-                quality and recognition of our programs in the near future.
-              </p>
-            </div>
-          </div>
+          <CardHover />
         </div>
 
         <div className="px-4">
-          <div className="mx-auto text-center my-20 py-28 px-4 bg-muted rounded-2xl">
-            <p className="text-2xl italic font-semibold md:text-black dark:md:text-transparent md:bg-clip-text md:bg-gradient-to-r dark:md:from-white md:from-40% md:dark:to-muted md:to-100%">
-              &quot;Wisdom gives strength to the wise man more than ten rulers
-              who are in a city.&quot;
-            </p>
+          <div className="mx-auto text-center my-20 py-28 px-4 bg-gradient-to-br from-[#11271f] from-50% to-black rounded-2xl">
+            <div className="text-2xl italic font-semibold md:text-transparent md:bg-clip-text md:bg-gradient-to-r md:from-white md:from-40% md:dark:to-muted md:to-100%">
+              <TextGenerateEffect
+                words='"Wisdom gives strength to the wise man more than ten rulers
+              who are in a city."'
+              />
+            </div>
             <div className="flex justify-center items-center mt-6 space-x-3">
               <div className="flex items-center">
                 <cite>— Ecclesiastes 7:19 ESV</cite>
@@ -213,7 +150,7 @@ export default function Home() {
         </div>
 
         <div className="px-4 xl:px-24 my-20">
-          <div className="flex justify-center gap-20 rounded-2xl p-4">
+          <div className="flex justify-center gap-8 md:gap-20 rounded-2xl p-4">
             <a
               href="https://61oaksgroup.com.au"
               target="_blank"
@@ -306,7 +243,7 @@ export default function Home() {
                 variant: "outline",
               })}`}
             >
-              Our Oaks <MoveRight />
+              Our Oaks <MoveRight className="w-5 h-5" />
             </Link>
           </div>
         </div>
@@ -345,9 +282,8 @@ export default function Home() {
             />
           </div>
         </div> */}
-        <div className="px-4">
-          <Newsletter />
-        </div>
+
+        <Newsletter />
       </div>
     </main>
   );

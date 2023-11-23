@@ -4,7 +4,16 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { Authentication } from "./authentication";
 import Image from "next/image";
-import { ArrowRight, X, Menu, BookOpen, DollarSign } from "lucide-react";
+import {
+  ArrowRight,
+  X,
+  Menu,
+  BookOpen,
+  DollarSign,
+  LibraryBig,
+  CalendarDays,
+  Users,
+} from "lucide-react";
 import { Separator } from "./ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
 import { buttonVariants } from "./ui/button";
@@ -94,7 +103,12 @@ export default function Navigation() {
           <NavigationMenu>
             <NavigationMenuList>
               <NavigationMenuItem>
-                <NavigationMenuTrigger>About</NavigationMenuTrigger>
+                <NavigationMenuTrigger
+                  className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                >
+                  <Users className="w-4 h-4 my-auto" />
+                  About
+                </NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-1 p-4 md:w-[400px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]">
                     <li className="row-span-3 mr-3">
@@ -165,22 +179,30 @@ export default function Navigation() {
               </NavigationMenuItem> */}
               <NavigationMenuItem>
                 <Link href="/courses" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink
+                    className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                  >
+                    <BookOpen className="w-4 h-4 my-auto" />
                     Courses
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/resources" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <NavigationMenuLink
+                    className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                  >
+                    <LibraryBig className="w-4 h-4 my-auto" />
                     Resources
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/events" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Events
+                  <NavigationMenuLink
+                    className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                  >
+                    <CalendarDays className="w-4 h-4 my-auto" /> Events
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>

@@ -1,9 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { GeistSans, GeistMono } from "geist/font";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from "@/components/theme-provider";
-import { cn } from "@/lib/utils";
 import Navigation from "@/components/navigation";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
@@ -16,6 +16,14 @@ export const metadata: Metadata = {
   description:
     "Our mission at the Haddon institute is to provide a Christ-centered education grounded in Reformed theology.",
   openGraph: {
+    url: "https://haddoninstitute.org/",
+    title: "Haddon Institute",
+    locale: "en_AU",
+    countryName: "Australia",
+    siteName: "Haddon Institute",
+    type: "website",
+    description:
+      "Our mission at the Haddon institute is to provide a Christ-centered education grounded in Reformed theology.",
     images: "/logos/5.jpeg",
   },
 };
@@ -28,7 +36,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body className={cn(GeistSans.className)}>
+        <body
+          className={`${GeistSans.variable} ${GeistMono.variable} font-sans bg-[#fafafa] dark:bg-[#0a0a0a]`}
+        >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Navigation />
             {children}
@@ -43,3 +53,5 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
+
+// #fafafa

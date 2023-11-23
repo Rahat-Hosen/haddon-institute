@@ -51,12 +51,12 @@ export default async function Course({ params }: any) {
   const course = await retrieveCourse(slug);
 
   return (
-    <>
+    <div>
       <CourseCard
         userId={user?.id}
         userEmail={user?.emailAddresses[0].emailAddress}
         course={course}
       />
-    </>
+    </div>
   );
 }

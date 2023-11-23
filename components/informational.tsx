@@ -6,7 +6,7 @@ import Tilt from "react-parallax-tilt";
 
 export default function Informational() {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-12">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       <div className="relative">
         <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4}>
           <Link href="/mission-statement">

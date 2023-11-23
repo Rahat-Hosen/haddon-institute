@@ -54,7 +54,7 @@ export default async function CourseLessons({ params }: any) {
                   </p>
                   <div>
                     <Button className="flex gap-2">
-                      View Lesson <MoveRight />
+                      View Lesson <MoveRight className="w-5 h-5" />
                     </Button>
                   </div>
                 </Link>

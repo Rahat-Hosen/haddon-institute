@@ -150,11 +150,11 @@ export default function CourseCard({
             </div>
           </div>
 
-          <p className="whitespace-pre-line">{course.description}</p>
-
           <h2 className="font-bold text-2xl">Course Overview</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl">
+          <p className="whitespace-pre-line">{course.description}</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl bg-muted p-8 rounded-2xl">
             <div>
               <h3 className="font-semibold text-lg flex gap-2">
                 <FileDigit className="w-5 h-5 my-auto" />
@@ -188,7 +188,7 @@ export default function CourseCard({
               </h3>
               <p className="flex gap-2">
                 {courseStart}
-                <MoveRight />
+                <MoveRight className="w-5 h-5" />
                 {courseEnd}
               </p>
             </div>
