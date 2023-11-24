@@ -14,6 +14,18 @@ export async function POST(req: Request) {
       },
     });
 
+    const message = {
+      content: `User Interested in Weekly Payments:\nName: ${name}\nEmail: ${email}\nCourse: ${course}`,
+    };
+
+    await fetch(`${process.env.WEBHOOK_URL}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(message),
+    });
+
     return NextResponse.json({ status: 201 });
   } catch (error) {
     console.error("Error registering weeklyPaymentsInterest:", error);
