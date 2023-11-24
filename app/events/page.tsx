@@ -19,6 +19,12 @@ export default async function Events() {
   const events = await prisma.events.findMany({
     where: {
       published: true,
+      date: {
+        gte: new Date().toISOString(),
+      },
+    },
+    orderBy: {
+      date: "asc",
     },
   });
 
@@ -30,7 +36,9 @@ export default async function Events() {
         text="Events"
         className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
-      <p className="text-center">View our upcoming events and info nights!</p>
+      <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto">
+        Learn more about Haddon&apos;s upcoming events.
+      </p>
 
       {events.map((event) => (
         <div key={event.id} className="relative w-full h-[300px]">
@@ -61,9 +69,9 @@ export default async function Events() {
         </div>
       ))}
 
-      {/* <div className="max-w-7xl mx-auto rounded-2xl bg-muted p-8">
+      <div className="max-w-7xl mx-auto rounded-2xl bg-muted p-8">
         <EventCalendar />
-      </div> */}
+      </div>
     </div>
   );
 }
