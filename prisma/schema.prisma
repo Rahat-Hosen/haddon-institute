@@ -116,3 +116,11 @@ model People {
   website     String?
   image       String?
 }
+
+model WeeklyPaymentsInterest {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String
+  email     String
+  course    String
+}

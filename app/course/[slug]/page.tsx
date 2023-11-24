@@ -34,6 +34,21 @@ export async function generateMetadata(
     title: `${course.title} | Haddon Institute`,
     description: course.description,
     openGraph: {
+      type: "video.other",
+      siteName: `sdelta.xyz`,
+      title: `${course.title} | Haddon Institute`,
+      description: course.description,
+      url: `https://haddoninstitute.org/course/${course.slug}`,
+      countryName: "Australia",
+      locale: "en_AU",
+      videos: [
+        {
+          url: `https://stream.mux.com/${course.video}/high.mp4`,
+          width: 1920,
+          height: 1080,
+          type: "video/mp4",
+        },
+      ],
       images: [course.thumbnail || "/logos/5.jpeg", ...previousImages],
     },
   };
@@ -51,12 +66,10 @@ export default async function Course({ params }: any) {
   const course = await retrieveCourse(slug);
 
   return (
-    <div>
-      <CourseCard
-        userId={user?.id}
-        userEmail={user?.emailAddresses[0].emailAddress}
-        course={course}
-      />
-    </div>
+    <CourseCard
+      userId={user?.id}
+      userEmail={user?.emailAddresses[0].emailAddress}
+      course={course}
+    />
   );
 }

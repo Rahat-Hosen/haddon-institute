@@ -19,6 +19,14 @@ import {
   MoveRight,
   ScrollText,
 } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import Image from "next/image";
 import { utcToZonedTime } from "date-fns-tz";
 import { format } from "date-fns";
@@ -90,8 +98,10 @@ export default function CourseCard({
 
   return (
     <div className="px-4 my-10 max-w-7xl mx-auto">
-      <div>
-        <Player playbackId={course.video} />
+      <div className="w-full h-full rounded-2xl gap-4 overflow-hidden aspect-video shadow-2xl">
+        <div className="rounded-2xl">
+          <Player playbackId={course.video} />
+        </div>
       </div>
       <div>
         <Link href="/courses" className={`flex gap-2 my-4 ${buttonVariants()}`}>
@@ -115,21 +125,72 @@ export default function CourseCard({
             </div>
             <div className="my-auto xl:mt-0 mt-4">
               {(isUserAuthenticated && (
-                <div className="flex gap-4">
-                  <p className="my-auto">
-                    {new Intl.NumberFormat("en-US", {
-                      style: "currency",
-                      currency: "AUD",
-                      minimumFractionDigits: 2,
-                    }).format(parseFloat(course.price) / 100)}
-                  </p>
-                  <Button
-                    onClick={() => handleClick()}
-                    className="flex gap-2 w-full xl:w-auto"
-                  >
-                    <CreditCard /> Purchase
-                  </Button>
-                </div>
+                <>
+                  <div className="flex gap-4">
+                    <p className="my-auto">
+                      {new Intl.NumberFormat("en-US", {
+                        style: "currency",
+                        currency: "AUD",
+                        minimumFractionDigits: 2,
+                      }).format(parseFloat(course.price) / 100)}
+                    </p>
+                    <div className="space-y-2">
+                      <Button
+                        onClick={() => handleClick()}
+                        className="flex gap-2 w-full"
+                      >
+                        <CreditCard /> Purchase Now
+                      </Button>
+
+                      <Dialog>
+                        <DialogTrigger>
+                          <Button className="flex gap-2" variant="secondary">
+                            <CreditCard /> Weekly Payments
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>
+                              How do Weekly Payments work?
+                            </DialogTitle>
+                            <DialogDescription>
+                              <div className="space-y-4">
+                                <p>
+                                  Weekly payments break down the cost of your
+                                  chosen course into manageable, bite-sized
+                                  installments. Instead of paying the entire
+                                  tuition upfront, the total cost will be spread
+                                  across smaller, predictable weekly payments.
+                                </p>
+                                <p>
+                                  Typically, these payments will occur on a
+                                  per-lecture basis.
+                                </p>
+                                <p className="text-center">
+                                  <Link
+                                    href="/weekly-payments"
+                                    className="font-semibold underline hover:no-underline text-white"
+                                  >
+                                    Click here to register your interest!
+                                  </Link>
+                                </p>
+                                <p className="text-center">
+                                  For more information, please contact us at{" "}
+                                  <a
+                                    href="mailto:contact@haddoninstitute.org"
+                                    className="underline"
+                                  >
+                                    contact@haddoninstitute.org
+                                  </a>
+                                </p>
+                              </div>
+                            </DialogDescription>
+                          </DialogHeader>
+                        </DialogContent>
+                      </Dialog>
+                    </div>
+                  </div>
+                </>
               )) || (
                 <div className="flex gap-4">
                   <p className="my-auto">
@@ -152,7 +213,9 @@ export default function CourseCard({
 
           <h2 className="font-bold text-2xl">Course Overview</h2>
 
-          <p className="whitespace-pre-line">{course.description}</p>
+          <p className="text-black dark:text-muted-foreground">
+            {course.description}
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl bg-muted p-8 rounded-2xl">
             <div>
@@ -245,7 +308,9 @@ export default function CourseCard({
                   />
                   <div>
                     <h4 className="font-semibold text-lg">{course.lecturer}</h4>
-                    <p>{course.lecturerEmail || "No email provided."}</p>
+                    <p className="text-black dark:text-muted-foreground">
+                      {course.lecturerEmail || "No email provided."}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -263,7 +328,9 @@ export default function CourseCard({
                   />
                   <div>
                     <h4 className="font-semibold text-lg">{course.coord}</h4>
-                    <p>{course.coordEmail || "No email provided."}</p>
+                    <p className="text-black dark:text-muted-foreground">
+                      {course.coordEmail || "No email provided."}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -281,7 +348,9 @@ export default function CourseCard({
                   />
                   <div>
                     <h4 className="font-semibold text-lg">{course.admin}</h4>
-                    <p>{course.adminEmail || "No email provided."}</p>
+                    <p className="text-black dark:text-muted-foreground">
+                      {course.adminEmail || "No email provided."}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -293,40 +362,48 @@ export default function CourseCard({
       <Separator className="my-10" />
 
       <div className="w-full">
-        <div className="space-y-6">
-          <div className="space-y-2">
-            <h2 className="font-bold text-xl">Content Overview</h2>
-            <p className="whitespace-pre-line">{course.overview}</p>
-          </div>
+        <div className="space-y-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-2">
+              <h2 className="font-bold text-xl">Content Overview</h2>
+              <p className="text-black dark:text-muted-foreground whitespace-pre-line">
+                {course.overview}
+              </p>
+            </div>
 
-          <div className="space-y-2">
-            <h2 className="font-bold text-xl">Objectives</h2>
-            <p>Students who are successful in this course should be able to:</p>
-            <ol className="list-decimal ml-8">
-              {Array.isArray(course.objectives) &&
-                course.objectives.map((data: any, index: any) => (
-                  <li key={index}>{data.value}</li>
-                ))}
-            </ol>
+            <div className="space-y-2">
+              <h2 className="font-bold text-xl">Objectives</h2>
+              <p className="text-black dark:text-muted-foreground">
+                Students who are successful in this course should be able to:
+              </p>
+              <ol className="list-decimal ml-8 space-y-2 text-black dark:text-muted-foreground">
+                {Array.isArray(course.objectives) &&
+                  course.objectives.map((data: any, index: any) => (
+                    <li key={index}>{data.value}</li>
+                  ))}
+              </ol>
+            </div>
           </div>
 
           <div className="space-y-2">
             <h2 className="font-bold text-xl">Teaching Format</h2>
-            <p className="whitespace-pre-line">{course.format}</p>
+            <p className="text-black dark:text-muted-foreground whitespace-pre-line">
+              {course.format}
+            </p>
           </div>
 
-          <div className="md:flex justify-between gap-8 space-y-6 md:space-y-0">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-2">
               <h2 className="font-bold text-xl">
                 Required Text{course.requiredTexts.length === 1 ? "" : "s"}
               </h2>
-              <p>
+              <p className="text-black dark:text-muted-foreground">
                 In order to achieve the learning outcomes of this course,
                 students must obtain the following text
                 {course.requiredTexts.length === 1 ? "" : "s"}:
               </p>
 
-              <ul className="list-disc ml-8">
+              <ul className="list-disc ml-8 text-black dark:text-muted-foreground space-y-2">
                 {Array.isArray(course.requiredTexts) &&
                   course.requiredTexts.map((data: any, index: any) => (
                     <li key={index}>{data.value}</li>
@@ -338,13 +415,13 @@ export default function CourseCard({
               <h2 className="font-bold text-xl">
                 Optional Text{course.optionalTexts.length === 1 ? "" : "s"}
               </h2>
-              <p>
+              <p className="text-black dark:text-muted-foreground">
                 Students are encouraged to explore the following supplementary
                 text{course.optionalTexts.length === 1 ? "" : "s"} to enhance
                 their learning:
               </p>
 
-              <ul className="list-disc ml-8">
+              <ul className="list-disc ml-8 text-black dark:text-muted-foreground space-y-2">
                 {Array.isArray(course.optionalTexts) &&
                   course.optionalTexts.map((data: any, index: any) => (
                     <li key={index}>{data.value}</li>
@@ -353,18 +430,25 @@ export default function CourseCard({
             </div>
           </div>
 
-          <div className="space-y-2">
-            <h2 className="font-bold text-xl">Workload</h2>
-            <p className="whitespace-pre-line">{course.workload}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-2">
+              <h2 className="font-bold text-xl">Workload</h2>
+              <p className="whitespace-pre-line text-black dark:text-muted-foreground">
+                {course.workload}
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h2 className="font-bold text-xl">Assessment</h2>
+              <p className="whitespace-pre-line text-black dark:text-muted-foreground">
+                {course.assessment}
+              </p>
+            </div>
           </div>
 
-          <div className="space-y-2">
-            <h2 className="font-bold text-xl">Assessment</h2>
-            <p className="whitespace-pre-line">{course.assessment}</p>
-          </div>
           <div className="w-full space-y-2">
-            <h2 className="font-bold text-xl">Lessons</h2>
-            <p>
+            <h2 className="font-bold text-xl">Lesson Overviews</h2>
+            <p className="text-black dark:text-muted-foreground">
               Explore the lesson overviews to get an idea of what the course
               will cover.
             </p>
@@ -379,7 +463,7 @@ export default function CourseCard({
                   <AccordionTrigger className="font-semibold">
                     {lesson.title}
                   </AccordionTrigger>
-                  <AccordionContent className="whitespace-pre-line">
+                  <AccordionContent className="whitespace-pre-line text-black dark:text-muted-foreground mt-2">
                     {lesson.description}
                   </AccordionContent>
                 </AccordionItem>
