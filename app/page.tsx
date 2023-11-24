@@ -74,7 +74,12 @@ export default function Home() {
           </div>
         </div>
         <div className="absolute w-full flex items-center justify-center -mt-20 lg:px-8 px-4">
-          <HeroScroll />
+          <div className="hidden lg:flex w-full h-full">
+            <HeroScroll />
+          </div>
+          <div className="lg:hidden flex w-full h-full">
+            <Player playbackId="5ta2qsCFRlUy01ruxgcfAP6009UlUQVXUj3MOcosx00wjQ" />
+          </div>
         </div>
       </div>
 
