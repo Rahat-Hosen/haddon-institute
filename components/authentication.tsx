@@ -9,7 +9,14 @@ import {
 } from "@clerk/nextjs";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
-import { AtSign, KeyRound, LayoutDashboard } from "lucide-react";
+import {
+  AtSign,
+  FileEdit,
+  KeyRound,
+  LayoutDashboard,
+  LogIn,
+  LogOut,
+} from "lucide-react";
 
 export function Authentication() {
   return (
@@ -37,7 +44,7 @@ export function Authentication() {
           href="/sign-in"
           className={`flex gap-2 ${buttonVariants({ variant: "secondary" })}`}
         >
-          <KeyRound className="w-4 h-4" /> Sign in
+          <LogIn className="w-4 h-4" /> Sign In
         </Link>
 
         <Link
@@ -46,7 +53,7 @@ export function Authentication() {
             variant: "secondary",
           })}`}
         >
-          <AtSign className="w-4 h-4" /> Join
+          <FileEdit className="w-4 h-4" /> Sign Up
         </Link>
       </SignedOut>
     </>
