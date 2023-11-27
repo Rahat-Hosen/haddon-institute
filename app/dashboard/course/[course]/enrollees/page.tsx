@@ -4,6 +4,9 @@ import { DataTable } from "./data-table";
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs";
 import AnimatedText from "@/components/animated-text";
+import { MoveLeft } from "lucide-react";
+import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 
 export default async function Enrollees({ params }: any) {
   const { userId } = auth();
@@ -46,6 +49,12 @@ export default async function Enrollees({ params }: any) {
         text="Course Enrollees"
         className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
+      <Link
+        href={`/dashboard/course/${course}`}
+        className={`flex gap-2 ${buttonVariants()}`}
+      >
+        <MoveLeft className="w-4 h-4" /> Back to Course
+      </Link>
       <DataTable columns={columns} data={tableData} />
     </div>
   );

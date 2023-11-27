@@ -1,6 +1,6 @@
 import { buttonVariants } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
-import { EditIcon, MoveLeft } from "lucide-react";
+import { EditIcon, MoveLeft, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
@@ -139,7 +139,16 @@ export default async function AdminCoursePage({ params }: any) {
               }).format(parseFloat(data.price) / 100)}
             </p>
             <p>{data.Lesson.length} lessons</p>
-            <p>{data.users.length} user/s enrolled</p>
+
+            <div className="flex gap-2">
+              <p>{data.users.length} user/s enrolled</p>
+              <Link
+                href={`/dashboard/course/${course}/enrollees`}
+                className={`flex gap-2 ${buttonVariants({ size: "sm" })}`}
+              >
+                View All <MoveRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
 
           <div className="flex gap-4">
