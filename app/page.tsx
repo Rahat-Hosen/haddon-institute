@@ -147,7 +147,7 @@ export default function Home() {
               />
             </div>
             <div className="flex justify-center items-center mt-6 space-x-3">
-              <div className="flex items-center">
+              <div className="flex items-center text-white">
                 <cite>— Ecclesiastes 7:19 ESV</cite>
               </div>
             </div>
