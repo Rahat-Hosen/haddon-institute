@@ -42,8 +42,8 @@ export default function PrivacyPolicy() {
         </p>
         <p className="text-muted-foreground">
           All personal and identifiable information collected and stored by
-          Haddon Institute is handled and stored securely using Square. This
-          information is used for providing a good or service, processing
+          Haddon Institute is handled and stored securely using Square/Stripe.
+          This information is used for providing a good or service, processing
           payments or refunds, responding to inquiries, providing relevant and
           customised suggestions and offers for improved customer experiences
           and conducting market research.

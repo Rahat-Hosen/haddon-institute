@@ -49,7 +49,7 @@ export default async function AdminCoursePage({ params }: any) {
   });
 
   return (
-    <div className="px-24 space-y-8 mb-10">
+    <div className="px-4 space-y-8 mb-10 max-w-7xl mx-auto">
       <Link href={`/dashboard`} className={`flex gap-2 ${buttonVariants()}`}>
         <MoveLeft className="w-4 h-4" /> Course List
       </Link>

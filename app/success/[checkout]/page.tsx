@@ -1,10 +1,19 @@
 import prisma from "@/lib/prisma";
 import { stripe } from "@/lib/stripe";
 import Link from "next/link";
+import { currentUser } from "@clerk/nextjs";
+import { redirect } from "next/navigation";
 
 export default async function Success({ params }: any) {
   const session_id = params.checkout as string;
   const session = await stripe.checkout.sessions.retrieve(session_id);
+
+  // Retrieve Clerk userData
+  const userData = await currentUser();
+
+  if (!userData) {
+    redirect("/sign-in");
+  }
 
   // These are stored in the session metadata with Stripe
   const userId = session?.metadata?.userId;
@@ -41,6 +50,8 @@ export default async function Success({ params }: any) {
         await prisma.user.create({
           data: {
             id: userId as string,
+            name: userData.firstName + " " + userData.lastName,
+            email: userData.emailAddresses[0].emailAddress,
             courses: {
               connect: {
                 id: Number(courseId),

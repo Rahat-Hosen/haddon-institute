@@ -12,7 +12,7 @@ export default function SignInPage() {
     <main className="flex flex-col my-20 items-center justify-center">
       <SignIn
         appearance={{ variables: { colorPrimary: "#000" } }}
-        afterSignInUrl="/"
+        afterSignInUrl="/my-courses"
       />
     </main>
   );
