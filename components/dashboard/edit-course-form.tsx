@@ -94,6 +94,8 @@ export default function EditCourseForm({ course }: { course: any }) {
   const [generatedSlug, setGeneratedSlug] = useState(course.slug || "");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const initialPriceInDollars = (course.price / 100).toFixed(2);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -123,7 +125,7 @@ export default function EditCourseForm({ course }: { course: any }) {
       admin: course.admin,
       adminEmail: course.adminEmail,
       categories: course.categories,
-      price: course.price,
+      price: initialPriceInDollars,
       capstone: course.capstone,
     },
   });
