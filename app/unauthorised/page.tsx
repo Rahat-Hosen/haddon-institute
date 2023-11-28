@@ -1,6 +1,6 @@
 export default function Unauthorised() {
   return (
-    <main className="mx-auto my-10 max-w-lg">
+    <main className="mx-auto my-10 max-w-lg h-screen">
       <div className="text-center">
         <p className="text-lg font-semibold">
           Oops! That wasn{"'"}t supposed to happen! 😳
