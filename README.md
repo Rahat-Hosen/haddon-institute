@@ -33,22 +33,21 @@ pnpm run dev
 
 ## Todo
 
-- [ ] Add a favicon
+- [x] Add a favicon
 - [x] Add a logo to navigation
-- [ ] Update meta tagging
+- [x] Update meta tagging
 - [ ] Build About Us page
-- [ ] Build Our Beliefs page
 - [ ] Build Resources page
+- [ ] Build Our Heritage page
 - [x] Add missing data state for My Courses page with link to /courses
-- [ ] Improve Lesson Overview page
 - [x] Allow video upload
 - [x] Allow image upload
-- [ ] Secure image upload
 - [x] Add logo to footer
 - [x] Make logo in footer link to home page
-- [ ] Protect API routes for admin users only
+- [x] Protect API routes for admin users only
 - [ ] Setup delete API routes
-- [ ] Ensure mobile ready
+- [x] Ensure mobile ready
+- [ ] Improve Lesson Overview page
 - [ ] Add loading state on buttons
 - [ ] Add publish button to lessons
 - [ ] Allow lesson description to be edited

@@ -50,10 +50,10 @@ export default function Footer() {
               Mission
             </Link>
             <Link
-              href="/our-beliefs"
+              href="/our-heritage"
               className="hover:text-muted-foreground transition"
             >
-              Our Beliefs
+              Our Heritage
             </Link>
           </div>
           <div className="flex justify-center gap-8">

@@ -128,7 +128,7 @@ export default function Navigation() {
                         </a>
                       </NavigationMenuLink>
                     </li>
-                    <ListItem href="/our-beliefs" title="Our Beliefs">
+                    <ListItem href="/our-heritage" title="Our Heritage">
                       What we believe and teach.
                     </ListItem>
                     <ListItem href="/leadership" title="Our Leadership">
@@ -261,12 +261,12 @@ export default function Navigation() {
                     </Link>
                     <Separator />
                     <Link
-                      href="/our-beliefs"
+                      href="/our-heritage"
                       className="block py-4 hover:bg-accent transition "
                       onClick={toggleMobileMenu}
                     >
                       <div className="flex justify-between px-6">
-                        Our Beliefs <ArrowRight />
+                        Our Heritage <ArrowRight />
                       </div>
                     </Link>
                     <Separator />
