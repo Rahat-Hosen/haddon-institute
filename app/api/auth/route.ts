@@ -13,7 +13,7 @@ export async function GET() {
   // Check for existing user data
   const data = await prisma.user.findUnique({
     where: {
-      id: userData.id,
+      email: userData.emailAddresses[0].emailAddress,
     },
   });
 
@@ -22,7 +22,6 @@ export async function GET() {
 
     await prisma.user.create({
       data: {
-        id: userData.id,
         name: userData.firstName + " " + userData.lastName,
         email: userData.emailAddresses[0].emailAddress,
       },
