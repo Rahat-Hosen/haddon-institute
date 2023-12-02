@@ -25,7 +25,7 @@ export default async function Success({ params }: any) {
     try {
       const user = await prisma.user.findUnique({
         where: {
-          id: userId,
+          email: userData.emailAddresses[0].emailAddress,
         },
         include: { courses: true },
       });
@@ -33,7 +33,7 @@ export default async function Success({ params }: any) {
       if (user) {
         await prisma.user.update({
           where: {
-            id: userId,
+            email: userData.emailAddresses[0].emailAddress,
           },
           select: {
             courses: true,
@@ -49,7 +49,6 @@ export default async function Success({ params }: any) {
       } else {
         await prisma.user.create({
           data: {
-            id: userId as string,
             name: userData.firstName + " " + userData.lastName,
             email: userData.emailAddresses[0].emailAddress,
             courses: {
