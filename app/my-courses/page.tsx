@@ -17,7 +17,7 @@ export default async function MyCourses() {
 
   const data = await prisma.user.findUnique({
     where: {
-      id: user?.id,
+      email: user?.emailAddresses[0].emailAddress,
     },
     include: {
       courses: true,
