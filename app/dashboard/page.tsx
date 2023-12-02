@@ -10,7 +10,7 @@ import { Separator } from "@/components/ui/separator";
 import { PlusIcon } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { redirect } from "next/navigation";
-import { auth } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Administrator Dashboard | Haddon Institute",
@@ -18,14 +18,15 @@ export const metadata: Metadata = {
 };
 
 export default async function AdministratorDashboard() {
-  const { userId } = auth();
-
-  if (!userId) {
-    redirect("/sign-in");
-  }
+  const user = await currentUser();
 
   const isAdmin =
-    userId && (await prisma.user.findUnique({ where: { id: userId } }))?.admin;
+    user &&
+    (
+      await prisma.user.findUnique({
+        where: { email: user.emailAddresses[0].emailAddress },
+      })
+    )?.admin;
 
   if (!isAdmin) {
     redirect("/unauthorised");
@@ -55,13 +56,13 @@ export default async function AdministratorDashboard() {
   });
 
   return (
-    <div className="flex justify-center items-center h-[80vh] w-full">
+    <div className="flex justify-center w-full max-w-7xl">
       <div className="space-y-8">
         <AnimatedText
           text="Administrator Dashboard"
           className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
         />
-        <div className="space-y-4">
+        <div className="space-y-4 w-full">
           <div>
             <div className="flex justify-between">
               <h2 className="font-bold text-2xl">Courses</h2>

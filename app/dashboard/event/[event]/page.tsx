@@ -1,6 +1,6 @@
 import { buttonVariants } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
-import { auth } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { MoveLeft } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -9,10 +9,15 @@ import { columns } from "./columns";
 import AnimatedText from "@/components/animated-text";
 
 export default async function ManageEvent({ params }: any) {
-  const { userId } = auth();
+  const user = await currentUser();
 
   const isAdmin =
-    userId && (await prisma.user.findUnique({ where: { id: userId } }))?.admin;
+    user &&
+    (
+      await prisma.user.findUnique({
+        where: { email: user.emailAddresses[0].emailAddress },
+      })
+    )?.admin;
 
   if (!isAdmin) {
     redirect("/unauthorised");

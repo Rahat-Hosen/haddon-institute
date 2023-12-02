@@ -2,17 +2,23 @@ import { redirect } from "next/navigation";
 import { columns } from "./columns";
 import { DataTable } from "./data-table";
 import prisma from "@/lib/prisma";
-import { auth } from "@clerk/nextjs";
+import { currentUser } from "@clerk/nextjs";
 import AnimatedText from "@/components/animated-text";
 import { MoveLeft } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import NewEnrollee from "@/components/dashboard/new-enrollee";
 
 export default async function Enrollees({ params }: any) {
-  const { userId } = auth();
+  const user = await currentUser();
 
   const isAdmin =
-    userId && (await prisma.user.findUnique({ where: { id: userId } }))?.admin;
+    user &&
+    (
+      await prisma.user.findUnique({
+        where: { email: user.emailAddresses[0].emailAddress },
+      })
+    )?.admin;
 
   if (!isAdmin) {
     redirect("/unauthorised");
@@ -37,7 +43,6 @@ export default async function Enrollees({ params }: any) {
 
   const tableData = data.users.map((user: any) => {
     return {
-      id: user.id,
       enrollee: user.name,
       email: user.email,
     };
@@ -55,6 +60,7 @@ export default async function Enrollees({ params }: any) {
       >
         <MoveLeft className="w-4 h-4" /> Back to Course
       </Link>
+      <NewEnrollee courseId={data.id} course={course} />
       <DataTable columns={columns} data={tableData} />
     </div>
   );

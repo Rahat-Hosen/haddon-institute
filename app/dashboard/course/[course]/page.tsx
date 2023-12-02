@@ -8,13 +8,18 @@ import NewLesson from "@/components/dashboard/new-lesson";
 import PublishCourse from "@/components/dashboard/publish-course";
 import CoverImage from "@/components/dashboard/cover-image";
 import { redirect } from "next/navigation";
-import { auth } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 
 export default async function AdminCoursePage({ params }: any) {
-  const { userId } = auth();
+  const user = await currentUser();
 
   const isAdmin =
-    userId && (await prisma.user.findUnique({ where: { id: userId } }))?.admin;
+    user &&
+    (
+      await prisma.user.findUnique({
+        where: { email: user.emailAddresses[0].emailAddress },
+      })
+    )?.admin;
 
   if (!isAdmin) {
     redirect("/unauthorised");

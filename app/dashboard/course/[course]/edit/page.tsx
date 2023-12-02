@@ -1,13 +1,18 @@
 import EditCourseForm from "@/components/dashboard/edit-course-form";
 import prisma from "@/lib/prisma";
-import { auth } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
 export default async function EditCourse({ params }: any) {
-  const { userId } = auth();
+  const user = await currentUser();
 
   const isAdmin =
-    userId && (await prisma.user.findUnique({ where: { id: userId } }))?.admin;
+    user &&
+    (
+      await prisma.user.findUnique({
+        where: { email: user.emailAddresses[0].emailAddress },
+      })
+    )?.admin;
 
   if (!isAdmin) {
     redirect("/unauthorised");
