@@ -79,7 +79,7 @@ export default function Footer() {
               <FaXTwitter className="w-6 h-6" />
             </a>
             <a
-              href="https://youtube.com"
+              href="https://www.youtube.com/@HaddonInstitute"
               target="_blank"
               className="hover:text-muted-foreground transition"
             >
