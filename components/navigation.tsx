@@ -119,12 +119,8 @@ export default function Navigation() {
                         >
                           <BookOpen className="h-6 w-6" />
                           <div className="mb-2 mt-4 text-lg font-medium">
-                            Mission Statement
+                            Mission Statement and Vision
                           </div>
-                          <p className="text-sm leading-tight text-muted-foreground">
-                            Our vision is to provide a Christ-centered education
-                            grounded in Reformed theology.
-                          </p>
                         </a>
                       </NavigationMenuLink>
                     </li>

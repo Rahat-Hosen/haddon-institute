@@ -13,12 +13,13 @@ export default function MissionStatement() {
     <div className="space-y-12 my-20">
       <div className="px-4 space-y-8">
         <AnimatedText
-          text="Mission Statement"
+          text="Mission Statement and Vision"
           className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
         />
         <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto">
-          Our mission at the Haddon institute is to provide a Christ-centered
-          education grounded in the Reformed tradition.
+          Our vision is to see the Australian Church fear and behold the majesty
+          of the Lord Jesus Christ; in all of His offices, through all of His
+          means, to the end of His Glory from generation to generation.
         </p>
       </div>
       <div className="relative">
@@ -43,13 +44,12 @@ export default function MissionStatement() {
             height={40}
             className="text-muted-foreground"
           />
-          <h2 className="font-semibold text-xl">Faith-based Education</h2>
+          <h2 className="font-semibold text-xl">Our Mission</h2>
           <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-            Our mission at Haddon institute is to provide a Christ-centered
-            education grounded in Reformed theology. We are dedicated to
-            equipping students with a strong foundation in both faith and
-            academics, so our students flourish in their love for God, pursuing
-            a great knowledge of Christ, and a commitment to serve others.
+            Our mission is to enlist, equip, and disciple God’s people by
+            providing robust time-tested academic pathways for effective gospel
+            mobilization; through the local church for fruitful vocation and
+            family life.
           </p>
         </div>
         <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
