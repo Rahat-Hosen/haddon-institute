@@ -36,7 +36,7 @@ export default function MissionStatement() {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-4 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 gap-2 px-4 max-w-2xl mx-auto">
         <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
           <GraduationCap
             strokeWidth={1}
@@ -50,22 +50,6 @@ export default function MissionStatement() {
             providing robust time-tested academic pathways for effective gospel
             mobilization; through the local church for fruitful vocation and
             family life.
-          </p>
-        </div>
-        <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
-          <Globe2
-            strokeWidth={1}
-            width={40}
-            height={40}
-            className="text-muted-foreground"
-          />
-          <h2 className="font-semibold text-xl">Gospel Impact</h2>
-          <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
-            At Haddon we are about strategic mobilisation for greater gospel
-            impact by developing men and women who exhibit wisdom, virtue, and a
-            deep understanding of their Christian faith, preparing them to make
-            a redemptive impact on the world for the glory of God through their
-            local church, in vocation and in family life.
           </p>
         </div>
       </div>
