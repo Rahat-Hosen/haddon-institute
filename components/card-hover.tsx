@@ -68,8 +68,8 @@ export const CardHover = () => {
                 />
               )}
             </AnimatePresence>
-            <div className="hover:shadow-2xl dark:hover:shadow-none transition-all duration-300 rounded-2xl h-full w-full p-2 overflow-hidden group-hover:border-accent relative z-50">
-              <div className="relative z-50">
+            <div className="hover:shadow-2xl dark:hover:shadow-none transition-all duration-300 rounded-2xl h-full w-full p-2 overflow-hidden group-hover:border-accent relative z-40">
+              <div className="relative z-40">
                 <div className="p-4 space-y-4">
                   {createElement(iconComponents[card.icon], {
                     strokeWidth: 1,

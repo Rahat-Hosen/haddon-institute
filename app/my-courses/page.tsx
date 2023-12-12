@@ -32,7 +32,7 @@ export default async function MyCourses() {
           View your purchased courses and their progress.
         </p>
       </div>
-      <Separator />
+
       <div>
         {data?.courses.length === 0 ? (
           <div className="space-y-4">
@@ -45,7 +45,7 @@ export default async function MyCourses() {
             </Link>
           </div>
         ) : (
-          <div className="mx-auto grid grid-cols-2 gap-4">
+          <div className="mx-auto w-full">
             {data?.courses.map((course) => (
               <div key={course.id} className="relative h-[200px]">
                 <Link href={`/my-courses/${course.slug}`}>
@@ -63,7 +63,9 @@ export default async function MyCourses() {
                     <h2 className="text-2xl tracking-tighter font-semibold leading-none text-white">
                       {course.title}
                     </h2>
-                    <p className="text-gray-200">{course.description}</p>
+                    <p className="text-gray-200 hidden md:flex">
+                      {course.description}
+                    </p>
                   </div>
                 </Link>
               </div>

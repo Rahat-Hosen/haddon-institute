@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 import Script from "next/script";
 import { UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } from "@/lib/umami";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://haddoninstitute.org/"),
@@ -37,12 +38,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${GeistSans.variable} ${GeistMono.variable} font-sans bg-[#fafafa] dark:bg-[#0a0a0a]`}
+          className={`${GeistSans.variable} ${GeistMono.variable} min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] font-sans text-black antialiased transition-all duration-200 selection:bg-black selection:text-white dark:text-white dark:selection:bg-white dark:selection:text-black`}
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Navigation />
-            {children}
-            <div className="bg-muted mt-10">
+            <Suspense>{children}</Suspense>
+            <div className="bg-muted py-14 mt-10">
               <Footer />
             </div>
             <Toaster />
@@ -53,5 +54,3 @@ export default function RootLayout({
     </ClerkProvider>
   );
 }
-
-// #fafafa

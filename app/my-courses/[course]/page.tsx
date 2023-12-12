@@ -1,4 +1,5 @@
 import { Button, buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 import prisma from "@/lib/prisma";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
@@ -36,12 +37,16 @@ export default async function CourseLessons({ params }: any) {
         <h3 className="text-2xl font-bold">{course.title}</h3>
         <p className="text-sm text-muted-foreground">{course.description}</p>
       </div>
-      <div>
+
+      <div className="space-y-4">
         <h3 className="text-xl font-bold">Lessons</h3>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {lessons.length > 0 ? (
             lessons.map((lesson: any) => (
-              <div key={lesson.id} className="border rounded-md p-4 w-full">
+              <div
+                key={lesson.id}
+                className="border dark:bg-neutral-900 bg-muted dark:text-white rounded-2xl shadow-2xl p-4 w-full"
+              >
                 <Link
                   href={`/my-courses/${slug}/${lesson.slug}`}
                   className="space-y-4"
@@ -53,7 +58,7 @@ export default async function CourseLessons({ params }: any) {
                     {lesson.description.replace(/-/g, "•")}
                   </p>
                   <div>
-                    <Button className="flex gap-2">
+                    <Button className="flex gap-2 " variant="outline">
                       View Lesson <MoveRight className="w-5 h-5" />
                     </Button>
                   </div>
@@ -61,7 +66,7 @@ export default async function CourseLessons({ params }: any) {
               </div>
             ))
           ) : (
-            <div className="text-lg">
+            <div>
               No lessons have been been made available yet, check back soon!
             </div>
           )}

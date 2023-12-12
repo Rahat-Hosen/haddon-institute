@@ -1,6 +1,6 @@
 import { buttonVariants } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
-import { EditIcon, MoveLeft, MoveRight } from "lucide-react";
+import { EditIcon, Eye, MoveLeft, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { DataTable } from "./data-table";
 import { columns } from "./columns";
@@ -54,14 +54,36 @@ export default async function AdminCoursePage({ params }: any) {
   });
 
   return (
-    <div className="px-4 space-y-8 mb-10 max-w-7xl mx-auto">
-      <Link href={`/dashboard`} className={`flex gap-2 ${buttonVariants()}`}>
-        <MoveLeft className="w-4 h-4" /> Course List
-      </Link>
+    <div className="px-4 space-y-8 py-10 max-w-7xl mx-auto">
+      <div className="sm:flex justify-between space-y-2 sm:space-y-0 gap-8">
+        <Link href={`/dashboard`} className={`flex gap-2 ${buttonVariants()}`}>
+          <MoveLeft className="w-4 h-4" /> Course List
+        </Link>
+
+        <div className="flex gap-2">
+          <div>
+            <PublishCourse published={data.published} course={course} />
+          </div>
+
+          <Link
+            href={`/dashboard/course/${course}/edit`}
+            className={`flex gap-2 ${buttonVariants()}`}
+          >
+            <EditIcon className="w-5 h-5" /> Edit
+          </Link>
+          <Link
+            href={`/course/${course}`}
+            className={`flex gap-2 ${buttonVariants()}`}
+          >
+            <Eye className="w-5 h-5" /> View
+          </Link>
+        </div>
+      </div>
+
       <div className="flex justify-between">
         <div className="space-y-4">
           <h1 className="font-bold text-2xl">{data.title}</h1>
-          <div>
+          {/* <div>
             <h2 className="font-bold text-xl">Description</h2>
             <p>{data.description}</p>
           </div>
@@ -134,48 +156,31 @@ export default async function AdminCoursePage({ params }: any) {
               <p>{data.lecturer}</p>
               <p>{data.lecturerEmail}</p>
             </div>
-          </div>
-          <div className="flex gap-4">
-            <p>
+          </div> */}
+          <div className="sm:flex space-y-2 sm:space-y-0 gap-2">
+            <div className="border dark:bg-neutral-900 bg-muted dark:text-white rounded-md px-2 py-1">
               {new Intl.NumberFormat("en-US", {
                 style: "currency",
                 currency: "USD",
                 minimumFractionDigits: 2,
               }).format(parseFloat(data.price) / 100)}
-            </p>
-            <p>{data.Lesson.length} lessons</p>
+            </div>
+            <div className="border dark:bg-neutral-900 bg-muted dark:text-white rounded-md px-2 py-1">
+              {data.Lesson.length} Lessons
+            </div>
 
             <div className="flex gap-2">
-              <p>{data.users.length} user/s enrolled</p>
+              <div className="border dark:bg-neutral-900 bg-muted dark:text-white rounded-md px-2 py-1">
+                {data.users.length} User/s Enrolled
+              </div>
               <Link
                 href={`/dashboard/course/${course}/enrollees`}
-                className={`flex gap-2 ${buttonVariants({ size: "sm" })}`}
+                className={`flex gap-2 my-auto border px-2 py-1`}
               >
-                View All <MoveRight className="w-4 h-4" />
+                View All <MoveRight className="w-4 h-4 my-auto" />
               </Link>
             </div>
           </div>
-
-          <div className="flex gap-4">
-            {Array.isArray(data.categories) &&
-              data.categories.map((data: any, index) => (
-                <p key={index} className="border px-4 py-1 rounded-2xl">
-                  {data.value}
-                </p>
-              ))}
-          </div>
-        </div>
-        <div className="flex gap-4">
-          <div>
-            <PublishCourse published={data.published} course={course} />
-          </div>
-
-          <Link
-            href={`/dashboard/course/${course}/edit`}
-            className={`flex gap-2 ${buttonVariants()}`}
-          >
-            <EditIcon className="w-5 h-5" /> Edit
-          </Link>
         </div>
       </div>
 

@@ -56,32 +56,28 @@ export default async function AdministratorDashboard() {
   });
 
   return (
-    <div className="flex justify-center w-full max-w-7xl">
+    <div className="mx-auto w-full max-w-7xl px-4 py-20">
       <div className="space-y-8">
-        <AnimatedText
-          text="Administrator Dashboard"
-          className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
-        />
         <div className="space-y-4 w-full">
           <div>
             <div className="flex justify-between">
               <h2 className="font-bold text-2xl">Courses</h2>
               <Link
                 href={`/dashboard/new-course`}
-                className={`flex gap-2 ${buttonVariants({ size: "sm" })}`}
+                className={`flex gap-2 ${buttonVariants()}`}
               >
                 <PlusIcon className="w-5 h-5" /> New Course
               </Link>
             </div>
             <CourseDataTable columns={courseColumns} data={courseData} />
           </div>
-          <Separator />
+
           <div>
             <div className="flex justify-between">
               <h2 className="font-bold text-2xl">Events</h2>
               <Link
                 href={`/dashboard/new-event`}
-                className={`flex gap-2 ${buttonVariants({ size: "sm" })}`}
+                className={`flex gap-2 ${buttonVariants()}`}
               >
                 <PlusIcon className="w-5 h-5" /> New Event
               </Link>

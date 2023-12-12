@@ -59,7 +59,7 @@ const Newsletter = () => {
   }
 
   return (
-    <div className="relative overflow-hidden">
+    <div className="relative overflow-hidden px-4">
       <div className="relative grid py-28 place-content-center space-y-6 bg-[#b89c5f] p-8 rounded-2xl">
         <div className="z-20">
           <h2 className="font-semibold text-2xl">

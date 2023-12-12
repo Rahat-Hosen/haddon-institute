@@ -6,16 +6,9 @@ import Newsletter from "@/components/newsletter";
 import Player from "@/components/player";
 import { HeroScroll } from "@/components/scroll-up-in";
 import { TextGenerateEffect } from "@/components/text-generate";
-import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import {
-  BookOpen,
-  Globe2,
-  GraduationCap,
-  MoveRight,
-  Stars,
-} from "lucide-react";
+import { MoveRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 

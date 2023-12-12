@@ -19,7 +19,7 @@ import { ModeToggle } from "./mode-toggle";
 export default function Footer() {
   return (
     <div>
-      <div className="flex justify-center">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="space-y-8">
           <Link href="/">
             <Image
@@ -30,7 +30,7 @@ export default function Footer() {
               className="mx-auto"
             />
           </Link>
-          <div className="flex justify-center gap-4 font-semibold">
+          <div className="flex justify-center flex-col sm:flex-row gap-4 mx-auto text-center">
             <Link
               href="/courses"
               className="hover:text-muted-foreground transition"
