@@ -108,7 +108,7 @@ export default function CourseCard({
           <MoveLeft /> All Courses
         </Link>
         <div className="space-y-8">
-          <div className="xl:flex justify-between w-full">
+          <div className="md:flex justify-between w-full">
             <div>
               <AnimatedText
                 text={course.title}
@@ -117,7 +117,10 @@ export default function CourseCard({
               <div className="flex gap-4 pt-4">
                 {Array.isArray(course.categories) &&
                   course.categories.map((data: any, index: any) => (
-                    <p key={index} className="border px-4 py-1 rounded-2xl">
+                    <p
+                      key={index}
+                      className="px-4 py-1 rounded-2xl border dark:bg-neutral-900 bg-muted dark:text-white"
+                    >
                       {data.value}
                     </p>
                   ))}
@@ -211,13 +214,14 @@ export default function CourseCard({
             </div>
           </div>
 
-          <h2 className="font-bold text-2xl">Course Overview</h2>
+          <div className="space-y-2">
+            <h2 className="font-bold text-2xl">Course Overview</h2>
+            <p className="text-black dark:text-muted-foreground">
+              {course.description}
+            </p>
+          </div>
 
-          <p className="text-black dark:text-muted-foreground">
-            {course.description}
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl bg-muted p-8 rounded-2xl">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl border dark:bg-neutral-900 bg-muted dark:text-white p-8 rounded-2xl">
             <div>
               <h3 className="font-semibold text-lg flex gap-2">
                 <FileDigit className="w-5 h-5 my-auto" />
@@ -446,6 +450,8 @@ export default function CourseCard({
             </div>
           </div>
 
+          <Separator className="my-10" />
+
           <div className="w-full space-y-2">
             <h2 className="font-bold text-xl">Lesson Overviews</h2>
             <p className="text-black dark:text-muted-foreground">
@@ -458,7 +464,7 @@ export default function CourseCard({
                 <AccordionItem
                   key={lesson.id}
                   value={`item-${lesson.id}`}
-                  className="border py-2 px-6 hover:bg-muted rounded-md transition"
+                  className="border py-2 px-6 transition hover:bg-transparent dark:hover:bg-transparent dark:bg-neutral-900 bg-muted dark:text-white rounded-2xl"
                 >
                   <AccordionTrigger className="font-semibold">
                     {lesson.title}

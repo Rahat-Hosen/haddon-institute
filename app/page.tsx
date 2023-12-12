@@ -70,8 +70,11 @@ export default function Home() {
           <div className="hidden lg:flex w-full h-full">
             <HeroScroll />
           </div>
-          <div className="lg:hidden flex w-full h-full">
-            <Player playbackId="5ta2qsCFRlUy01ruxgcfAP6009UlUQVXUj3MOcosx00wjQ" />
+
+          <div className="lg:hidden flex w-full h-full rounded-2xl gap-4 overflow-hidden aspect-video shadow-2xl">
+            <div className="rounded-2xl w-full h-full">
+              <Player playbackId="5ta2qsCFRlUy01ruxgcfAP6009UlUQVXUj3MOcosx00wjQ" />
+            </div>
           </div>
         </div>
       </div>
@@ -133,7 +136,7 @@ export default function Home() {
 
         <div className="px-4">
           <div className="mx-auto text-center my-20 py-28 px-4 bg-gradient-to-br from-[#11271f] from-50% to-black rounded-2xl">
-            <div className="text-2xl italic font-semibold md:text-transparent md:bg-clip-text md:bg-gradient-to-r md:from-white md:from-40% md:dark:to-muted md:to-100%">
+            <div className="text-2xl italic font-semibold text-white dark:md:text-transparent md:bg-clip-text md:bg-gradient-to-r md:from-white md:from-40% md:dark:to-muted md:to-100%">
               <TextGenerateEffect
                 words='"Wisdom gives strength to the wise man more than ten rulers
               who are in a city."'

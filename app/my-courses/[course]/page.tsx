@@ -1,7 +1,7 @@
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import prisma from "@/lib/prisma";
-import { MoveRight } from "lucide-react";
+import { MoveLeft, MoveRight } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -32,7 +32,12 @@ export default async function CourseLessons({ params }: any) {
   }
 
   return (
-    <div className="space-y-8 px-4 my-10 xl:px-24 xl:my-20">
+    <div className="space-y-8 px-4 min-h-[60vh] my-10 xl:px-24 xl:my-20">
+      <Link href={`/my-courses/`} className={`flex gap-2 ${buttonVariants()}`}>
+        <MoveLeft />
+        My Courses
+      </Link>
+
       <div>
         <h3 className="text-2xl font-bold">{course.title}</h3>
         <p className="text-sm text-muted-foreground">{course.description}</p>
@@ -45,7 +50,7 @@ export default async function CourseLessons({ params }: any) {
             lessons.map((lesson: any) => (
               <div
                 key={lesson.id}
-                className="border dark:bg-neutral-900 bg-muted dark:text-white rounded-2xl shadow-2xl p-4 w-full"
+                className="border dark:bg-neutral-900 bg-muted dark:text-white rounded-2xl p-4 w-full"
               >
                 <Link
                   href={`/my-courses/${slug}/${lesson.slug}`}

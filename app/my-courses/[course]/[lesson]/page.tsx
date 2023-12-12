@@ -28,7 +28,16 @@ export default async function Lessons({
 
   return (
     <div className="space-y-8 w-full">
-      {lesson.video ? <Player playbackId={lesson.video} /> : null}
+      <div className="rounded-2xl h-full w-full">
+        {lesson.video ? (
+          <div className="w-full h-full rounded-2xl gap-4 overflow-hidden aspect-video shadow-2xl">
+            <div className="rounded-2xl">
+              <Player playbackId={lesson.video} />
+            </div>
+          </div>
+        ) : null}
+      </div>
+
       {lesson.blocks && lesson.blocks.length > 0 ? (
         <Uneditable blocks={lesson.blocks} />
       ) : (

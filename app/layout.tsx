@@ -9,7 +9,6 @@ import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 import Script from "next/script";
 import { UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } from "@/lib/umami";
-import { Suspense } from "react";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://haddoninstitute.org/"),
@@ -42,8 +41,8 @@ export default function RootLayout({
         >
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Navigation />
-            <Suspense>{children}</Suspense>
-            <div className="bg-muted py-14 mt-10">
+            {children}
+            <div className="bg-muted py-14 lg:py-0 mt-10">
               <Footer />
             </div>
             <Toaster />
