@@ -13,6 +13,7 @@ import {
   LibraryBig,
   CalendarDays,
   Users,
+  HeartHandshake,
 } from "lucide-react";
 import { Separator } from "./ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
@@ -202,13 +203,15 @@ export default function Navigation() {
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
-              {/* <NavigationMenuItem>
+              <NavigationMenuItem>
                 <Link href="/giving" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Giving
+                  <NavigationMenuLink
+                    className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                  >
+                    <HeartHandshake className="w-4 h-4 my-auto" /> Giving
                   </NavigationMenuLink>
                 </Link>
-              </NavigationMenuItem> */}
+              </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
           <Separator className="max-w-sm mx-auto my-2" />
@@ -359,7 +362,7 @@ export default function Navigation() {
               </div>
             </Link>
             <Separator />
-            {/* <Link
+            <Link
               href="/giving"
               className="block py-4 hover:bg-accent transition"
               onClick={toggleMobileMenu}
@@ -368,7 +371,7 @@ export default function Navigation() {
                 Giving <ArrowRight />
               </div>
             </Link>
-            <Separator /> */}
+            <Separator />
             <Link
               href="/events"
               className="block py-4 hover:bg-accent transition"
