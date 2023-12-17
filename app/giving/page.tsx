@@ -1,7 +1,7 @@
 import AnimatedText from "@/components/animated-text";
+import { Button } from "@/components/ui/button";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { FaMoneyBill } from "react-icons/fa6";
 
 export const metadata: Metadata = {
   title: "Giving | Haddon Institute",
@@ -10,17 +10,22 @@ export const metadata: Metadata = {
 
 export default function Giving() {
   return (
-    <div className="space-y-8 px-4 my-20">
+    <div className="space-y-8  my-20">
       <AnimatedText
         text="Giving"
         className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
-      <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto">
+      <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto px-4">
         Haddon Institute is a registered charity with the ACNC; as such we
         depend on the generosity of people who believe in the mission of
         organisation. If you would like to donate please find our bank details
         below.
       </p>
+      <a href="https://donate.stripe.com/3csaH8c700zL49y145">
+        <Button className="w-full px-4 max-w-3xl mx-auto flex justify-center mt-8">
+          Donate Now
+        </Button>
+      </a>
       <div className="relative">
         <Image
           src="/jesse-collins-kfqZbKHV8dQ-unsplash.jpg"
@@ -33,24 +38,6 @@ export default function Giving() {
           <p className="text-2xl font-bold tracking-tight text-white">
             Your generosity helps us to train and equip the next generation of
             Christian leaders.
-          </p>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 gap-2 px-4 max-w-2xl mx-auto">
-        <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
-          <FaMoneyBill
-            strokeWidth={1}
-            width={40}
-            height={40}
-            className="text-muted-foreground"
-          />
-          <h2 className="font-semibold text-xl">Bank Details</h2>
-          <p className="text-muted-foreground">
-            <span className="font-semibold">NAB</span>
-            <br />
-            <span className="font-semibold">BSB:</span> 084-961
-            <br />
-            <span className="font-semibold">Account Number:</span> 719 221 664
           </p>
         </div>
       </div>
