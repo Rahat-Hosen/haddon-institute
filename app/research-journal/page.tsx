@@ -76,6 +76,7 @@ export default function ResearchJournal() {
           </p>
         </div>
       </div>
+      <p className="text-center text-lg ">Details to come in 2024</p>
     </div>
   );
 }
