@@ -38,10 +38,10 @@ export default function Footer() {
               Courses
             </Link>
             <Link
-              href="/resources"
+              href="/research-journal"
               className="hover:text-muted-foreground transition"
             >
-              Resources
+              Research Journal
             </Link>
             <Link
               href="/mission-statement"

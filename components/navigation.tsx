@@ -185,12 +185,12 @@ export default function Navigation() {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/resources" legacyBehavior passHref>
+                <Link href="/research-journal" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={`${navigationMenuTriggerStyle()} flex gap-2`}
                   >
                     <LibraryBig className="w-4 h-4 my-auto" />
-                    Resources
+                    Research Journal
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
@@ -353,12 +353,12 @@ export default function Navigation() {
             </Link>
             <Separator />
             <Link
-              href="/resources"
+              href="/research-journal"
               className="block py-4 hover:bg-accent transition"
               onClick={toggleMobileMenu}
             >
               <div className="flex justify-between px-6">
-                Resources <ArrowRight />
+                Research Journal <ArrowRight />
               </div>
             </Link>
             <Separator />

@@ -14,7 +14,7 @@ export default authMiddleware({
     "/sign-up",
     "/courses",
     "/(course)(.*)",
-    "/resources",
+    "/research-journal",
     "/about-us",
     "/our-heritage",
     "/terms-of-service",

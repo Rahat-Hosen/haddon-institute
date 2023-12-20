@@ -37,7 +37,6 @@ pnpm run dev
 - [x] Add a logo to navigation
 - [x] Update meta tagging
 - [ ] Build About Us page
-- [ ] Build Resources page
 - [ ] Build Our Heritage page
 - [x] Add missing data state for My Courses page with link to /courses
 - [x] Allow video upload

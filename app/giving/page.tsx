@@ -31,6 +31,8 @@ export default function Giving() {
           src="/jesse-collins-kfqZbKHV8dQ-unsplash.jpg"
           height={2000}
           width={2000}
+          quality={100}
+          priority
           alt="Brisbane Header Image"
           className="h-[600px] object-cover w-full brightness-75"
         />

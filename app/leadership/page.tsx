@@ -31,6 +31,8 @@ export default async function Leadership() {
           src="/kikki-starr-dmEIzFnuzLs-unsplash.jpg"
           height={2000}
           width={2000}
+          quality={100}
+          priority
           alt="Ocean Header Image"
           className="h-[600px] object-cover w-full brightness-75"
         />

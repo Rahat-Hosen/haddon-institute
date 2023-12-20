@@ -27,6 +27,8 @@ export default function MissionStatement() {
           src="/christoffer-engstrom-wc9avd2RaN0-unsplash.jpg"
           height={2000}
           width={2000}
+          quality={100}
+          priority
           alt="Ocean Header Image"
           className="h-[600px] object-cover w-full brightness-75"
         />
@@ -45,7 +47,7 @@ export default function MissionStatement() {
             className="text-muted-foreground"
           />
           <h2 className="font-semibold text-xl">Our Mission</h2>
-          <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
+          <p className="text-muted-foreground">
             Our mission is to enlist, equip, and disciple God’s people by
             providing robust time-tested academic pathways for effective gospel
             mobilization; through the local church for fruitful vocation and

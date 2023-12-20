@@ -28,6 +28,8 @@ export default function OurHeritage() {
           src="/kate-mclean-9Q6NzzGX3Ls-unsplash.jpg"
           height={2000}
           width={2000}
+          quality={100}
+          priority
           alt="Ocean Header Image"
           className="h-[600px] object-cover w-full brightness-75"
         />
@@ -37,7 +39,7 @@ export default function OurHeritage() {
           </p>
         </div>
       </div>
-      {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-4 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-4 max-w-7xl mx-auto">
         <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
           <ScrollText
             strokeWidth={1}
@@ -46,7 +48,7 @@ export default function OurHeritage() {
             className="text-muted-foreground"
           />
           <h2 className="font-semibold text-xl">Confessional</h2>
-          <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
+          <p className="text-muted-foreground">
             Haddon Institute is confessional in it’s academic and lived
             convictions. We hold heritage hostage by the durability of the
             Second London Baptist Confession of Faith (1689) as a faithful
@@ -61,7 +63,7 @@ export default function OurHeritage() {
             className="text-muted-foreground"
           />
           <h2 className="font-semibold text-xl">Gospel Impact</h2>
-          <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">
+          <p className="text-muted-foreground">
             At Haddon we are about strategic mobilisation for greater gospel
             impact by developing men and women who exhibit wisdom, virtue, and a
             deep understanding of their Christian faith, preparing them to make
@@ -69,7 +71,7 @@ export default function OurHeritage() {
             local church, in vocation and in family life.
           </p>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 }
