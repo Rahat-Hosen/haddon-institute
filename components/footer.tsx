@@ -3,6 +3,7 @@ import {
   Copyright,
   Facebook,
   Instagram,
+  Linkedin,
   Twitter,
   Youtube,
 } from "lucide-react";
@@ -38,9 +39,7 @@ export default function Footer() {
               />
             </Link>
             <div className="space-y-1">
-              <p className="text-sm">
-                Mount Gravatt East
-              </p>
+              <p className="text-sm">Mount Gravatt East</p>
               <p className="text-sm">QLD, Australia</p>
               <p className="text-sm">+61 468 557 200</p>
             </div>
@@ -123,7 +122,14 @@ export default function Footer() {
           </div>
           <div className="space-y-4">
             <p className="font-semibold text-lg">Follow Us</p>
-            <div className="flex gap-8">
+            <div className="flex gap-6">
+              <a
+                href="https://au.linkedin.com/company/haddon-institute"
+                target="_blank"
+                className="hover:text-muted-foreground transition"
+              >
+                <Linkedin />
+              </a>
               <a
                 href="https://www.facebook.com/people/Haddon-Institute/61552824826527/"
                 target="_blank"
