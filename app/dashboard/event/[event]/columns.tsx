@@ -1,8 +1,6 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { format } from "date-fns";
-import { utcToZonedTime } from "date-fns-tz";
 
 export type Data = {
   id: number;
@@ -37,10 +35,12 @@ export const columns: ColumnDef<Data>[] = [
 
       const timezone = "Australia/Brisbane";
 
-      return format(
-        utcToZonedTime(new Date(date), timezone),
-        "cccc MMMM d yyyy, h:mm bbb",
-      );
+      return new Date(date).toLocaleDateString("en-AU", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        timeZone: timezone,
+      });
     },
   },
 ];

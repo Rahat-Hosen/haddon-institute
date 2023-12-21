@@ -3,8 +3,6 @@ import EventCalendar from "@/components/events/calendar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import prisma from "@/lib/prisma";
-import { format } from "date-fns";
-import { utcToZonedTime } from "date-fns-tz";
 import { EyeIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
@@ -44,10 +42,12 @@ export default async function Events() {
         <div key={event.id} className="relative w-full h-[300px]">
           <Link href={`/event/${event.slug}`}>
             <Badge className="absolute top-8 right-8 z-10">
-              {format(
-                utcToZonedTime(new Date(event.date), timezone),
-                "cccc MMMM d yyyy, h:mm bbb",
-              )}
+              {new Date(event.date).toLocaleDateString("en-AU", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+                timeZone: timezone,
+              })}
             </Badge>
             <div className="absolute inset-0 rounded-[48px]">
               <Image
