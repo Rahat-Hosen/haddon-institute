@@ -54,7 +54,7 @@ export const CardHover = () => {
             <AnimatePresence>
               {hoveredIndex === idx && (
                 <motion.span
-                  className="absolute inset-0 h-full w-full bg-muted block  rounded-3xl"
+                  className="absolute inset-0 h-full w-full bg-neutral-200 block  rounded-3xl"
                   layoutId="hoverBackground" // required for the background to follow
                   initial={{ opacity: 0 }}
                   animate={{

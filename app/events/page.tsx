@@ -69,7 +69,7 @@ export default async function Events() {
         </div>
       ))}
 
-      <div className="max-w-7xl mx-auto rounded-2xl bg-muted p-8">
+      <div className="max-w-7xl mx-auto rounded-2xl p-8">
         <EventCalendar />
       </div>
     </div>
