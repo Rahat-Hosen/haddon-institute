@@ -45,7 +45,7 @@ export default async function Lessons({
           <h1 className="font-semibold text-xl text-center">
             No Content Available
           </h1>
-          <p className="text-center text-muted-foreground">
+          <p className="text-center text-black">
             No content here yet! Check back soon!
           </p>
         </div>

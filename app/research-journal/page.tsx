@@ -18,7 +18,7 @@ export default function ResearchJournal() {
           text="Research Journal"
           className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
         />
-        <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto">
+        <p className="text-center text-black text-lg max-w-3xl mx-auto">
           The Haddon Institute Research Journal is a collection of articles,
           blog posts and studies written by our staff and students. We hope
           these resources will be a blessing to you and your ministry.
@@ -42,15 +42,15 @@ export default function ResearchJournal() {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-4 max-w-7xl mx-auto">
-        <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
+        <div className="space-y-4 rounded-2xl p-8 hover:bg-neutral-200 hover:shadow-2xl transition-all duration-300">
           <Church
             strokeWidth={1}
             width={40}
             height={40}
-            className="text-muted-foreground"
+            className="text-black"
           />
           <h2 className="font-semibold text-xl">Purpose and Beliefs</h2>
-          <p className="text-muted-foreground">
+          <p className="text-black">
             In keeping with the Vision and Mission of the Haddon Institute, The
             Haddon Institute Research Journal (HIRJ) will advance Christ’s
             kingdom through rigorous scholarship that equips readers to apply a
@@ -58,15 +58,15 @@ export default function ResearchJournal() {
             of the HIRJ are evangelical, confessional, and missional.
           </p>
         </div>
-        <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
+        <div className="space-y-4 rounded-2xl p-8 hover:bg-neutral-200 hover:shadow-2xl transition-all duration-300">
           <LayoutList
             strokeWidth={1}
             width={40}
             height={40}
-            className="text-muted-foreground"
+            className="text-black"
           />
           <h2 className="font-semibold text-xl">Values and Integrated Tasks</h2>
-          <p className="text-muted-foreground">
+          <p className="text-black">
             The HIRJ will accomplish its purpose by publishing original research
             that bridges the gaps between three values: proclaiming Christ,
             promoting rigorous scholarship, and equipping local churches. The
@@ -76,7 +76,9 @@ export default function ResearchJournal() {
           </p>
         </div>
       </div>
-      <p className="text-center text-lg ">Details to come in 2024</p>
+      <p className="text-center text-sm uppercase font-mono">
+        More Details to come in 2024
+      </p>
     </div>
   );
 }

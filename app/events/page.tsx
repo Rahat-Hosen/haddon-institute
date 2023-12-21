@@ -36,7 +36,7 @@ export default async function Events() {
         text="Events"
         className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
-      <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto">
+      <p className="text-center text-black text-lg max-w-3xl mx-auto">
         Learn more about Haddon&apos;s upcoming events.
       </p>
 

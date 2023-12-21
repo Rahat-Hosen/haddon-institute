@@ -15,7 +15,7 @@ export default function Giving() {
         text="Giving"
         className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
-      <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto px-4">
+      <p className="text-center text-black text-lg max-w-3xl mx-auto px-4">
         Haddon Institute is a registered charity with the ACNC; as such we
         depend on the generosity of people who believe in the mission of
         organisation. If you would like to donate please find our bank details

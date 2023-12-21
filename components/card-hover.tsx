@@ -75,7 +75,7 @@ export const CardHover = () => {
                     strokeWidth: 1,
                     width: 40,
                     height: 40,
-                    className: "text-muted-foreground",
+                    className: "text-black",
                   })}
                   <h2 className="font-semibold text-xl">{card.title}</h2>
                   <p className="text-black dark:text-transparent bg-clip-text bg-gradient-to-br dark:from-muted-foreground from-40% dark:to-muted">

@@ -35,7 +35,7 @@ export default async function WeeklyPayments() {
         className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
       />
 
-      <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto">
+      <p className="text-center text-black text-lg max-w-3xl mx-auto">
         Haddon Institute is glad to offer a weekly payment plan. Please click
         the button below and we will be in touch within 1-2 days to formally
         arrange payments.

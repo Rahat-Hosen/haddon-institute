@@ -21,7 +21,7 @@ export default async function Leadership() {
           text="Leadership"
           className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
         />
-        <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto">
+        <p className="text-center text-black text-lg max-w-3xl mx-auto">
           Our mission at the Haddon institute is to provide a Christ-centered
           education grounded in the Reformed tradition.
         </p>
@@ -48,7 +48,7 @@ export default async function Leadership() {
           <Link
             key={person.id}
             href={`/person/${person.slug}`}
-            className="flex flex-col justify-center items-center space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300"
+            className="flex flex-col justify-center items-center space-y-4 rounded-2xl p-8 hover:bg-neutral-200 hover:shadow-2xl transition-all duration-300"
           >
             <div className="relative w-64 h-64 rounded-md overflow-hidden">
               <Image
@@ -60,7 +60,7 @@ export default async function Leadership() {
             </div>
             <div className="flex flex-col items-center space-y-2">
               <p className="text-2xl font-bold tracking-tight">{person.name}</p>
-              <p className="text-lg text-muted-foreground">{person.position}</p>
+              <p className="text-lg text-black">{person.position}</p>
             </div>
             <div className="flex space-x-4">
               {person.x && (
@@ -68,7 +68,7 @@ export default async function Leadership() {
                   href={person.x}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-2xl text-muted-foreground transition-colors duration-300 hover:text-white"
+                  className="text-2xl text-black transition-colors duration-300 hover:text-white"
                 >
                   <FaXTwitter className="w-6 h-6" />
                 </a>
@@ -78,7 +78,7 @@ export default async function Leadership() {
                   href={person.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-2xl text-muted-foreground transition-colors duration-300 hover:text-white"
+                  className="text-2xl text-black transition-colors duration-300 hover:text-white"
                 >
                   <Linkedin />
                 </a>
@@ -88,7 +88,7 @@ export default async function Leadership() {
                   href={person.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-2xl text-muted-foreground transition-colors duration-300 hover:text-white"
+                  className="text-2xl text-black transition-colors duration-300 hover:text-white"
                 >
                   <Globe2 />
                 </a>
@@ -98,7 +98,7 @@ export default async function Leadership() {
                   href={`mailto:${person.email}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-2xl text-muted-foreground transition-colors duration-300 hover:text-white"
+                  className="text-2xl text-black transition-colors duration-300 hover:text-white"
                 >
                   <Mail />
                 </a>

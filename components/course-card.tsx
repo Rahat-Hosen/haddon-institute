@@ -28,8 +28,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import Image from "next/image";
-import { utcToZonedTime } from "date-fns-tz";
-import { format } from "date-fns";
 
 import {
   Accordion,
@@ -85,16 +83,17 @@ export default function CourseCard({
   // Check if the user is authenticated before rendering the button
   const isUserAuthenticated = auth.isSignedIn;
 
-  const timezone = "Australia/Brisbane";
+  const courseStart = new Date(course.startDate).toLocaleDateString("en-AU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
-  const courseStart = format(
-    utcToZonedTime(new Date(course.startDate), timezone),
-    "MMMM d, yyyy",
-  );
-  const courseEnd = format(
-    utcToZonedTime(new Date(course.endDate), timezone),
-    "MMMM d, yyyy",
-  );
+  const courseEnd = new Date(course.endDate).toLocaleDateString("en-AU", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
   return (
     <div className="px-4 my-10 max-w-7xl mx-auto">
@@ -117,10 +116,7 @@ export default function CourseCard({
               <div className="flex gap-4 pt-4">
                 {Array.isArray(course.categories) &&
                   course.categories.map((data: any, index: any) => (
-                    <p
-                      key={index}
-                      className="px-4 py-1 rounded-2xl border dark:bg-neutral-900 bg-muted dark:text-white"
-                    >
+                    <p key={index} className="px-4 py-1 rounded-lg border-2">
                       {data.value}
                     </p>
                   ))}
@@ -221,151 +217,151 @@ export default function CourseCard({
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl border dark:bg-neutral-900 bg-muted dark:text-white p-8 rounded-2xl">
-            <div>
-              <h3 className="font-semibold text-lg flex gap-2">
-                <FileDigit className="w-5 h-5 my-auto" />
-                Code
-              </h3>
-              <p>{course.code}</p>
+          <div className="lg:flex space-y-4 lg:space-y-0 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:w-2/3 h-full border-2 p-8 rounded-lg">
+              <div>
+                <h3 className="font-semibold text-lg flex gap-2">
+                  <FileDigit className="w-5 h-5 my-auto" />
+                  Code
+                </h3>
+                <p>{course.code}</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg flex gap-2">
+                  <BadgeDollarSign className="w-5 h-5 my-auto" /> Fees
+                </h3>
+                <p>
+                  {new Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "AUD",
+                    minimumFractionDigits: 2,
+                  }).format(parseFloat(course.price) / 100)}
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg flex gap-2">
+                  <Calendar className="w-5 h-5 my-auto" />
+                  Period
+                </h3>
+                <p>{course.season}</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg flex gap-2">
+                  <Clock className="w-5 h-5 my-auto" />
+                  Duration
+                </h3>
+                <p className="flex gap-2">
+                  {courseStart}
+                  <MoveRight className="w-5 h-5" />
+                  {courseEnd}
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg flex gap-2">
+                  <Library className="w-5 h-5 my-auto" />
+                  Lessons
+                </h3>
+                <p className="flex gap-2">{course.Lesson.length}</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg flex gap-2">
+                  <Dumbbell className="w-5 h-5 my-auto" />
+                  Workload
+                </h3>
+                <p className="flex gap-2">
+                  {course.workloadHours} hours per week
+                </p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg flex gap-2">
+                  <ScrollText className="w-5 h-5 my-auto" />
+                  Lectures
+                </h3>
+                {Array.isArray(course.lectures) &&
+                  course.lectures.map((data: any, index: any) => (
+                    <p key={index}>{data.value}</p>
+                  ))}
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg flex gap-2">
+                  <MapPin className="w-5 h-5 my-auto" />
+                  Location
+                </h3>
+                <p className="flex gap-2">{course.campus}</p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-semibold text-lg flex gap-2">
-                <BadgeDollarSign className="w-5 h-5 my-auto" /> Fees
-              </h3>
-              <p>
-                {new Intl.NumberFormat("en-US", {
-                  style: "currency",
-                  currency: "AUD",
-                  minimumFractionDigits: 2,
-                }).format(parseFloat(course.price) / 100)}
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-lg flex gap-2">
-                <Calendar className="w-5 h-5 my-auto" />
-                Period
-              </h3>
-              <p>{course.season}</p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-lg flex gap-2">
-                <Clock className="w-5 h-5 my-auto" />
-                Duration
-              </h3>
-              <p className="flex gap-2">
-                {courseStart}
-                <MoveRight className="w-5 h-5" />
-                {courseEnd}
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-lg flex gap-2">
-                <Library className="w-5 h-5 my-auto" />
-                Lessons
-              </h3>
-              <p className="flex gap-2">{course.Lesson.length}</p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-lg flex gap-2">
-                <Dumbbell className="w-5 h-5 my-auto" />
-                Workload
-              </h3>
-              <p className="flex gap-2">
-                {course.workloadHours} hours per week
-              </p>
-            </div>
-            <div>
-              <h3 className="font-semibold text-lg flex gap-2">
-                <ScrollText className="w-5 h-5 my-auto" />
-                Lectures
-              </h3>
-              {Array.isArray(course.lectures) &&
-                course.lectures.map((data: any, index: any) => (
-                  <p key={index}>{data.value}</p>
-                ))}
-            </div>
-            <div>
-              <h3 className="font-semibold text-lg flex gap-2">
-                <MapPin className="w-5 h-5 my-auto" />
-                Location
-              </h3>
-              <p className="flex gap-2">{course.campus}</p>
+            <div className="my-auto">
+              <div className="lg:w-1/3 flex flex-col my-auto gap-4">
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <Image
+                      src={
+                        course.lecturerImage ||
+                        "/logos/haddon-institute-logo.jpeg"
+                      }
+                      width={75}
+                      height={75}
+                      alt={course.lecturer}
+                      className="rounded-md object-cover aspect-square border-2"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-lg">
+                        {course.lecturer}
+                      </h4>
+                      <p className="font-semibold">Course Lecturer</p>
+                      <p className="text-black dark:text-muted-foreground truncate">
+                        {course.lecturerEmail || "No email provided."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <Image
+                      src={
+                        course.coordImage || "/logos/haddon-institute-logo.jpeg"
+                      }
+                      width={75}
+                      height={75}
+                      alt={course.coord}
+                      className="rounded-md object-cover aspect-square border-2 "
+                    />
+                    <div>
+                      <h4 className="font-semibold text-lg">{course.coord}</h4>
+                      <p className="font-semibold">Course Coordinator</p>
+                      <p className="text-black dark:text-muted-foreground">
+                        {course.coordEmail || "No email provided."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex gap-4">
+                    <Image
+                      src={
+                        course.adminImage || "/logos/haddon-institute-logo.jpeg"
+                      }
+                      width={75}
+                      height={75}
+                      alt={course.admin}
+                      className="rounded-md object-cover aspect-square border-2"
+                    />
+                    <div>
+                      <h4 className="font-semibold text-lg">{course.admin}</h4>
+                      <p className="font-semibold">Course Administrator</p>
+                      <p className="text-black dark:text-muted-foreground">
+                        {course.adminEmail || "No email provided."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="space-y-4">
-            <h2 className="font-bold text-2xl">People</h2>
-
-            <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-              <div className="space-y-4">
-                <h3 className="font-bold text-xl">Course Lecturer</h3>
-                <div className="flex gap-4">
-                  <Image
-                    src={
-                      course.lecturerImage ||
-                      "/logos/haddon-institute-logo.jpeg"
-                    }
-                    width={100}
-                    height={100}
-                    alt={course.lecturer}
-                    className="rounded-md object-cover aspect-square"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-lg">{course.lecturer}</h4>
-                    <p className="text-black dark:text-muted-foreground">
-                      {course.lecturerEmail || "No email provided."}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <h3 className="font-bold text-xl">Course Coordinator</h3>
-                <div className="flex gap-4">
-                  <Image
-                    src={
-                      course.coordImage || "/logos/haddon-institute-logo.jpeg"
-                    }
-                    width={100}
-                    height={100}
-                    alt={course.coord}
-                    className="rounded-md"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-lg">{course.coord}</h4>
-                    <p className="text-black dark:text-muted-foreground">
-                      {course.coordEmail || "No email provided."}
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="space-y-4">
-                <h3 className="font-bold text-xl">Course Administrator</h3>
-                <div className="flex gap-4">
-                  <Image
-                    src={
-                      course.adminImage || "/logos/haddon-institute-logo.jpeg"
-                    }
-                    width={100}
-                    height={100}
-                    alt={course.admin}
-                    className="rounded-md"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-lg">{course.admin}</h4>
-                    <p className="text-black dark:text-muted-foreground">
-                      {course.adminEmail || "No email provided."}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div>{" "}
       </div>
 
-      <Separator className="my-10" />
-
-      <div className="w-full">
+      <div className="w-full my-10">
         <div className="space-y-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-2">
@@ -389,11 +385,19 @@ export default function CourseCard({
             </div>
           </div>
 
-          <div className="space-y-2">
-            <h2 className="font-bold text-xl">Teaching Format</h2>
-            <p className="text-black dark:text-muted-foreground whitespace-pre-line">
-              {course.format}
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-2">
+              <h2 className="font-bold text-xl">Teaching Format</h2>
+              <p className="whitespace-pre-line text-black dark:text-muted-foreground">
+                {course.format}
+              </p>
+            </div>
+            <div className="space-y-2">
+              <h2 className="font-bold text-xl">Workload</h2>
+              <p className="whitespace-pre-line text-black dark:text-muted-foreground">
+                {course.workload}
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -434,23 +438,12 @@ export default function CourseCard({
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-2">
-              <h2 className="font-bold text-xl">Workload</h2>
-              <p className="whitespace-pre-line text-black dark:text-muted-foreground">
-                {course.workload}
-              </p>
-            </div>
-
-            <div className="space-y-2">
-              <h2 className="font-bold text-xl">Assessment</h2>
-              <p className="whitespace-pre-line text-black dark:text-muted-foreground">
-                {course.assessment}
-              </p>
-            </div>
+          <div className="space-y-2">
+            <h2 className="font-bold text-xl">Assessment</h2>
+            <p className="text-black dark:text-muted-foreground whitespace-pre-line">
+              {course.assessment}
+            </p>
           </div>
-
-          <Separator className="my-10" />
 
           <div className="w-full space-y-2">
             <h2 className="font-bold text-xl">Lesson Overviews</h2>
@@ -464,7 +457,7 @@ export default function CourseCard({
                 <AccordionItem
                   key={lesson.id}
                   value={`item-${lesson.id}`}
-                  className="border py-2 px-6 transition hover:bg-transparent dark:hover:bg-transparent dark:bg-neutral-900 bg-muted dark:text-white rounded-2xl"
+                  className="border-2 py-2 px-6 transition hover:bg-transparent  rounded-lg"
                 >
                   <AccordionTrigger className="font-semibold">
                     {lesson.title}

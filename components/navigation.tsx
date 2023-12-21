@@ -62,7 +62,7 @@ export default function Navigation() {
   return (
     <>
       <div
-        className={`lg:hidden flex justify-between px-4 backdrop-blur-3xl bg-muted/50 transition-all duration-300 fixed bottom-0 w-full z-50`}
+        className={`lg:hidden flex justify-between px-4 bg-neutral-900 transition-all duration-300 fixed bottom-0 w-full z-50`}
       >
         <Link href="/">
           <Image
@@ -84,61 +84,58 @@ export default function Navigation() {
       </div>
 
       <div
-        className={`hidden lg:flex px-24 py-3 w-full sticky top-0 z-50  ${
-          hasShadow
-            ? "shadow-2xl backdrop-blur-3xl bg-muted/50 transition-all duration-300"
-            : "shadow-none bg-none transition-all duration-300"
-        }`}
+        className={`hidden lg:flex px-24 py-3 w-full sticky top-0 z-50 text-white  bg-neutral-900`}
       >
-        <div className="flex-1 my-auto">
-          <Link href="/">
-            <Image
-              src="/logos/3.png"
-              height={50}
-              width={50}
-              alt="Haddon Institute Logo"
-            />
-          </Link>
-        </div>
-        <div className="shrink-0 my-auto">
-          <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger
-                  className={`${navigationMenuTriggerStyle()} flex gap-2`}
-                >
-                  <Users className="w-4 h-4 my-auto" />
-                  About
-                </NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid gap-1 p-4 md:w-[400px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]">
-                    <li className="row-span-3 mr-3">
-                      <NavigationMenuLink asChild>
-                        <a
-                          className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
-                          href="/mission-statement"
-                        >
-                          <BookOpen className="h-6 w-6" />
-                          <div className="mb-2 mt-4 text-lg font-medium">
-                            Mission Statement and Vision
-                          </div>
-                        </a>
-                      </NavigationMenuLink>
-                    </li>
-                    <ListItem href="/our-heritage" title="Our Heritage">
-                      What we believe and teach.
-                    </ListItem>
-                    <ListItem href="/leadership" title="Our Leadership">
-                      Meet our leadership team.
-                    </ListItem>
-                    <ListItem href="/partners" title="Our Partners">
-                      Our partners and affiliates.
-                    </ListItem>
-                  </ul>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+        <div className="max-w-[90rem] mx-auto w-full flex">
+          <div className="flex-1 my-auto">
+            <Link href="/">
+              <Image
+                src="/logos/3.png"
+                height={50}
+                width={50}
+                alt="Haddon Institute Logo"
+              />
+            </Link>
+          </div>
+          <div className="shrink-0 my-auto">
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger
+                    className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                  >
+                    <Users className="w-4 h-4 my-auto" />
+                    About
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid gap-1 p-4 md:w-[400px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]">
+                      <li className="row-span-3 mr-3">
+                        <NavigationMenuLink asChild>
+                          <a
+                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                            href="/mission-statement"
+                          >
+                            <BookOpen className="h-6 w-6" />
+                            <div className="mb-2 mt-4 text-lg font-medium">
+                              Mission Statement and Vision
+                            </div>
+                          </a>
+                        </NavigationMenuLink>
+                      </li>
+                      <ListItem href="/our-heritage" title="Our Heritage">
+                        What we believe and teach.
+                      </ListItem>
+                      <ListItem href="/leadership" title="Our Leadership">
+                        Meet our leadership team.
+                      </ListItem>
+                      <ListItem href="/partners" title="Our Partners">
+                        Our partners and affiliates.
+                      </ListItem>
+                    </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
 
-              {/* <NavigationMenuItem>
+                {/* <NavigationMenuItem>
                 <NavigationMenuTrigger>Admissions</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid gap-1 p-4 md:w-[400px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]">
@@ -174,62 +171,64 @@ export default function Navigation() {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem> */}
-              <NavigationMenuItem>
-                <Link href="/courses" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={`${navigationMenuTriggerStyle()} flex gap-2`}
-                  >
-                    <BookOpen className="w-4 h-4 my-auto" />
-                    Courses
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/research-journal" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={`${navigationMenuTriggerStyle()} flex gap-2`}
-                  >
-                    <LibraryBig className="w-4 h-4 my-auto" />
-                    Research Journal
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/events" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={`${navigationMenuTriggerStyle()} flex gap-2`}
-                  >
-                    <CalendarDays className="w-4 h-4 my-auto" /> Events
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/giving" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={`${navigationMenuTriggerStyle()} flex gap-2`}
-                  >
-                    <HeartHandshake className="w-4 h-4 my-auto" /> Giving
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-          <Separator className="max-w-sm mx-auto my-2" />
-          <div className="flex justify-center">
-            <Link
-              href="/course/theology-for-today-s-world"
-              className={`flex gap-2 ${buttonVariants({
-                variant: "ghost",
-              })}`}
-            >
-              <Badge>NEW</Badge> Theology for Today&apos;s World
-            </Link>
+                <NavigationMenuItem>
+                  <Link href="/courses" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                    >
+                      <BookOpen className="w-4 h-4 my-auto" />
+                      Courses
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/research-journal" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                    >
+                      <LibraryBig className="w-4 h-4 my-auto" />
+                      Research Journal
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/events" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                    >
+                      <CalendarDays className="w-4 h-4 my-auto" /> Events
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/giving" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={`${navigationMenuTriggerStyle()} flex gap-2`}
+                    >
+                      <HeartHandshake className="w-4 h-4 my-auto" /> Giving
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+            <Separator className="max-w-sm mx-auto my-2 bg-neutral-700" />
+            <div className="flex justify-center">
+              <Link
+                href="/course/theology-for-today-s-world"
+                className={`flex gap-2 ${buttonVariants({
+                  variant: "ghost",
+                })}`}
+              >
+                <Badge className="bg-white text-black">NEW</Badge> Theology for
+                Today&apos;s World
+              </Link>
+            </div>
           </div>
-        </div>
-        <div className="flex-1 my-auto">
-          <div className="flex justify-end">
-            <div className="flex gap-4">
-              <Authentication />
+          <div className="flex-1 my-auto">
+            <div className="flex justify-end">
+              <div className="flex gap-4">
+                <Authentication />
+              </div>
             </div>
           </div>
         </div>

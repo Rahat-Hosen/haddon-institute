@@ -9,6 +9,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 import Script from "next/script";
 import { UMAMI_SCRIPT_URL, UMAMI_WEBSITE_ID } from "@/lib/umami";
+import Oaks from "@/components/oaks";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://haddoninstitute.org/"),
@@ -37,14 +38,15 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body
-          className={`${GeistSans.variable} ${GeistMono.variable} min-h-screen bg-[#fafafa] dark:bg-[#0a0a0a] font-sans text-black antialiased transition-all duration-200 selection:bg-black selection:text-white dark:text-white dark:selection:bg-white dark:selection:text-black`}
+          className={`${GeistSans.variable} ${GeistMono.variable} bg-[#fafafa] dark:bg-[#0a0a0a] font-sans text-black antialiased transition-all duration-200 selection:bg-black selection:text-white dark:text-white dark:selection:bg-white dark:selection:text-black`}
         >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+            <Oaks />
             <Navigation />
+            <div className="min-h-[70vh]">
             {children}
-            <div className="bg-muted py-14 lg:py-0 mt-10">
-              <Footer />
             </div>
+            <Footer />
             <Toaster />
           </ThemeProvider>
         </body>

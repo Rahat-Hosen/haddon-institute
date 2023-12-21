@@ -32,26 +32,27 @@ export default async function CourseLessons({ params }: any) {
   }
 
   return (
-    <div className="space-y-8 px-4 min-h-[60vh] my-10 xl:px-24 xl:my-20">
+    <div className="space-y-8 px-4 my-10 max-w-7xl mx-auto">
       <Link href={`/my-courses/`} className={`flex gap-2 ${buttonVariants()}`}>
         <MoveLeft />
         My Courses
       </Link>
 
-      <div>
-        <h3 className="text-2xl font-bold">{course.title}</h3>
-        <p className="text-sm text-muted-foreground">{course.description}</p>
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <h2 className="text-2xl flex gap-4 font-semibold">{course.title}</h2>
+          <p className="text-black">{course.description}</p>
+        </div>
+
+        <Separator />
       </div>
 
       <div className="space-y-4">
         <h3 className="text-xl font-bold">Lessons</h3>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4">
           {lessons.length > 0 ? (
             lessons.map((lesson: any) => (
-              <div
-                key={lesson.id}
-                className="border dark:bg-neutral-900 bg-muted dark:text-white rounded-2xl p-4 w-full"
-              >
+              <div key={lesson.id} className="border-2 rounded-lg p-8 w-full">
                 <Link
                   href={`/my-courses/${slug}/${lesson.slug}`}
                   className="space-y-4"

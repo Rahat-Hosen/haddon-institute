@@ -7,8 +7,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Badge } from "@/components/ui/badge";
-import { utcToZonedTime } from "date-fns-tz";
-import { format } from "date-fns";
 
 export const metadata: Metadata = {
   title: "Courses | Haddon Institute",
@@ -25,10 +23,8 @@ export default async function Courses() {
     },
   });
 
-  const timezone = "Australia/Brisbane";
-
   return (
-    <div className="space-y-8 px-4 my-10 xl:px-24 xl:my-20 max-w-7xl mx-auto">
+    <div className="space-y-8 px-4 my-10 max-w-7xl mx-auto">
       <AnimatedText
         text="Our Courses"
         className="text-3xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
@@ -39,7 +35,7 @@ export default async function Courses() {
           <h2 className="text-2xl flex gap-4 font-semibold">
             Capstone Courses <GraduationCap className="w-8 h-8 my-auto" />
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-black">
             Our capstone courses are our most comprehensive courses and allow
             students to demonstrate their acquired knowledge.
           </p>
@@ -57,15 +53,8 @@ export default async function Courses() {
                 {course.code}
               </Badge>
               <Badge className="absolute top-8 right-8 z-10">
-                {format(
-                  utcToZonedTime(new Date(course.startDate), timezone),
-                  "MMMM d, yyyy",
-                )}{" "}
-                -{" "}
-                {format(
-                  utcToZonedTime(new Date(course.endDate), timezone),
-                  "MMMM d, yyyy",
-                )}
+                {new Date(course.startDate).getFullYear()} -{" "}
+                {new Date(course.endDate).getFullYear()}
               </Badge>
               <div className="absolute inset-0 rounded-[48px]">
                 <Image
@@ -97,7 +86,7 @@ export default async function Courses() {
           <h2 className="text-2xl flex gap-4 font-semibold">
             Trending Courses <Zap className="w-7 h-7 my-auto" />
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-black">
             Our 10 most purchased courses.
           </p>
         </div>
@@ -141,7 +130,7 @@ export default async function Courses() {
           <h2 className="text-2xl flex gap-4 font-semibold">
             Latest Additions <BadgePlus className="w-7 h-7 my-auto" />
           </h2>
-          <p className="text-muted-foreground">
+          <p className="text-black">
             Our most recently added courses.
           </p>
         </div>

@@ -194,7 +194,7 @@ export default async function AdminCoursePage({ params }: any) {
         <div className="flex justify-between">
           <div>
             <h1 className="font-bold text-2xl">Lessons</h1>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-black">
               View and manage the lessons in this course.
             </p>
           </div>

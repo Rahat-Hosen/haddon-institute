@@ -2,7 +2,6 @@ import AnimatedText from "@/components/animated-text";
 import { CardHover } from "@/components/card-hover";
 import { CustomBadge } from "@/components/custom-badge";
 import Informational from "@/components/informational";
-import Newsletter from "@/components/newsletter";
 import Player from "@/components/player";
 import { HeroScroll } from "@/components/scroll-up-in";
 import { TextGenerateEffect } from "@/components/text-generate";
@@ -20,8 +19,10 @@ export default function Home() {
           src="/henry-be-lc7xcWebECc-unsplash.jpg"
           height={2000}
           width={2000}
+          priority
+          quality={100}
           alt="Background Image"
-          className="object-cover h-[80vh] w-full brightness-50 border border-b-2"
+          className="object-cover h-[70vh] w-full brightness-50"
         />
 
         <div className="absolute place-items-center inset-0 flex justify-center">
@@ -29,8 +30,8 @@ export default function Home() {
             <div className="hidden md:flex md:w-1/2 my-auto">
               <Image
                 src="/logos/3.png"
-                width={750}
-                height={750}
+                width={500}
+                height={500}
                 alt="Haddon Institute Logo"
                 style={{ maxWidth: "100%", height: "auto" }}
               />
@@ -91,7 +92,7 @@ export default function Home() {
           Course starting 4th of December 2023
         </h3>
         <div className="space-y-2">
-          <p className="text-muted-foreground text-center max-w-2xl mx-auto">
+          <p className="text-black text-center max-w-2xl mx-auto">
             This 6-week course aims to provide students with a comprehensive
             overview of the theology of the Christian worldview, and its
             relevance in today&apos;s world.
@@ -248,43 +249,6 @@ export default function Home() {
             </Link>
           </div>
         </div>
-
-        {/* <div className="px-4 md:flex md:justify-between my-20 space-y-6 md:space-y-0">
-          <h1 className="font-semibold text-2xl my-auto">Trusted by</h1>
-
-          <div className="md:flex gap-8 space-y-4 md:space-y-0">
-            <Image
-              src="/logos/hoperb.webp"
-              width={100}
-              height={100}
-              alt="Hope Reformed Baptist Church"
-              className="p-1 rounded-md bg-[#b92024] aspect-square"
-            />
-            <Image
-              src="/logos/hope-church.webp"
-              width={240}
-              height={100}
-              alt="Hope Reformed Baptist Church - Gold Coast"
-              className="bg-muted-foreground p-1 rounded-md dark:bg-[#0a0a0a]"
-            />
-            <Image
-              src="/logos/reformation.webp"
-              width={100}
-              height={100}
-              alt="Reformation Baptist Church"
-              className="rounded-md aspect-square"
-            />
-            <Image
-              src="/logos/ascension-church.webp"
-              width={140}
-              height={100}
-              alt="Ascension Church"
-              className="rounded-md"
-            />
-          </div>
-        </div> */}
-
-        <Newsletter />
       </div>
     </main>
   );

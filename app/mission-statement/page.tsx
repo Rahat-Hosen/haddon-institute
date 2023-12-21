@@ -16,7 +16,7 @@ export default function MissionStatement() {
           text="Mission Statement and Vision"
           className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
         />
-        <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto">
+        <p className="text-center text-black text-lg max-w-3xl mx-auto">
           Our vision is to see the Australian Church fear and behold the majesty
           of the Lord Jesus Christ; in all of His offices, through all of His
           means, to the end of His Glory from generation to generation.
@@ -39,15 +39,15 @@ export default function MissionStatement() {
         </div>
       </div>
       <div className="grid grid-cols-1 gap-2 px-4 max-w-2xl mx-auto">
-        <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
+        <div className="space-y-4 rounded-2xl p-8 hover:bg-neutral-200 hover:shadow-2xl transition-all duration-300">
           <GraduationCap
             strokeWidth={1}
             width={40}
             height={40}
-            className="text-muted-foreground"
+            className="text-black"
           />
           <h2 className="font-semibold text-xl">Our Mission</h2>
-          <p className="text-muted-foreground">
+          <p className="text-black">
             Our mission is to enlist, equip, and disciple God’s people by
             providing robust time-tested academic pathways for effective gospel
             mobilization; through the local church for fruitful vocation and

@@ -23,7 +23,7 @@ export default function Informational() {
                   <h3 className="text-center font-semibold text-2xl text-white">
                     Engaging Culture
                   </h3>
-                  <p className="text-center dark:text-muted-foreground text-muted">
+                  <p className="text-center text-neutral-300">
                     Equipping the next generation with a culture engaging
                     mindset for a purposeful future.
                   </p>
@@ -49,7 +49,7 @@ export default function Informational() {
                   <h3 className="text-center font-semibold text-2xl text-white">
                     Legacy Building
                   </h3>
-                  <p className="text-center dark:text-muted-foreground text-muted">
+                  <p className="text-center text-neutral-300">
                     Building a legacy by cultivating young leaders and visionary
                     thinkers, passing on wisdom and faith.
                   </p>

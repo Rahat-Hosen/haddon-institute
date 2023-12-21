@@ -16,7 +16,7 @@ export default function OurHeritage() {
           text="Our Heritage"
           className="text-lg md:text-xl lg:text-4xl xl:text-6xl flex justify-center tracking-tighter font-bold"
         />
-        <p className="text-center text-muted-foreground text-lg max-w-3xl mx-auto">
+        <p className="text-center text-black text-lg max-w-3xl mx-auto">
           Haddon Institute is confessional in it’s academic and lived
           convictions. We hold heritage hostage by the durability of the Second
           London Baptist Confession of Faith (1689) as a faithful summary of
@@ -40,30 +40,30 @@ export default function OurHeritage() {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 px-4 max-w-7xl mx-auto">
-        <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
+        <div className="space-y-4 rounded-2xl p-8 hover:bg-neutral-200 hover:shadow-2xl transition-all duration-300">
           <ScrollText
             strokeWidth={1}
             width={40}
             height={40}
-            className="text-muted-foreground"
+            className="text-black"
           />
           <h2 className="font-semibold text-xl">Confessional</h2>
-          <p className="text-muted-foreground">
+          <p className="text-black">
             Haddon Institute is confessional in it’s academic and lived
             convictions. We hold heritage hostage by the durability of the
             Second London Baptist Confession of Faith (1689) as a faithful
             summary of important biblical teachings & frameworks.
           </p>
         </div>
-        <div className="space-y-4 rounded-2xl p-8 hover:bg-muted hover:shadow-2xl transition-all duration-300">
+        <div className="space-y-4 rounded-2xl p-8 hover:bg-neutral-200 hover:shadow-2xl transition-all duration-300">
           <Globe2
             strokeWidth={1}
             width={40}
             height={40}
-            className="text-muted-foreground"
+            className="text-black"
           />
           <h2 className="font-semibold text-xl">Gospel Impact</h2>
-          <p className="text-muted-foreground">
+          <p className="text-black">
             At Haddon we are about strategic mobilisation for greater gospel
             impact by developing men and women who exhibit wisdom, virtue, and a
             deep understanding of their Christian faith, preparing them to make

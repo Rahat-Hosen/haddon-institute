@@ -92,7 +92,7 @@ export default async function EventPage({ params }: any) {
           <a
             href="https://maps.app.goo.gl/GofDmFbEyQ8ibCHm6"
             target="_blank"
-            className="hover:text-muted-foreground underline hover:no-underline"
+            className="hover:text-black underline hover:no-underline"
           >
             Garden City Library - Level R4, Corner Logan and Kessels Road, Upper
             Mount Gravatt QLD 4122 (access via top-level yellow carpark).
